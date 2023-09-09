@@ -1,0 +1,41 @@
+@import "../../styles/colors.module.scss";
+
+.wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+header {
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  width: 100vw;
+  background-color: $black;
+
+  border-bottom: $white 2px solid;
+}
+
+.page {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: $black2;
+
+  width: 100%;
+  height: calc(100vh - 100px);
+  //   height: max-content;
+  //   height: P100%;
+}
