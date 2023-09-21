@@ -1,0 +1,9 @@
+$zindex-default: 1;
+$zindex-popup: 2;
+$zindex-tooltip: 3;
+
+:export {
+  zindex-default: $zindex-default;
+  zindex-popup: $zindex-popup;
+  zindex-tooltip: $zindex-tooltip;
+}
