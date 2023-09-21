@@ -1,0 +1,17 @@
+@import "styles/colors.module.scss";
+
+.container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba($black, 0.5);
+  backdrop-filter: blur(6px) brightness(80%);
+}

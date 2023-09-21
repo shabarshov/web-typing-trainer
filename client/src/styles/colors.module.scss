@@ -1,8 +1,8 @@
 $black: #1a1f25;
 $black2: #21262e;
+$black3: #141619;
 
 $grey: #293133;
-
 $white: #eee;
 
 $red: #ff3d3d;
@@ -12,15 +12,22 @@ $green: #55ff7f;
 $greenHover: #359f4e;
 
 $blue: #3030ad;
+$purple: #9578d3;
 
 :export {
   black: $black;
   black2: $black2;
+  black3: $black3;
+
   grey: $grey;
   white: $white;
+
   red: $red;
   redHover: $redHover;
+
   green: $green;
   greenHover: $greenHover;
+
   blue: $blue;
+  purple: $purple;
 }

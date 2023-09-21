@@ -10,6 +10,7 @@ import HomePage from "../../pages/HomePage/HomePage"
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage"
 import SettingsPage from "../../pages/SettingsPage/SettingsPage"
 import StatisticsPage from "../../pages/StatisticsPage/StatisticsPage"
+import ProfilePage from "pages/ProfilePage/ProfilePage"
 
 interface AppProps {}
 
@@ -23,7 +24,7 @@ const App: FC<AppProps> = () => {
             element={<HomePage />}
           />
           <Route
-            path="/auth"
+            path="/auth/SignIn"
             element={<AuthPage />}
           />
           <Route
@@ -37,6 +38,10 @@ const App: FC<AppProps> = () => {
           <Route
             path="statistic"
             element={<StatisticsPage />}
+          />
+          <Route
+            path="/profile"
+            element={<ProfilePage />}
           />
           <Route
             path="*"
