@@ -47,6 +47,7 @@ const Wrapper: FC<WrapperProps> = ({ children }) => {
           </ToolTip>
         </div>
       </header>
+      <div className={styles.page}>{children}</div>
     </div>
   )
 }
