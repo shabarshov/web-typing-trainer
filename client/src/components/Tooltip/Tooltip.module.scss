@@ -1,0 +1,24 @@
+@import "styles/colors.module.scss";
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+
+  padding: 3px 8px;
+  padding-bottom: 5px;
+
+  border-radius: 8px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  background-color: rgba(black, 0.8);
+  color: $white;
+
+  white-space: nowrap;
+  user-select: auto;
+}
