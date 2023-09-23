@@ -1,4 +1,5 @@
-import { FC, useRef, useState } from "react"
+import { useRef, useState } from "react"
+import type { FC, MouseEvent } from "react"
 import styles from "./Tooltip.module.scss"
 
 interface TooltipProps {
@@ -12,10 +13,9 @@ const ToolTip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
 
   const contentRef = useRef<HTMLDivElement | null>(null)
 
-  const onMouseEnterHandler = (event: any) => {
+  const onMouseEnterHandler = (event: MouseEvent) => {
     if (contentRef.current) {
       const { left } = contentRef.current.getBoundingClientRect()
-
       setTooltipPosition(event.clientX - left + "px")
       setIsVisible(true)
     }
@@ -37,10 +37,7 @@ const ToolTip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
       </div>
 
       {isVisible ? (
-        <span
-          className={styles.tooltip}
-          style={{ left: tooltipPosition }}
-        >
+        <span className={styles.tooltip} style={{ left: tooltipPosition }}>
           {value}
         </span>
       ) : null}

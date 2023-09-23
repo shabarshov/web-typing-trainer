@@ -1,13 +1,12 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 
 import AppRoutes from "components/AppRoutes/AppRoutes"
 import Wrapper from "../Wrapper/Wrapper"
 
 import styles from "./App.module.scss"
 
-interface AppProps {}
-
-const App: FC<AppProps> = () => {
+const App: FC = () => {
   return (
     <div className={styles.container}>
       <Wrapper>

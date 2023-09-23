@@ -1,8 +1,7 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 
-interface SettingsPageProps {}
-
-const SettingsPage: FC<SettingsPageProps> = () => {
+const SettingsPage: FC = () => {
   return <div></div>
 }
 

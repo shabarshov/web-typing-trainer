@@ -1,13 +1,12 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 
 import * as Icons from "assets/svg/Profile"
 import Tooltip from "components/Tooltip/Tooltip"
 
 import styles from "./ProfilePage.module.scss"
 
-interface ProfilePageProps {}
-
-const ProfilePage: FC<ProfilePageProps> = () => {
+const ProfilePage: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.person}>

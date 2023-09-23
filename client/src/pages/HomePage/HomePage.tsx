@@ -1,8 +1,7 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 
-interface HomePageProps {}
-
-const HomePage: FC<HomePageProps> = () => {
+const HomePage: FC = () => {
   return <div></div>
 }
 
