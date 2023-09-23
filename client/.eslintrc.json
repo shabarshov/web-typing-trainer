@@ -21,10 +21,11 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["warn", 2],
     "semi": ["warn", "never"],
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/consistent-type-imports": ["warn", {}]
   }
 }
+
