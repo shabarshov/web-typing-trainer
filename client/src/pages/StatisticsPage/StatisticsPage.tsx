@@ -1,8 +1,7 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 
-interface StatisticsPageProps {}
-
-const StatisticsPage: FC<StatisticsPageProps> = () => {
+const StatisticsPage: FC = () => {
   return <div></div>
 }
 

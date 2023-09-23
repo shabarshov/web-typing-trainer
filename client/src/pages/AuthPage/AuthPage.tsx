@@ -1,11 +1,10 @@
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 import AuthModal from "components/AuthModal/AuthModal"
 
 import styles from "./AuthPage.module.scss"
 
-interface AuthPageProps {}
-
-const AuthPage: FC<AuthPageProps> = () => {
+const AuthPage: FC = () => {
   return (
     <div className={styles.container}>
       <AuthModal />

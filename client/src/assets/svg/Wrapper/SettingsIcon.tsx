@@ -1,5 +1,6 @@
-import React, { FC } from "react"
-import IconProps from "../iconProps"
+import type { FC } from "react"
+import React from "react"
+import type IconProps from "../iconProps"
 
 const SettingsIcon: FC<IconProps> = ({ className }) => {
   return (

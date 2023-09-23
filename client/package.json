@@ -12,6 +12,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.26",
+    "@types/react-router-dom": "^5.3.3",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,14 +26,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint --ext .ts,.tsx src --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "endOfLine": "crlf",
+    "semi": false
   },
   "browserslist": {
     "production": [
@@ -48,6 +52,10 @@
   },
   "proxy": "http://localhost:8000",
   "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
     "react-devtools": "^4.28.0"
   }
 }
