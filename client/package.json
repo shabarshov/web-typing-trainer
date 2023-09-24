@@ -35,7 +35,6 @@
     "printWidth": 80,
     "tabWidth": 2,
     "bracketSpacing": true,
-    "endOfLine": "crlf",
     "semi": false
   },
   "browserslist": {
