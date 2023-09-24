@@ -1,11 +1,9 @@
-import type { FC } from "react"
 import React from "react"
-import styles from "./AuthInput.module.scss"
+import type { FC } from "react"
 
-interface AuthInputProps {
-  title?: string
-  placeholder?: string
-}
+import type { AuthInputProps } from "./AuthInputProps"
+
+import styles from "./AuthInput.module.scss"
 
 const AuthInput: FC<AuthInputProps> = ({ title, placeholder }) => {
   return (

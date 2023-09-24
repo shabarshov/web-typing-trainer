@@ -1,17 +1,16 @@
 import type { FC } from "react"
 import React from "react"
 
+import type { WrapperProps } from "./WrapperProps"
+
 import { Link } from "react-router-dom"
 
 import ToolTip from "components/Tooltip/Tooltip"
 import * as Icons from "assets/svg/Wrapper"
+
 import cn from "classnames"
 
 import styles from "./Wrapper.module.scss"
-
-interface WrapperProps {
-  children: JSX.Element[] | JSX.Element
-}
 
 const Wrapper: FC<WrapperProps> = ({ children }) => {
   return (

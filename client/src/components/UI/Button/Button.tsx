@@ -1,16 +1,11 @@
 import React from "react"
 import type { FC } from "react"
 
+import type { ButtonProps } from "./ButtonProps"
+
 import cn from "classnames"
 
 import styles from "./Button.module.scss"
-
-interface ButtonProps {
-  className?: string
-  value?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  disabled?: boolean
-}
 
 const Button: FC<ButtonProps> = ({
   className,
