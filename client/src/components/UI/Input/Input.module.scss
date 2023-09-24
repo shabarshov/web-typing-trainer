@@ -1,0 +1,25 @@
+@import "styles/colors.module.scss";
+
+.container {
+  padding: 10px;
+  border-bottom: 1px solid $grey;
+
+  font-size: 20px;
+
+  caret-color: $white;
+  color: $white;
+
+  width: 500px;
+
+  background-color: inherit;
+
+  transition: 0.15s ease-in-out all;
+
+  &:hover {
+    border-bottom: 1px solid $white;
+  }
+
+  &:focus {
+    border-bottom: 1px solid $white;
+  }
+}
