@@ -6,6 +6,7 @@ interface InputProps {
   placeholder?: string
   value?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  spellCheck?: boolean
 }
 
 export type { InputProps }

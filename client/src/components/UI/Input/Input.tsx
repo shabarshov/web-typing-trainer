@@ -13,6 +13,7 @@ const Input: FC<InputProps> = ({
   placeholder = "",
   value,
   onChange,
+  spellCheck = false,
 }) => {
   return (
     <input
@@ -21,6 +22,7 @@ const Input: FC<InputProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      spellCheck={spellCheck}
     />
   )
 }
