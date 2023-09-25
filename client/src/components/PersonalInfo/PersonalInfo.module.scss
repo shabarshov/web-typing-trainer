@@ -1,0 +1,43 @@
+@import "styles/colors.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.icon {
+  color: $green;
+}
+
+.personInfo {
+  margin-left: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.editIcon {
+  color: #eeeeeea3;
+  transition: 0.15s ease-in-out all;
+  &:hover {
+    color: $white;
+    cursor: pointer;
+  }
+}
+
+.login {
+  font-size: 26px;
+  color: $white;
+}
+
+.email,
+.login,
+.edit {
+  margin: 4px 0px;
+}
+
+.email {
+  font-size: 20px;
+  color: #eeeeeea3;
+}
