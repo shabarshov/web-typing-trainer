@@ -5,7 +5,7 @@ import type { TooltipProps } from "./TooltipProps"
 
 import styles from "./Tooltip.module.scss"
 
-const ToolTip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
+const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [tooltipPosition, setTooltipPosition] = useState<string>("")
 
@@ -43,4 +43,4 @@ const ToolTip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
   )
 }
 
-export default ToolTip
+export default Tooltip
