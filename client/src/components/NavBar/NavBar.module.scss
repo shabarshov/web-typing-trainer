@@ -24,20 +24,6 @@ $headerHeight: 100px;
   background-color: $black;
 }
 
-.page {
-  position: absolute;
-  bottom: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  background-color: $black;
-
-  width: 100%;
-  height: calc(100vh - $headerHeight);
-}
-
 .logo {
   color: $purple;
 

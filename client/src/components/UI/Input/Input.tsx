@@ -1,17 +1,11 @@
 import React from "react"
 import type { FC } from "react"
 
+import type { InputProps } from "./InputProps"
+
 import cn from "classnames"
 
 import styles from "./Input.module.scss"
-
-interface InputProps {
-  className?: string
-  type?: "password" | "text"
-  placeholder?: string
-  value?: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-}
 
 const Input: FC<InputProps> = ({
   className,
@@ -19,6 +13,7 @@ const Input: FC<InputProps> = ({
   placeholder = "",
   value,
   onChange,
+  spellCheck = false,
 }) => {
   return (
     <input
@@ -27,6 +22,7 @@ const Input: FC<InputProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      spellCheck={spellCheck}
     />
   )
 }

@@ -1,11 +1,9 @@
 import { useRef, useState } from "react"
 import type { FC, MouseEvent } from "react"
-import styles from "./Tooltip.module.scss"
 
-interface TooltipProps {
-  children: React.ReactElement
-  value: string
-}
+import type { TooltipProps } from "./TooltipProps"
+
+import styles from "./Tooltip.module.scss"
 
 const ToolTip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
   const [isVisible, setIsVisible] = useState<boolean>(false)

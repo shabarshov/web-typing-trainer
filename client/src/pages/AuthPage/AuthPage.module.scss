@@ -1,17 +1,51 @@
 @import "styles/colors.module.scss";
 
-.container {
-  position: fixed;
-  left: 0px;
-  top: 0px;
+.title {
+  font-weight: 500;
+  font-size: 40px;
 
-  height: 100vh;
-  width: 100vw;
+  color: $white;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 40px;
+}
 
-  background-color: rgba($black, 0.5);
-  backdrop-filter: blur(6px) brightness(80%);
+.text {
+  color: $white;
+}
+
+.submitBtn {
+  background-color: $green;
+  color: $black2;
+
+  border-radius: 10px;
+
+  font-size: 32px;
+
+  width: 160px;
+  height: 50px;
+
+  margin-bottom: 30px;
+
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    background-color: $greenHover;
+    color: $black3;
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: $black2;
+    color: $green;
+  }
+}
+
+.switchLink {
+  color: $green;
+
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    color: $greenHover;
+  }
 }

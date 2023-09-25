@@ -15,15 +15,6 @@
 }
 
 .input {
-  padding: 10px 10px;
-
-  font-size: 20px;
-
-  background-color: inherit;
-
-  //   caret-shape: block;
-
-  border-bottom: 1px $white solid;
-  caret-color: $white;
-  color: $white;
+  width: auto;
+  border-bottom: 1px solid $whiteGrey;
 }
