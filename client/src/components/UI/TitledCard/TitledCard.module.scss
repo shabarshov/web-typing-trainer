@@ -1,0 +1,39 @@
+@import "styles/colors.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 4px;
+}
+
+.title,
+.content {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  width: 300px;
+
+  background-color: rgba($black3, 0.7);
+  color: $white;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.content {
+  font-size: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
