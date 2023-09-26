@@ -36,9 +36,6 @@ const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
       </div>
 
       {isVisible ? (
-        // <span className={styles.tooltip} style={{ left: tooltipPosition }}>
-        //   {value}
-        // </span>
         <Text
           value={value}
           className={styles.tooltip}
