@@ -6,9 +6,9 @@ import type { TextProps } from "./TextProps"
 
 import styles from "./Text.module.scss"
 
-const Text: FC<TextProps> = ({ className, textCase, value }) => {
+const Text: FC<TextProps> = ({ className, textCase, value, style }) => {
   return (
-    <span className={cn(styles.text, className)}>
+    <span className={cn(styles.text, className)} style={style}>
       {textCase
         ? textCase === "upper"
           ? value.toUpperCase()

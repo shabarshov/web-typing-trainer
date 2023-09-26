@@ -10,6 +10,7 @@ import styles from "./Button.module.scss"
 const Button: FC<ButtonProps> = ({
   className,
   onClick,
+  style,
   value = "",
   disabled = false,
 }) => {
@@ -18,6 +19,7 @@ const Button: FC<ButtonProps> = ({
       className={cn(styles.container, className)}
       onClick={onClick}
       disabled={disabled}
+      style={style}
     >
       {value}
     </button>

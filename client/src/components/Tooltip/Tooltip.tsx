@@ -1,6 +1,8 @@
 import { useRef, useState } from "react"
 import type { FC, MouseEvent } from "react"
 
+import Text from "components/UI/Text/Text"
+
 import type { TooltipProps } from "./TooltipProps"
 
 import styles from "./Tooltip.module.scss"
@@ -26,7 +28,6 @@ const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
   return (
     <div className={styles.container}>
       <div
-        className={styles.content}
         ref={contentRef}
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
@@ -35,9 +36,14 @@ const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
       </div>
 
       {isVisible ? (
-        <span className={styles.tooltip} style={{ left: tooltipPosition }}>
-          {value}
-        </span>
+        // <span className={styles.tooltip} style={{ left: tooltipPosition }}>
+        //   {value}
+        // </span>
+        <Text
+          value={value}
+          className={styles.tooltip}
+          style={{ left: tooltipPosition }}
+        />
       ) : null}
     </div>
   )

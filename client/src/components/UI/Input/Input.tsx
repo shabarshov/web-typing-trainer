@@ -11,6 +11,7 @@ const Input: FC<InputProps> = ({
   className,
   type = "text",
   placeholder = "",
+  style,
   value,
   onChange,
   spellCheck = false,
@@ -18,6 +19,7 @@ const Input: FC<InputProps> = ({
   return (
     <input
       className={cn(styles.container, className)}
+      style={style}
       type={type}
       placeholder={placeholder}
       value={value}

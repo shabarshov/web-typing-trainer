@@ -1,8 +1,10 @@
 @import "styles/colors.module.scss";
+@import "styles/zindex.module.scss";
 
 .container {
   position: relative;
   display: inline-block;
+  width: fit-content;
 }
 
 .tooltip {
@@ -13,12 +15,11 @@
 
   border-radius: 8px;
 
-  text-align: center;
-  vertical-align: middle;
-
   background-color: rgba(black, 0.8);
   color: $white;
 
   white-space: nowrap;
   user-select: auto;
+
+  z-index: $zindex-tooltip;
 }
