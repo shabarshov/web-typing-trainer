@@ -7,8 +7,12 @@ import cn from "classnames"
 
 import styles from "./Modal.module.scss"
 
-const Modal: FC<ModalProps> = ({ className, children }) => {
-  return <div className={cn(styles.container, className)}>{children}</div>
+const Modal: FC<ModalProps> = ({ className, children, style }) => {
+  return (
+    <div className={cn(styles.container, className)} style={style}>
+      {children}
+    </div>
+  )
 }
 
 export default Modal
