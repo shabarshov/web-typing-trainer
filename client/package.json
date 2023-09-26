@@ -30,14 +30,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "prettier": {
-    "singleQuote": false,
-    "printWidth": 80,
-    "tabWidth": 2,
-    "bracketSpacing": true,
-    "semi": false,
-    "endOfLine": "auto"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
