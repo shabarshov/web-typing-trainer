@@ -1,0 +1,17 @@
+$symbol-width: 20px;
+$symbol-height: 50px;
+
+$text-wrapper-font-size: 32px;
+
+$caret-width: 3px;
+$caret-height: 34px;
+
+:export {
+  symbol-width: $symbol-width;
+  symbol-height: $symbol-width;
+
+  text-wrapper-font-size: $text-wrapper-font-size;
+
+  caret-width: $caret-width;
+  caret-height: $caret-height;
+}
