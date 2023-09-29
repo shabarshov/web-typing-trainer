@@ -1,0 +1,16 @@
+@import "styles/colors.module.scss";
+@import "styles/sizes.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: $symbol-height;
+  width: $symbol-width;
+
+  font-family: monospace;
+  font-size: $text-wrapper-font-size;
+
+  transition: color 0.1s linear;
+}
