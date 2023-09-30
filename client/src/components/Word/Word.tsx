@@ -3,34 +3,32 @@ import type { FC } from "react"
 
 import Symbol from "components/Symbol/Symbol"
 
-import type { SymbolProps } from "components/Symbol/SymbolProps"
 import type { WordProps } from "./WordProps"
 
 import styles from "./Word.module.scss"
 
-const Word: FC<WordProps> = ({ value, wordIndex, isComplited }) => {
+const Word: FC<WordProps> = ({ word }) => {
   const createWord = (): JSX.Element[] => {
-    return value.split("").map((value, symbolIndex) => {
-      const symbolProps = {
-        value,
-        isComplited,
-      } as SymbolProps
+    return word.map((value, index) => {
+      let symbolState: boolean
 
-      switch (isComplited) {
+      switch (word.isComplited) {
         case true:
-          symbolProps.isComplited = true
+          symbolState = true
           break
 
         case false:
-          symbolProps.isComplited = false
+          symbolState = false
           break
 
         default:
-          symbolProps.isComplited = isComplited > symbolIndex
+          symbolState = word.isComplited > index
           break
       }
 
-      return <Symbol key={`${wordIndex}${symbolIndex}`} {...symbolProps} />
+      return (
+        <Symbol key={index} value={value.value} isComplited={symbolState} />
+      )
     })
   }
 
