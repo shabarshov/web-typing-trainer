@@ -1,13 +1,15 @@
-import createCounter from "utils/createCounter"
-import parseText from "utils/parseText"
-import readString from "utils/readString"
-import updateCaretPosition from "utils/updateCaretPosition"
-import getTextRowLengths from "utils/getTextRowLengths"
+import createCounter from "./createCounter"
+import stringToWords from "./stringToWords"
+import getCaretPosition from "./getCaretPosition"
+import getTextRowLengths from "./getTextRowLengths"
+import initText from "./initText"
+import textWrapper from "./textWrapper"
 
 export {
   createCounter,
-  parseText,
-  readString,
-  updateCaretPosition,
+  stringToWords,
+  getCaretPosition,
   getTextRowLengths,
+  initText,
+  textWrapper,
 }
