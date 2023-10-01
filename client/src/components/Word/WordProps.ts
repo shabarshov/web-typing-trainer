@@ -1,7 +1,7 @@
+import type { IWord } from "utils/types"
+
 interface WordProps {
-  value: string
-  wordIndex: number
-  isComplited: boolean | number
+  word: IWord
 }
 
 export type { WordProps }

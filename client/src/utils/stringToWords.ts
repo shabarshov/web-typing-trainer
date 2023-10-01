@@ -1,4 +1,4 @@
-const parseText = (str: string): string[] => {
+const stringToWords = (str: string): string[] => {
   const text: string[] = str.split(" ")
   const lastIndex: number = text.length
 
@@ -10,4 +10,4 @@ const parseText = (str: string): string[] => {
   return result
 }
 
-export default parseText
+export default stringToWords
