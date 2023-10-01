@@ -7,7 +7,9 @@ import colors from "styles/colors.module.scss"
 import styles from "./Symbol.module.scss"
 
 const Symbol: FC<SymbolProps> = ({ value, isComplited }) => {
-  const color = isComplited ? { color: colors.green } : { color: colors.white }
+  const color = isComplited
+    ? { color: colors.white }
+    : { color: colors.whiteGrey }
 
   return (
     <div className={styles.container} style={color}>
