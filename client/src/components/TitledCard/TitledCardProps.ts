@@ -1,6 +1,7 @@
 interface TitledCardProps {
+  title: string
+  value: string
   className?: string
-  children: JSX.Element[]
 }
 
 export type { TitledCardProps }

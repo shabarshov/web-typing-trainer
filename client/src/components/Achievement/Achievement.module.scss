@@ -1,0 +1,40 @@
+@import "styles/colors.module.scss";
+
+.container {
+  position: relative;
+  height: 60px;
+  width: 250px;
+
+  display: flex;
+  justify-content: left;
+
+  &:hover {
+    background-color: rgba($purple, 0.7);
+    cursor: pointer;
+  }
+
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.title {
+  margin-bottom: 4px;
+  margin-left: 10px;
+  font-size: 20px;
+
+  color: $white;
+}
+
+.passedIcon {
+  color: $green;
+}
+
+.notPassedIcon {
+  color: $whiteGrey;
+}

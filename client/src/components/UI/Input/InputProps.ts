@@ -1,13 +1,7 @@
-import type { ChangeEvent, CSSProperties } from "react"
+import type { InputHTMLAttributes } from "react"
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  type?: "password" | "text"
-  placeholder?: string
-  value?: string
-  style?: CSSProperties
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  spellCheck?: boolean
 }
 
 export type { InputProps }

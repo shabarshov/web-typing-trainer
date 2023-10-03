@@ -1,5 +1,6 @@
 @import "styles/colors.module.scss";
 @import "styles/animations/rotate.module.scss";
+@import "styles/animations/logo.module.scss";
 
 $headerHeight: 100px;
 
@@ -20,8 +21,10 @@ $headerHeight: 100px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   height: $headerHeight;
   width: 100vw;
+
   background-color: $black;
 }
 
@@ -29,18 +32,21 @@ $headerHeight: 100px;
   color: $purple;
 
   margin-right: 50px;
+
   &:hover {
-    animation: rotate 0.6s linear;
+    animation: logo 0.2s linear 3;
   }
 }
 
 .icon {
   margin: 0px 6px;
   margin-top: 6px;
-  color: $white;
+
+  color: $whiteGrey;
+
   transition: 0.15s ease-in-out all;
   &:hover {
-    color: $purple;
+    color: $white;
     cursor: pointer;
   }
 }
@@ -65,4 +71,8 @@ $headerHeight: 100px;
 .right {
   margin-right: 300px;
   margin-left: auto;
+}
+
+.active {
+  color: $purple !important;
 }
