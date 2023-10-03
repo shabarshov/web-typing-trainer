@@ -1,11 +1,8 @@
-import type { MouseEvent, CSSProperties } from "react"
+import type { ButtonHTMLAttributes } from "react"
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   value?: string
-  style?: CSSProperties
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-  disabled?: boolean
 }
 
 export type { ButtonProps }

@@ -7,20 +7,9 @@ import cn from "classnames"
 
 import styles from "./Button.module.scss"
 
-const Button: FC<ButtonProps> = ({
-  className,
-  onClick,
-  style,
-  value = "",
-  disabled = false,
-}) => {
+const Button: FC<ButtonProps> = ({ className, value = "", ...props }) => {
   return (
-    <button
-      className={cn(styles.container, className)}
-      onClick={onClick}
-      disabled={disabled}
-      style={style}
-    >
+    <button className={cn(styles.container, className)} {...props}>
       {value}
     </button>
   )
