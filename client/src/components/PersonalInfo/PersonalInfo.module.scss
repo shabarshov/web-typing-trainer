@@ -6,8 +6,16 @@
   margin-bottom: 40px;
 }
 
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .icon {
   color: $green;
+  margin-bottom: 2px;
 }
 
 .personInfo {
@@ -24,6 +32,7 @@
     color: $white;
     cursor: pointer;
   }
+  margin: 0 0 6px 0;
 }
 
 .login {
@@ -34,10 +43,17 @@
 .email,
 .login,
 .edit {
-  margin: 4px 0px;
+  margin: 0px 0px 6px 0px;
+}
+
+.date {
+  color: #eeeeeea3;
+  font-size: 12px;
+  margin-top: 8px;
 }
 
 .email {
   font-size: 20px;
+  margin-bottom: 20px;
   color: #eeeeeea3;
 }
