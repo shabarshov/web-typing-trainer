@@ -7,26 +7,8 @@ import cn from "classnames"
 
 import styles from "./Input.module.scss"
 
-const Input: FC<InputProps> = ({
-  className,
-  type = "text",
-  placeholder = "",
-  style,
-  value,
-  onChange,
-  spellCheck = false,
-}) => {
-  return (
-    <input
-      className={cn(styles.container, className)}
-      style={style}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      spellCheck={spellCheck}
-    />
-  )
+const Input: FC<InputProps> = ({ className, ...props }) => {
+  return <input className={cn(styles.container, className)} {...props} />
 }
 
 export default Input
