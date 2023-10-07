@@ -7,10 +7,10 @@ import cn from "classnames"
 
 import styles from "./Button.module.scss"
 
-const Button: FC<ButtonProps> = ({ className, value = "", ...props }) => {
+const Button: FC<ButtonProps> = ({ className, children, ...props }) => {
   return (
     <button className={cn(styles.container, className)} {...props}>
-      {value}
+      {children}
     </button>
   )
 }
