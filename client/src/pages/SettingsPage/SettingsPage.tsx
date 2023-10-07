@@ -1,7 +1,7 @@
 import type { FC } from "react"
 import React, { useState } from "react"
 import cl from "./SettingsPage.module.scss"
-import { DropDown } from "../../components/UI/DropDown/DropDown"
+import { DropDown } from "../../components/Dropdown/Dropdown"
 import { Checkbox } from "./../../components/UI/Checkbox/Checkbox"
 
 const SettingsPage: FC = () => {

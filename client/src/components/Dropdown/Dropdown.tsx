@@ -5,10 +5,10 @@ import cn from "classnames"
 import { Selected } from "./DropDownProps"
 import DropdownArrow from "assets/svg/Settings/DropdownArrow"
 
-import LiItem from "../LiItem/LiItem"
-import UlItem from "../UlItem/UlItem"
-import Button from "../Button/Button"
-import Text from "../Text/Text"
+import LiItem from "../UI/LiItem/LiItem"
+import UlItem from "../UI/UlItem/UlItem"
+import Button from "../UI/Button/Button"
+import Text from "../UI/Text/Text"
 
 export const DropDown: FC<Selected> = ({
   selected,
