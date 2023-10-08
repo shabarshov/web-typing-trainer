@@ -1,9 +1,13 @@
+@import "styles/sizes.module.scss";
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  position: relative;
+  overflow: hidden;
 
-  margin: 0px 100px;
+  max-height: $symbol-height * 3;
+
+  margin: 100px 100px 0px 100px;
 }
