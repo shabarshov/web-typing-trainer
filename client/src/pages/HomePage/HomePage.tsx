@@ -1,30 +1,29 @@
-import React, { useState } from "react"
+import React from "react"
 import type { FC } from "react"
 
-import Caret from "components/Caret/Caret"
 import TextContainer from "components/containers/TextContainer/TextContainer"
 import TextField from "components/TextField/TextField"
+import TextResults from "components/TextResults/TextResults"
+
+import useTimer from "hooks/useTimer"
+import useText from "hooks/useText"
 
 import { shortWords as initialText } from "text"
 
-import { textWrapper } from "utils"
-
-const text = textWrapper(initialText, {
-  left: 0,
-  top: 0,
-})
+import styles from "./HomePage.module.scss"
 
 const HomePage: FC = () => {
-  const [caretPosition, setCaretPosition] = useState({
-    left: "0px",
-    top: "0px",
-  })
+  const { text, setText } = useText(initialText)
+  const timer = useTimer()
 
   return (
-    <TextContainer>
-      <Caret left={caretPosition.left} top={caretPosition.top} />
-      <TextField text={text} setCaretPosition={setCaretPosition} />
-    </TextContainer>
+    <>
+      <TextContainer>
+        <TextField timer={timer} text={text} />
+      </TextContainer>
+
+      <TextResults timer={timer} text={text} />
+    </>
   )
 }
 

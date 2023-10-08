@@ -1,9 +1,9 @@
 import type { ITextWrapper } from "utils/types"
 import type { IUseTimer } from "hooks/useTimer/types"
 
-interface TextFieldProps {
+interface TextResultsProps {
   text: ITextWrapper
   timer: IUseTimer
 }
 
-export type { TextFieldProps }
+export type { TextResultsProps }
