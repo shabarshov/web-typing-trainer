@@ -1,6 +1,6 @@
 interface CaretProps {
-  left?: string
-  top?: string
+  left?: number
+  top?: number
 }
 
 export type { CaretProps }
