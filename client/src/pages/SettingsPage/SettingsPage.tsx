@@ -4,6 +4,8 @@ import cl from "./SettingsPage.module.scss"
 import { DropDown } from "../../components/Dropdown/Dropdown"
 import { Checkbox } from "../../components/Checkbox/Checkbox"
 import { Slider } from "components/UI/Slider/Slider"
+import LiItem from "components/UI/LiItem/LiItem"
+import UlItem from "components/UI/UlItem/UlItem"
 
 const SettingsPage: FC = () => {
   const themes = ["светлая", "темная", "синия"]
@@ -27,12 +29,21 @@ const SettingsPage: FC = () => {
     )
   }
 
+  const settingOptionsJSX = settingOptions.map((option) => (
+    <LiItem
+      key={option.num}
+      className={selectedSettingOption.num == option.num ? cl.active : null}
+      onClick={onSettingClick}
+      value={option.value}
+    />
+  ))
+
   const getNumMove = () => -selectedSettingOption.num * 607 + "px"
   return (
     <div className={cl.wrapper}>
       <div className={cl.navigation}>
         <nav>
-          <ul>
+          {/* <ul>
             <li
               className={selectedSettingOption.num == 0 ? cl.active : null}
               onClick={onSettingClick}
@@ -57,7 +68,8 @@ const SettingsPage: FC = () => {
             >
               Sounds
             </li>
-          </ul>
+          </ul> */}
+          <UlItem>{settingOptionsJSX}</UlItem>
         </nav>
       </div>
 
