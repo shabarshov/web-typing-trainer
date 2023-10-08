@@ -6,7 +6,7 @@ import { Checkbox } from "../../components/Checkbox/Checkbox"
 import { Slider } from "components/UI/Slider/Slider"
 import LiItem from "components/UI/LiItem/LiItem"
 import UlItem from "components/UI/UlItem/UlItem"
-
+import cn from "classnames"
 const SettingsPage: FC = () => {
   const themes = ["светлая", "темная", "синия"]
   const [selectedTheme, setSelectedTheme] = useState(themes[0])
@@ -32,7 +32,9 @@ const SettingsPage: FC = () => {
   const settingOptionsJSX = settingOptions.map((option) => (
     <LiItem
       key={option.num}
-      className={selectedSettingOption.num == option.num ? cl.active : null}
+      className={
+        selectedSettingOption.num == option.num ? cn(cl.active, cl.li) : cl.li
+      }
       onClick={onSettingClick}
       value={option.value}
     />
