@@ -1,7 +1,7 @@
 import createCounter from "./createCounter"
 import stringToWords from "./stringToWords"
 
-import { SYMBOL_WIDTH, TEXT_WRAPPER_SIZE } from "constants/index"
+import { SYMBOL_WIDTH, TEXT_WRAPPER_SIZE } from "constants/sizes"
 
 const getTextRowLengths = (initialText: string): number[] => {
   const currentSize = createCounter()
