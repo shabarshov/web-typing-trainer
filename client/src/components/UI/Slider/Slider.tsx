@@ -2,12 +2,12 @@ import { SliderProps } from "./SliderProps"
 import cl from "./Slider.module.scss"
 import { FC } from "react"
 import Text from "../Text/Text"
-export const Slider: FC<SliderProps> = ({ value, setValue }) => {
+export const Slider: FC<SliderProps> = ({ value, setValue, style }) => {
   const changeMusicLevel = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value)
 
   return (
-    <div className={cl.range}>
+    <div className={cl.range} style={style}>
       <input
         type="range"
         min="0"
