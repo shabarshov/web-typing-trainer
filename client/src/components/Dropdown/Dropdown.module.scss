@@ -1,0 +1,114 @@
+@import "styles/colors.module.scss";
+
+.wrapper {
+  position: absolute;
+
+}
+
+.clickArea {
+  z-index: 2;
+  opacity: 0.3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.select {
+  color: $purple2;
+  z-index: 11;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  position: relative;
+  width: 400px;
+  cursor: pointer;
+  user-select: none;
+
+  .selectBtn {
+    border-radius: 10px;
+    position: relative;
+    font-weight: 600;
+    width: 100%;
+    padding: 10px 14px;
+    background: white;
+    box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    .text {
+      color: $purple2;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    button {
+      color: $purple2;
+      font-size: 15px;
+      background-color: white;
+
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      color: $purple2;
+
+      transform: rotate(0);
+      transition: all 0.35s linear;
+
+      &.active {
+        transform: rotate(-180deg);
+
+      }
+    }
+  }
+
+
+  .menuList {
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.9);
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in;
+    pointer-events: none;
+    width: 100%;
+    top: 110%;
+    background: white;
+    box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
+    cursor: pointer;
+
+    .option {
+      list-style-type: none;
+      padding: 10px 0;
+      width: 100%;
+      padding: 15px;
+      transition: all .2s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $greenHover;
+        color: white;
+
+      }
+    }
+
+
+    &.active {
+      // animation: scaleIn 0.4s;
+      pointer-events: initial;
+      opacity: 1;
+      transform: scale(1);
+      transform: translateY(0);
+
+    }
+  }
+
+}

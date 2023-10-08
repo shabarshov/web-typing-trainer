@@ -1,0 +1,58 @@
+@import "styles/colors.module.scss";
+
+.range {
+    background-color: rgb(255, 255, 255);
+    padding: 0 20px;
+    width: 400px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+
+    .val {
+        color: $purple2;
+        padding-bottom: 3px;
+        text-align: center;
+    }
+
+    input {
+        -webkit-appearance: none;
+        height: 4px;
+        width: 90%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background: $green;
+
+        &::-webkit-slider-thumb {
+            position: relative;
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            background-color: $purple;
+            transform: scale(1);
+            transition: all 0.2s ease-in;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 2px 2px 4px 3px rgba(114, 6, 138, 0.08);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                background-color: red;
+                z-index: 10;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+}
