@@ -3,12 +3,13 @@ import { CheckboxProps } from "./CheckboxProps"
 import cl from "./Checkbox.module.scss"
 import cn from "classnames"
 import Checkmark from "assets/svg/Settings/Checkmark"
+import Text from "../UI/Text/Text"
+import { Square } from "../UI/Square/Square"
 export const Checkbox: FC<CheckboxProps> = ({
   text,
   value,
   setValue,
-  boxSize,
-  fontSize,
+  className,
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -18,9 +19,10 @@ export const Checkbox: FC<CheckboxProps> = ({
     else if (value) return cn(cl.wrapper, cl.active)
     return cl.wrapper
   }
-  const squareSize = boxSize + "px"
-  const textSize = fontSize + "px"
-  const markSize = fontSize - 2 + "px"
+  // const squareSize = boxSize + "px"
+  // const textSize = fontSize + "px"
+  // const markSize = fontSize - 2 + "px"
+
   return (
     <div
       className={getStyle()}
@@ -28,18 +30,17 @@ export const Checkbox: FC<CheckboxProps> = ({
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setValue(!value)}
     >
-      <div
+      <Square
         className={cl.square}
-        style={{ width: squareSize, height: squareSize }}
+        // style={{ width: squareSize, height: squareSize }}
       >
-        {/* <div className={cl.checkMark} style={{ fontSize: markSize }}>
-          ✔
-        </div> */}
         <Checkmark className={cl.checkMark} />
-      </div>
-      <p className={cl.description} style={{ fontSize: textSize }}>
-        {text}
-      </p>
+      </Square>
+      <Text
+        className={cl.description}
+        // style={{ fontSize: textSize }}
+        value={text}
+      />
     </div>
   )
 }

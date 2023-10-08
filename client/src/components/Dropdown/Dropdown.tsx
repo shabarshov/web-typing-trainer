@@ -1,8 +1,8 @@
 import { FC } from "react"
 import React, { useState } from "react"
-import cl from "./DropDown.module.scss"
+import cl from "./Dropdown.module.scss"
 import cn from "classnames"
-import { Selected } from "./DropDownProps"
+import { Selected } from "./DropdownProps"
 import DropdownArrow from "assets/svg/Settings/DropdownArrow"
 
 import LiItem from "../UI/LiItem/LiItem"
@@ -54,28 +54,28 @@ export const DropDown: FC<Selected> = ({
       ) : null}
 
       <div className={cl.select} style={{ width: width }}>
-        {/* <div
-          style={{ borderRadius: roundBtn }}
-          className={cl.selectBtn}
-          onClick={onSelectChange}
-        >
-          <DropdownArrow
-            className={isActive ? cn(cl.icon, cl.active) : cl.icon}
-          />
-        </div> */}
-
         <Button
           onClick={onSelectChange}
-          className={cl.selectBtn}
+          className={cn(cl.selectBtn, className)}
           style={{ width: width }}
         >
-          <Text value={selected} className={cl.text} />
+          <Text value={selected} className={cn(cl.text, className)} />
           <DropdownArrow
-            className={isActive ? cn(cl.icon, cl.active) : cl.icon}
+            className={
+              isActive
+                ? cn(cl.icon, cl.active, className)
+                : cn(cl.icon, className)
+            }
           />
         </Button>
 
-        <UlItem className={isActive ? cn(cl.menuList, cl.active) : cl.menuList}>
+        <UlItem
+          className={
+            isActive
+              ? cn(cl.menuList, cl.active, className)
+              : cn(cl.menuList, className)
+          }
+        >
           {optionValues()}
         </UlItem>
       </div>

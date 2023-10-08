@@ -1,38 +1,117 @@
 @import "styles/colors.module.scss";
+
 .wrapper {
+    background-color: $purple;
     display: flex;
     flex-direction: row;
     gap: 50px;
-    background-color: white;
     width: 100vw;
     height: 100%;
-    color:black;
+    color: black;
 }
 
 .navigation {
+    font-size: 18px;
+    position: relative;
+    width: 18.8%;
+    padding: 40px;
+    background-color: $purple;
+    color: white;
 
+    &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 100%;
+        width: 4px;
+        border-radius: 5px;
+        height: 97%;
+        background-color: $white;
+    }
 }
+
 .navigation li {
-    margin-bottom: 10px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    list-style-type: none;
+    position: relative;
+
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: -5%;
+        width: 110%;
+        height: 2.5px;
+        border-radius: 1.5px;
+        background-color: $white;
+        transform: scaleX(0);
+        transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+
+        &::before {
+            display: block;
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: -5%;
+            width: 110%;
+            height: 2.5px;
+            border-radius: 1.5px;
+            background-color: $white;
+            transform: scaleX(1);
+        }
+    }
+
+    // &.active {
+    //     &::before {
+    //         display: block;
+    //         content: '';
+    //         position: absolute;
+    //         bottom: -8px;
+    //         left: -5%;
+    //         width: 110%;
+    //         height: 2.5px;
+    //         border-radius: 1.5px;
+    //         background-color: $white;
+    //     }
+    // }
 }
-.pages{
-    background-color: $purple ;
+
+.pages {
+    background-color: blue;
+    width: 81.2%;
     width: 100%;
-    display: flex;
-    padding: 20px;
-    
+
+    .page {
+        padding: 36px 40px;
+        height: 100%;
+        width: 100%;
+        background-color: $purple;
+        // border: 1px solid red;
+    }
+
 }
 
 
 .themeWrapper {
-    p{
-        padding-bottom: 10px;
-        color:white;
+    .descript {
+        margin-bottom: 10px;
+        color: white;
     }
-    // background-color: red;
+
     padding-bottom: 80px;
+
+    .dropdown {
+        color: $purple2;
+    }
 }
 
-.showWrapper{
+.showWrapper {
     // padding: 30px;
+    margin: 0 0 50px 0;
 }
