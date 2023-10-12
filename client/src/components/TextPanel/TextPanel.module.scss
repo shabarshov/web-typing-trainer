@@ -1,0 +1,29 @@
+@import "styles/colors.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $black3;
+
+  width: fit-content;
+  height: 40px;
+
+  border-radius: 20px;
+  padding: 10px 16px 10px 16px;
+  margin-top: 20px;
+}
+
+.rightPanelButton,
+.leftPanelButton {
+  margin: 0px 8px;
+}
+
+.separator {
+  background-color: $whiteGrey;
+
+  width: 1px;
+  height: 26px;
+  margin: 0px 8px 0px 8px;
+}

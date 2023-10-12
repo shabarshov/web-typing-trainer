@@ -23,6 +23,7 @@ interface ITextWrapper {
   textLength: () => number
   currentRow: () => number
   countOfRows: () => number
+  countOfComplitedSymbols: () => number
 }
 
 interface ISymbolPosition {

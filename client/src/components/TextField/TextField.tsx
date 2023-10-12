@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import type { FC, KeyboardEvent } from "react"
 
 import type { TextFieldProps } from "./TextFieldProps"
@@ -8,13 +8,19 @@ import Caret from "components/Caret/Caret"
 
 import styles from "./TextField.module.scss"
 import { CHARACTERS } from "constants/characters"
-import { SYMBOL_HEIGHT } from "constants/sizes"
+import { SYMBOL_HEIGHT, TEXT_WRAPPER_MARGIN } from "constants/sizes"
+import useWindowResize from "hooks/useWindowResize"
 
 const TextField: FC<TextFieldProps> = ({ text, timer }) => {
+  const { windowWidth } = useWindowResize()
   const [caretPosition, setCaretPosition] = useState({
     left: 0,
     top: 0,
   })
+
+  useEffect(() => {
+    setCaretPosition(text.caretPosition())
+  }, [windowWidth])
 
   const createWords = () => {
     return text.value().map((value, wordIndex) => {
@@ -28,32 +34,36 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
 
       if (event.key === text.currentSymbol()) {
         if (text.next()) timer.endTimer()
-        setCaretPosition(text.caretPosition())
       } else if (event.key === "Backspace") {
         text.prev()
-        setCaretPosition(text.caretPosition())
       } else {
         if (text.next(true)) timer.endTimer()
-        setCaretPosition(text.caretPosition())
       }
+
+      setCaretPosition(text.caretPosition())
     }
   }
 
   return (
     <div
       className={styles.container}
-      onKeyDown={onKeyDownHandler}
-      tabIndex={-1}
-      style={{
-        bottom: text.currentRow()
-          ? text.currentRow() === text.countOfRows()
-            ? `${caretPosition.top - SYMBOL_HEIGHT * 2}px`
-            : `${caretPosition.top - SYMBOL_HEIGHT}px`
-          : "0px",
-      }}
+      style={{ width: `${windowWidth - TEXT_WRAPPER_MARGIN * 2}px` }}
     >
-      {createWords()}
-      <Caret left={caretPosition.left} top={caretPosition.top} />
+      <div
+        className={styles.field}
+        onKeyDown={onKeyDownHandler}
+        tabIndex={-1}
+        style={{
+          bottom: text.currentRow()
+            ? text.currentRow() === text.countOfRows() - 1
+              ? `${caretPosition.top - SYMBOL_HEIGHT * 2}px`
+              : `${caretPosition.top - SYMBOL_HEIGHT}px`
+            : "0px",
+        }}
+      >
+        {createWords()}
+        <Caret caretPosition={caretPosition} />
+      </div>
     </div>
   )
 }

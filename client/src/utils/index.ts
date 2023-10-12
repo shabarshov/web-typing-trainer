@@ -4,6 +4,7 @@ import getCaretPosition from "./getCaretPosition"
 import getTextRowLengths from "./getTextRowLengths"
 import initText from "./initText"
 import textWrapper from "./textWrapper"
+import calculateCaretPosition from "./calculateCaretPosition"
 
 export {
   createCounter,
@@ -12,4 +13,5 @@ export {
   getTextRowLengths,
   initText,
   textWrapper,
+  calculateCaretPosition,
 }

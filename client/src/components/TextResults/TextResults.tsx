@@ -24,6 +24,7 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
               className={styles.tooltip}
             >
               <Text
+                className={styles.text}
                 value={`${text.countOfCorrect()} / ${text.countOfIncorrect()}`}
               />
             </Tooltip>
@@ -31,6 +32,7 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
           <TitledCard className={styles.card} title="Speed">
             <Tooltip className={styles.tooltip} value="Characters per minute">
               <Text
+                className={styles.text}
                 value={`${
                   Math.floor(60000 / timer.timerValue) * text.countOfCorrect()
                 }`}
