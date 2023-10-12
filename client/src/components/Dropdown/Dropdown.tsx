@@ -2,7 +2,7 @@ import { FC } from "react"
 import React, { useState } from "react"
 import cl from "./Dropdown.module.scss"
 import cn from "classnames"
-import { Selected } from "./DropdownProps"
+import { DropdownProps } from "./DropdownProps"
 import DropdownArrow from "assets/svg/Settings/DropdownArrow"
 
 import LiItem from "../UI/LiItem/LiItem"
@@ -10,17 +10,14 @@ import UlItem from "../UI/UlItem/UlItem"
 import Button from "../UI/Button/Button"
 import Text from "../UI/Text/Text"
 
-export const DropDown: FC<Selected> = ({
+export const Dropdown: FC<DropdownProps> = ({
   selected,
   setSelected,
   optionsObjects,
-  size,
-  round,
   className,
+  description,
+  style,
 }) => {
-  const width = size + "px"
-  const roundBtn = round + "px"
-  const roundMenu = round * 2 + "px"
   const [isActive, setIsActive] = useState(false)
 
   const onOptionChange = (e: React.MouseEvent) => {
@@ -48,16 +45,17 @@ export const DropDown: FC<Selected> = ({
     ))
 
   return (
-    <div className={cl.wrapper}>
+    <div className={cl.wrapper} style={style}>
       {isActive ? (
         <div className={cl.clickArea} onClick={clickArea}></div>
       ) : null}
 
-      <div className={cl.select} style={{ width: width }}>
+      <p className={cl.descript}>{description}</p>
+
+      <div className={cl.select}>
         <Button
           onClick={onSelectChange}
           className={cn(cl.selectBtn, className)}
-          style={{ width: width }}
         >
           <Text value={selected} className={cn(cl.text, className)} />
           <DropdownArrow

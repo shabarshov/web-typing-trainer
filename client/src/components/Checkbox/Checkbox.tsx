@@ -10,6 +10,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   value,
   setValue,
   className,
+  style,
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -19,28 +20,19 @@ export const Checkbox: FC<CheckboxProps> = ({
     else if (value) return cn(cl.wrapper, cl.active)
     return cl.wrapper
   }
-  // const squareSize = boxSize + "px"
-  // const textSize = fontSize + "px"
-  // const markSize = fontSize - 2 + "px"
 
   return (
     <div
+      style={style}
       className={getStyle()}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setValue(!value)}
     >
-      <Square
-        className={cl.square}
-        // style={{ width: squareSize, height: squareSize }}
-      >
+      <Square className={cl.square}>
         <Checkmark className={cl.checkMark} />
       </Square>
-      <Text
-        className={cl.description}
-        // style={{ fontSize: textSize }}
-        value={text}
-      />
+      <Text className={cl.description} value={text} />
     </div>
   )
 }

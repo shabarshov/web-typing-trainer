@@ -1,8 +1,12 @@
 @import "styles/colors.module.scss";
 
 .wrapper {
-  position: absolute;
 
+  .descript {
+    margin-bottom: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 }
 
 .clickArea {
@@ -100,9 +104,7 @@
       }
     }
 
-
     &.active {
-      // animation: scaleIn 0.4s;
       pointer-events: initial;
       opacity: 1;
       transform: scale(1);

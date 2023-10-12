@@ -1,14 +1,12 @@
-// export interface Option {
-//   value: string
-//   label: string
-// }
 
-export interface Selected {
+import { CSSProperties } from 'react';
+
+export interface DropdownProps {
   selected: string
   setSelected: React.Dispatch<React.SetStateAction<string>>
   optionsObjects: string[]
-  size: number
-  round: number
   className: string
+  description: string
+  style?: CSSProperties
  
 }
