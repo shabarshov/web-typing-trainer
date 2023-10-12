@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import type { FC } from "react"
 
 import type { SymbolProps } from "./SymbolProps"
@@ -23,7 +23,7 @@ const Symbol: FC<SymbolProps> = ({ value, state }) => {
 
   return (
     <div className={styles.container} style={{ color }}>
-      {value === " " ? "\u00A0" : value}
+      {value === " " ? (state === "error" ? "_" : "\u00A0") : value}
     </div>
   )
 }
