@@ -26,12 +26,12 @@ const NavBar: FC = () => {
         </NavLink>
         <NavLink to="/statistic" className={className}>
           <ToolTip value="Rating">
-            <Icons.RatingIcon />
+            <Icons.StatisticsIcon />
           </ToolTip>
         </NavLink>
         <NavLink to="/settings" className={className}>
           <ToolTip value="Settings">
-            <Icons.SettingsIcon className={styles.gearRotate} />
+            <Icons.SettingsIcon className={styles.gearIcon} />
           </ToolTip>
         </NavLink>
       </div>
