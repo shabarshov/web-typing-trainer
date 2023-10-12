@@ -11,7 +11,8 @@ const shortWords =
   "последний отдохнуть ложный возможный прямой труд подождать найти сезон \
 старший обеспечить фраза призванный организованный питерский щека хлеб"
 
-const testWords = "последний отдохнуть ложный"
+const testWords =
+  "последний отдохнуть ложный возможный прямой труд подождать найти сезон"
 
 const engTestWords =
   "boohho rubbery silicon whether wassail control whoever instead roengutine"
