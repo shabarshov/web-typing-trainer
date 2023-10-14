@@ -14,7 +14,7 @@ const TitledCard: FC<TitledCardProps> = ({ title, children, className }) => {
   return (
     <div className={styles.container}>
       <Card className={cn(styles.card, styles.top, className)}>
-        <Text value={title} />
+        <Text value={title} className={styles.test} />
       </Card>
       <Card className={cn(styles.card, styles.bottom, className)}>
         {children}

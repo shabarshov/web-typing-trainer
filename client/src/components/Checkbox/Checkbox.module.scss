@@ -1,0 +1,57 @@
+@import "styles/colors.module.scss";
+
+
+.wrapper {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    .description {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        color: #efeded;
+    }
+
+    .square {
+        background-color: rgba(255, 255, 255, 0);
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 25%;
+        width: 28px;
+        height: 28px;
+        transform: scale(1);
+        transition: all 0.4s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .checkMark {
+            font-size: 15px;
+            color: $purple;
+            opacity: 0;
+            transition: all 0.3s ease-in;
+        }
+    }
+
+    &.hover {
+        .description {
+            color: #ffffff
+        }
+
+        .square {
+            transform: scale(1.08);
+        }
+    }
+
+    &.active {
+        .checkMark {
+            color: $purple;
+            opacity: 1;
+        }
+
+        .square {
+            background-color: rgb(255, 255, 255);
+        }
+    }
+}

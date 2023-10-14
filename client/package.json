@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --ext .ts,.tsx src --fix",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx src --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
