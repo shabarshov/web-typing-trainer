@@ -5,7 +5,8 @@ import { useState } from "react"
 import { Dropdown } from "components/Dropdown/Dropdown"
 import { Checkbox } from "components/Checkbox/Checkbox"
 import { Slider } from "components/UI/Slider/Slider"
-const SettingSectionContainer: FC<SettingSectionProps> = ({ options }) => {
+
+const SettingSection: FC<SettingSectionProps> = ({ options }) => {
   const themes = ["светлая", "темная", "синия"]
   const [selectedTheme, setSelectedTheme] = useState(themes[0])
   const [isShowMistakes, setIsShowMistakes] = useState(false)
@@ -51,4 +52,4 @@ const SettingSectionContainer: FC<SettingSectionProps> = ({ options }) => {
 
   return <div className={cl.wrapper}>{settingOptions}</div>
 }
-export default SettingSectionContainer
+export default SettingSection
