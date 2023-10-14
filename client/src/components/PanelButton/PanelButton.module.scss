@@ -1,0 +1,15 @@
+@import "styles/colors.module.scss";
+
+.text {
+  transition: 0.15s linear color;
+  font-size: 20px;
+}
+
+.container {
+  &:hover {
+    .text {
+      transition: 0.15s linear color;
+      color: $purple;
+    }
+  }
+}

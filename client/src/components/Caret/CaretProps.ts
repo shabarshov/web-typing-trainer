@@ -1,6 +1,7 @@
+import type { ICaretPosition } from "utils/types"
+
 interface CaretProps {
-  left?: string
-  top?: string
+  caretPosition: ICaretPosition
 }
 
 export type { CaretProps }

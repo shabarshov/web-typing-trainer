@@ -4,107 +4,134 @@ import type {
   ISymbolPosition,
   ICaretPosition,
 } from "utils/types"
-import { getCaretPosition, getTextRowLengths, initText } from "utils"
-import { SYMBOL_WIDTH, SYMBOL_HEIGHT } from "constants/index"
+import { getTextRowLengths, initText, calculateCaretPosition } from "utils"
 
-const textWrapper = (
-  initialText: string,
-  initialCaretPosition: ICaretPosition,
-): ITextWrapper => {
+const textWrapper = (initialText: string): ITextWrapper => {
   const text: IText = initText(initialText)
-  const currentSymbol: ISymbolPosition = { w: 0, s: 0 }
-  const rowLengths: number[] = getTextRowLengths(text.text)
-  const caretPosition = initialCaretPosition
-  let currentRow = 0
+  const currentSymbolPosition: ISymbolPosition = { w: 0, s: 0 }
 
-  const next = function (): boolean {
-    let stepX = SYMBOL_WIDTH
-    let stepY = 0
+  // the last word has a space at the end
+  const textLength = text.reduce((acc, word) => acc + word.length, -1)
+
+  let countOfMistakes = 0
+  let isEnd = false
+  let countOfComplitedSymbols = 0
+
+  const next = (error = false): boolean => {
+    if (isEnd) return true
+    countOfComplitedSymbols += 1
+
+    if (!error)
+      text[currentSymbolPosition.w][currentSymbolPosition.s].state = "complited"
+    else {
+      text[currentSymbolPosition.w][currentSymbolPosition.s].state = "error"
+      countOfMistakes += 1
+    }
+
+    if (text[currentSymbolPosition.w].length - 1 === currentSymbolPosition.s) {
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = false
+      text[currentSymbolPosition.w].isComplited = true
+      currentSymbolPosition.w += 1
+      text[currentSymbolPosition.w].isComplited = 0
+      currentSymbolPosition.s = 0
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = true
+    } else {
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = false
+      currentSymbolPosition.s += 1
+      text[currentSymbolPosition.w].isComplited = currentSymbolPosition.s
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = true
+    }
 
     if (
-      text.length - 1 === currentSymbol.w &&
-      text[currentSymbol.w].length - 1 === currentSymbol.s
+      text.length - 1 === currentSymbolPosition.w &&
+      text[currentSymbolPosition.w].length - 1 === currentSymbolPosition.s
     ) {
-      return false
+      isEnd = true
+      return true
     }
 
-    text[currentSymbol.w][currentSymbol.s].state = "complited"
-    if (text[currentSymbol.w].length - 1 === currentSymbol.s) {
-      text[currentSymbol.w].isComplited = true
-      currentSymbol.w += 1
-      text[currentSymbol.w].isComplited = 0
-      currentSymbol.s = 0
-      text[currentSymbol.w][currentSymbol.s].state = "current"
-
-      if (stepX + caretPosition.left === rowLengths[currentRow]) {
-        stepX -= rowLengths[currentRow]
-        stepY = SYMBOL_HEIGHT
-        currentRow += 1
-      }
-    } else {
-      currentSymbol.s += 1
-      text[currentSymbol.w].isComplited = currentSymbol.s
-      text[currentSymbol.w][currentSymbol.s].state = "current"
-    }
-
-    caretPosition.left += stepX
-    caretPosition.top += stepY
-    return true
+    return false
   }
 
-  const prev = function (): boolean {
-    let stepX = -SYMBOL_WIDTH
-    let stepY = 0
+  const prev = (): void => {
+    if (isEnd) return
+    countOfComplitedSymbols -= 1
 
-    if (currentSymbol.w === 0 && currentSymbol.s === 0) {
-      return false
+    if (currentSymbolPosition.w === 0 && currentSymbolPosition.s === 0) {
+      return
     }
 
-    text[currentSymbol.w][currentSymbol.s].state = "uncomplited"
-    if (currentSymbol.s === 0) {
-      text[currentSymbol.w].isComplited = false
-      currentSymbol.w -= 1
-      currentSymbol.s = text[currentSymbol.w].length - 1
-      text[currentSymbol.w].isComplited = currentSymbol.s
-      text[currentSymbol.w][currentSymbol.s].state = "current"
-
-      if (caretPosition.left === 0) {
-        currentRow -= 1
-        stepX += rowLengths[currentRow]
-        stepY = -SYMBOL_HEIGHT
-      }
+    if (currentSymbolPosition.s === 0) {
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = false
+      text[currentSymbolPosition.w].isComplited = false
+      currentSymbolPosition.w -= 1
+      currentSymbolPosition.s = text[currentSymbolPosition.w].length - 1
+      text[currentSymbolPosition.w].isComplited = currentSymbolPosition.s
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = true
     } else {
-      currentSymbol.s -= 1
-      text[currentSymbol.w].isComplited = currentSymbol.s
-      text[currentSymbol.w][currentSymbol.s].state = "current"
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = false
+      currentSymbolPosition.s -= 1
+      text[currentSymbolPosition.w].isComplited = currentSymbolPosition.s
+      text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = true
     }
 
-    caretPosition.left += stepX
-    caretPosition.top += stepY
+    if (
+      text[currentSymbolPosition.w][currentSymbolPosition.s].state === "error"
+    ) {
+      countOfMistakes -= 1
+    }
 
-    return true
+    text[currentSymbolPosition.w][currentSymbolPosition.s].state = "uncomplited"
   }
 
-  const value = function value(): IText {
+  const value = (): IText => {
     return text
   }
 
-  const caret = function (): ISymbolPosition {
-    return currentSymbol
+  const getCurrentSymbol = (): string => {
+    return text[currentSymbolPosition.w][currentSymbolPosition.s].value
   }
 
-  const currentSymbolValue = function (): string {
-    return text[currentSymbol.w][currentSymbol.s].value
+  const getCountOfIncorrect = (): number => {
+    return countOfMistakes
+  }
+
+  const getCountOfCorrect = (): number => {
+    return textLength - countOfMistakes
+  }
+
+  const getTextLength = (): number => {
+    return textLength
+  }
+
+  const getCaretPosition = (): ICaretPosition => {
+    return calculateCaretPosition(text, countOfComplitedSymbols).caretPosition
+  }
+
+  const getCurrentRow = (): number => {
+    return calculateCaretPosition(text, countOfComplitedSymbols).currentRow
+  }
+
+  const getCountOfRows = (): number => {
+    return getTextRowLengths(text.text).length
+  }
+
+  const getCountOfComplitedSymbols = (): number => {
+    return countOfComplitedSymbols
   }
 
   return {
     next: next,
     prev: prev,
     value: value,
-    caret: caret,
-    currentSymbol: currentSymbolValue,
-    caretPosition: () =>
-      getCaretPosition(caretPosition.left, caretPosition.top),
+    currentSymbol: getCurrentSymbol,
+    caretPosition: getCaretPosition,
+    countOfCorrect: getCountOfCorrect,
+    countOfIncorrect: getCountOfIncorrect,
+    textLength: getTextLength,
+    currentRow: getCurrentRow,
+    countOfRows: getCountOfRows,
+    countOfComplitedSymbols: getCountOfComplitedSymbols,
   } as ITextWrapper
 }
 

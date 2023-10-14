@@ -1,0 +1,28 @@
+@import "styles/colors.module.scss";
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $black3;
+
+  width: fit-content;
+  height: 30px;
+
+  border-radius: 20px;
+  padding: 1px 16px;
+}
+
+.nextButton {
+  transition: color 0.15s linear;
+  color: $whiteGrey;
+
+  &:focus {
+    color: $white;
+  }
+
+  &:hover {
+    color: $white;
+  }
+}

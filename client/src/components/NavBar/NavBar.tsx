@@ -31,7 +31,7 @@ const NavBar: FC = () => {
         </NavLink>
         <NavLink to="/settings" className={className}>
           <ToolTip value="Settings">
-            <Icons.SettingsIcon className={styles.gearRotate} />
+            <Icons.SettingsIcon className={styles.gearIcon} />
           </ToolTip>
         </NavLink>
       </div>

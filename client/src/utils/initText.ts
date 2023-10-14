@@ -1,23 +1,16 @@
 import type { IText, IWord, ISymbol } from "utils/types"
 
 const initText = (initialText: string): IText => {
-  const initialWords = initialText.split(" ").map((value, index) => {
-    if (index !== initialText.length - 1) return value + " "
-    return value
+  const initialWords = initialText.split(" ").map((value) => {
+    return value + " "
   })
 
   const result = initialWords.map((wordValue, wordIndex) => {
     const word = wordValue.split("").map((symbolValue, symbolIndex) => {
-      if (symbolIndex === 0 && wordIndex === 0) {
-        return {
-          value: symbolValue,
-          state: "current",
-        } as ISymbol
-      }
-
       return {
         value: symbolValue,
         state: "uncomplited",
+        isCurrent: symbolIndex === 0 && wordIndex === 0,
       } as ISymbol
     }) as unknown as IWord
 

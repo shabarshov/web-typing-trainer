@@ -39,9 +39,8 @@ $headerHeight: 100px;
 }
 
 .icon {
-  margin: 0px 6px;
-  margin-top: 6px;
-
+  margin: 6px;
+  margin-top: 12px;
   color: $whiteGrey;
 
   transition: 0.15s ease-in-out all;
@@ -51,9 +50,12 @@ $headerHeight: 100px;
   }
 }
 
-.gearRotate {
+.gearIcon {
+  animation: rotate infinite 2.5s linear both;
+  animation-play-state: paused;
+
   &:hover {
-    animation: rotate infinite 2.5s linear;
+    animation-play-state: running;
   }
 }
 

@@ -1,9 +1,9 @@
-import type { Dispatch, SetStateAction } from "react"
 import type { ITextWrapper } from "utils/types"
+import type { IUseTimer } from "hooks/useTimer/types"
 
 interface TextFieldProps {
-  setCaretPosition: Dispatch<SetStateAction<{ left: string; top: string }>>
   text: ITextWrapper
+  timer: IUseTimer
 }
 
 export type { TextFieldProps }

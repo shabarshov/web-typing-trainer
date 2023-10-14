@@ -1,5 +1,5 @@
 interface SymbolProps {
-  isComplited: boolean
+  state: "complited" | "uncomplited" | "error"
   value: string
 }
 

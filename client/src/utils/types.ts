@@ -1,6 +1,7 @@
 interface ISymbol {
   value: string
-  state: "complited" | "uncomplited" | "current"
+  state: "complited" | "uncomplited" | "error"
+  isCurrent: boolean
 }
 
 interface IWord extends Array<ISymbol> {
@@ -12,12 +13,17 @@ interface IText extends Array<IWord> {
 }
 
 interface ITextWrapper {
-  next: () => boolean
-  prev: () => boolean
+  next: (error?: boolean) => boolean
+  prev: () => void
   value: () => IText
-  caret: () => ISymbolPosition
   currentSymbol: () => string
-  caretPosition: () => { left: string; top: string }
+  caretPosition: () => ICaretPosition
+  countOfIncorrect: () => number
+  countOfCorrect: () => number
+  textLength: () => number
+  currentRow: () => number
+  countOfRows: () => number
+  countOfComplitedSymbols: () => number
 }
 
 interface ISymbolPosition {
