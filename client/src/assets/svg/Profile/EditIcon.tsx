@@ -2,9 +2,10 @@ import React from "react"
 import type { FC } from "react"
 import type IconProps from "../iconProps"
 
-const EditIcon: FC<IconProps> = ({ className }) => {
+const EditIcon: FC<IconProps> = ({ className, onClick }) => {
   return (
     <svg
+      onClick={onClick}
       className={className}
       stroke="currentColor"
       fill="currentColor"
