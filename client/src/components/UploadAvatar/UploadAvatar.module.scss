@@ -1,0 +1,78 @@
+@import "styles/colors.module.scss";
+
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $black;
+  font-size: 35px;
+
+  margin-bottom: 40px;
+
+  height: 350px;
+  width: 350px;
+
+  border: 4px dashed $black;
+  border-radius: 50%;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.file {
+  display: none;
+}
+
+.avatarImg {
+  margin-bottom: 40px;
+
+  height: 350px;
+  width: 350px;
+
+  border-radius: 50%;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.buttonField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0px 10px;
+
+  width: 300px;
+}
+
+.avatarBtn {
+  background-color: $green;
+
+  .text {
+    color: $black2;
+    font-size: 30px;
+  }
+
+  border-radius: 10px;
+
+  width: 140px;
+  height: 50px;
+
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    background-color: $greenHover;
+    .text {
+      color: $black3;
+    }
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: $black2;
+    .text {
+      color: $green;
+    }
+  }
+}
