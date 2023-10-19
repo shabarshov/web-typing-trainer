@@ -11,7 +11,7 @@ import RightArrowIcon from "assets/svg/Home/RightArrowIcon"
 import useTimer from "hooks/useTimer"
 import useText from "hooks/useText"
 
-import { shortWords as initialText } from "text"
+import { longWords as initialText } from "text"
 
 import styles from "./HomePage.module.scss"
 
