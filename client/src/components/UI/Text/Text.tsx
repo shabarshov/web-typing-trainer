@@ -1,14 +1,16 @@
-import type { FC } from "react"
-import React from "react"
+import React, { forwardRef } from "react"
 import cn from "classnames"
 
 import type { TextProps } from "./TextProps"
 
 import styles from "./Text.module.scss"
 
-const Text: FC<TextProps> = ({ className, textCase, value, style }) => {
+const Text = forwardRef<HTMLSpanElement, TextProps>(function Text(
+  { className, textCase, value, style }: TextProps,
+  ref,
+) {
   return (
-    <span className={cn(styles.text, className)} style={style}>
+    <span ref={ref} className={cn(styles.text, className)} style={style}>
       {textCase
         ? textCase === "upper"
           ? value.toUpperCase()
@@ -16,6 +18,6 @@ const Text: FC<TextProps> = ({ className, textCase, value, style }) => {
         : value}
     </span>
   )
-}
+})
 
 export default Text
