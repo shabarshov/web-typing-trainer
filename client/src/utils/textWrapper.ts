@@ -55,11 +55,12 @@ const textWrapper = (initialText: string): ITextWrapper => {
 
   const prev = (): void => {
     if (isEnd) return
-    countOfComplitedSymbols -= 1
 
     if (currentSymbolPosition.w === 0 && currentSymbolPosition.s === 0) {
       return
     }
+
+    countOfComplitedSymbols -= 1
 
     if (currentSymbolPosition.s === 0) {
       text[currentSymbolPosition.w][currentSymbolPosition.s].isCurrent = false

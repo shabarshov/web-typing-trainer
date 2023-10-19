@@ -54,11 +54,15 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
         onKeyDown={onKeyDownHandler}
         tabIndex={-1}
         style={{
-          bottom: text.currentRow()
-            ? text.currentRow() === text.countOfRows() - 1
-              ? `${caretPosition.top - SYMBOL_HEIGHT * 2}px`
-              : `${caretPosition.top - SYMBOL_HEIGHT}px`
-            : "0px",
+          bottom:
+            text.countOfRows() <= 3 &&
+            !text.currentRow() &&
+            text.currentRow() === text.countOfRows() - 1
+              ? text.countOfRows() - text.currentRow() === 3 &&
+                text.currentRow()
+                ? `${caretPosition.top - SYMBOL_HEIGHT}px`
+                : `${caretPosition.top - SYMBOL_HEIGHT * 2}px`
+              : `${caretPosition.top}`,
         }}
       >
         {createWords()}
