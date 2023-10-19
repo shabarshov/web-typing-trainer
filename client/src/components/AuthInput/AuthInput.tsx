@@ -16,7 +16,6 @@ const AuthInput: FC<AuthInputProps> = ({
   return (
     <div className={styles.container}>
       <Text className={styles.title} value={title} textCase="upper" />
-      {/* <span className={styles.title}>{title?.toUpperCase()}</span> */}
       <Input
         className={styles.input}
         placeholder={placeholder}

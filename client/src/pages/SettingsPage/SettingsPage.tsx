@@ -1,49 +1,49 @@
+import React, { useRef } from "react"
 import type { FC } from "react"
-import React, { useState } from "react"
-import cl from "./SettingsPage.module.scss"
-import SettingSection from "components/SettingSection/SettingSection"
-import SettingNavigation from "components/SettingNavigation/SettingNavigation"
-import { Dropdown } from "./../../components/Dropdown/Dropdown"
+
+import SettingsNavigation from "components/SettingsNavigation/SettingsNavigation"
+import ScrollableContainer from "components/containers/ScrollableContainer/ScrollableContainer"
+import GeneralSettings from "components/Settings/GeneralSettings"
+import AccountSettings from "components/Settings/AccountSettings"
+import ThemeSettings from "components/Settings/ThemeSettings"
+
+import useRefs from "hooks/useRefs"
+
+import styles from "./SettingsPage.module.scss"
 
 const SettingsPage: FC = () => {
-  const settingSections = [
-    { num: 0, value: "General" },
-    { num: 1, value: "Account" },
-    { num: 2, value: "Text Settings" },
-    { num: 3, value: "Sounds" },
-  ]
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const { refs } = useRefs<HTMLSpanElement>(3)
 
-  const [selectedSettingSection, setSelectedSettingSection] = useState(
-    settingSections[0],
-  )
+  const scrollHandler = (index: number) => {
+    const ref = refs[index].current
 
-  const settingOption = [
-    { type: "dropdown", title: "select theme: " },
-    { type: "checkbox", title: "show mistakes " },
-    { type: "slider", title: "background music: " },
-    { type: "dropdown", title: "select fontsize: " },
-  ]
-
-  const getNumMove = () => -selectedSettingSection.num * 607 + "px"
+    if (scrollRef.current && ref) {
+      scrollRef.current.scrollTo({
+        top: ref.offsetTop - 60,
+        left: 0,
+        behavior: "smooth",
+      })
+    }
+  }
 
   return (
-    <div className={cl.wrapper}>
-      <SettingNavigation
-        selectedSettingSection={selectedSettingSection}
-        setSelectedSettingSection={setSelectedSettingSection}
-        settingSections={settingSections}
+    <div className={styles.container}>
+      <SettingsNavigation
+        scrollHandler={scrollHandler}
+        items={["General", "Account", "Theme"]}
       />
 
-      <div className={cl.pagesWrapper}>
-        <div
-          className={cl.pages}
-          style={{ transform: `translate(0px, ${getNumMove()})` }}
-        >
-          <SettingSection options={settingOption} />
-          <SettingSection options={settingOption} />
-          <SettingSection options={settingOption} />
+      <ScrollableContainer
+        ref={scrollRef}
+        className={styles.scrollableContainer}
+      >
+        <div className={styles.ltr}>
+          <GeneralSettings ref={refs[0]} />
+          <AccountSettings ref={refs[1]} />
+          <ThemeSettings ref={refs[2]} />
         </div>
-      </div>
+      </ScrollableContainer>
     </div>
   )
 }

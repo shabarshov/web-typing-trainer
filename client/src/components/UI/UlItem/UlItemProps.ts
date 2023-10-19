@@ -1,6 +1,6 @@
 interface UlItemProps {
   className?: string
-  children: JSX.Element[] | JSX.Element
+  children: Array<JSX.Element>
 }
 
 export type { UlItemProps }

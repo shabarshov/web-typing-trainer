@@ -1,116 +1,111 @@
 @import "styles/colors.module.scss";
 
-.wrapper {
+$width: 300px;
 
-  .descript {
-    margin-bottom: 10px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-}
-
-.clickArea {
-  position: fixed;
-  z-index: 20;
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-}
-
-.select {
-  color: $purple2;
-  z-index: 11;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+.container {
   position: relative;
-  width: 400px;
-  cursor: pointer;
-  user-select: none;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 
-  .selectBtn {
-    border-radius: 10px;
-    position: relative;
-    font-weight: 600;
-    width: 100%;
-    padding: 10px 14px;
-    background: white;
-    box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
-    cursor: pointer;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: fit-content;
 
-    cursor: pointer;
+  margin-bottom: 30px;
+}
 
-    .text {
-      color: $purple2;
-      font-size: 15px;
-      font-weight: 400;
-    }
+.title {
+  position: absolute;
+  top: 0px;
 
-    button {
-      color: $purple2;
-      font-size: 15px;
-      background-color: white;
+  background-color: $black;
+  border: 2px solid $black3;
 
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    .icon {
-      width: 20px;
-      height: 20px;
-      color: $purple2;
+  width: $width;
+  height: 40px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
 
-      transform: rotate(0);
-      transition: all 0.35s linear;
+.titleText {
+  color: $white;
+}
 
-      &.active {
-        transform: rotate(-180deg);
+.content {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  flex-direction: column;
 
-      }
-    }
+  position: absolute;
+  top: 50px;
+  width: $width;
+
+  background-color: $black;
+
+  border: 2px solid $black3;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center 0%;
+
+  transition:
+    opacity 0.2s linear,
+    transform 1s linear;
+
+  &.active {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center 0%;
+
+    transition:
+      opacity 0.2s linear,
+      transform 0.3s ease-in-out;
   }
+}
 
+.icon {
+  color: $whiteGrey;
 
-  .menuList {
-    border-radius: 10px;
-    overflow: hidden;
-    position: absolute;
-    opacity: 0;
-    transform: scale(0.9);
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in;
-    pointer-events: none;
-    width: 100%;
-    top: 110%;
-    background: white;
-    box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
-    cursor: pointer;
+  transform: rotate(0deg);
+  transition: all 0.2s linear;
 
-    .option {
-      list-style-type: none;
-      padding: 10px 0;
-      width: 100%;
-      padding: 15px;
-      transition: all .2s;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $greenHover;
-        color: white;
-
-      }
-    }
-
-    &.active {
-      pointer-events: initial;
-      opacity: 1;
-      transform: scale(1);
-      transform: translateY(0);
-
-    }
+  &.active {
+    transform: rotate(180deg);
   }
+}
 
+.li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100%;
+
+  transition: 0.15s all linear;
+
+  &:hover {
+    background-color: rgba($whiteGrey, 0.5);
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  padding: 6px 12px;
+
+  height: 100%;
+  width: 100%;
+}
+
+.text {
+  color: $white;
 }

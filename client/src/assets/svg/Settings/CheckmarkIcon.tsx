@@ -2,7 +2,7 @@ import React from "react"
 import type { FC } from "react"
 import type IconProps from "../iconProps"
 
-const Checkmark: FC<IconProps> = ({ className }) => {
+const CheckmarkIcon: FC<IconProps> = ({ className }) => {
   return (
     <svg
       className={className}
@@ -10,8 +10,8 @@ const Checkmark: FC<IconProps> = ({ className }) => {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 512 512"
-      height="1em"
-      width="1em"
+      height="32px"
+      width="32px"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -25,4 +25,4 @@ const Checkmark: FC<IconProps> = ({ className }) => {
   )
 }
 
-export default Checkmark
+export default CheckmarkIcon
