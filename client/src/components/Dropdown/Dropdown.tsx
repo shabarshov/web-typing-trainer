@@ -1,82 +1,78 @@
-import { FC } from "react"
-import React, { useState } from "react"
-import cl from "./Dropdown.module.scss"
+import React, { useEffect, useState, useRef } from "react"
+import type { FC } from "react"
+
+import type { DropdownProps } from "./DropdownProps"
+
+import Text from "components/UI/Text/Text"
+import Button from "components/UI/Button/Button"
+import UlItem from "components/UI/UlItem/UlItem"
+import DropdownArrowIcon from "assets/svg/Settings/DropdownArrowIcon"
+
 import cn from "classnames"
-import { DropdownProps } from "./DropdownProps"
-import DropdownArrow from "assets/svg/Settings/DropdownArrow"
 
-import LiItem from "../UI/LiItem/LiItem"
-import UlItem from "../UI/UlItem/UlItem"
-import Button from "../UI/Button/Button"
-import Text from "../UI/Text/Text"
+import styles from "./Dropdown.module.scss"
 
-export const Dropdown: FC<DropdownProps> = ({
-  selected,
-  setSelected,
-  optionsObjects,
-  className,
-  description,
-  style,
-}) => {
-  const [isActive, setIsActive] = useState(false)
+const Dropdown: FC<DropdownProps> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [titleValue, setTitleValue] = useState<string>(children[0].props.value)
 
-  const onOptionChange = (e: React.MouseEvent) => {
-    const event = e.target as HTMLElement
-    setSelected(event.innerText)
-    e.stopPropagation()
-  }
-  const onSelectChange = (e: React.MouseEvent) => {
-    setIsActive(!isActive)
-    e.stopPropagation()
-  }
+  const UlRef = useRef<HTMLUListElement | null>(null)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
 
-  const clickArea = () => {
-    setIsActive(false)
+  useEffect(() => {
+    const clickOutsideHandler = (event: Event) => {
+      const e = event.target as Node
+      if (UlRef.current && buttonRef.current) {
+        if (!UlRef.current.contains(e) && !buttonRef.current.contains(e)) {
+          setIsOpen(false)
+        }
+      }
+    }
+
+    window.addEventListener("click", clickOutsideHandler)
+
+    return () => window.removeEventListener("click", clickOutsideHandler)
+  }, [])
+
+  const openClickHandler = () => {
+    setIsOpen(!isOpen)
   }
 
-  const optionValues = () =>
-    optionsObjects?.map((option: string, index: number) => (
-      <LiItem
-        key={index}
-        className={cl.option}
-        onClick={onOptionChange}
-        value={option}
-      />
-    ))
+  const setClickHandler = (value: string) => {
+    setTitleValue(value)
+    setIsOpen(!isOpen)
+  }
 
   return (
-    <div className={cl.wrapper} style={style}>
-      {isActive ? (
-        <div className={cl.clickArea} onClick={clickArea}></div>
-      ) : null}
-
-      <p className={cl.descript}>{description}</p>
-
-      <div className={cl.select}>
-        <Button
-          onClick={onSelectChange}
-          className={cn(cl.selectBtn, className)}
-        >
-          <Text value={selected} className={cn(cl.text, className)} />
-          <DropdownArrow
-            className={
-              isActive
-                ? cn(cl.icon, cl.active, className)
-                : cn(cl.icon, className)
-            }
-          />
-        </Button>
-
-        <UlItem
-          className={
-            isActive
-              ? cn(cl.menuList, cl.active, className)
-              : cn(cl.menuList, className)
-          }
-        >
-          {optionValues()}
-        </UlItem>
-      </div>
+    <div className={styles.container}>
+      <Button
+        ref={buttonRef}
+        className={styles.title}
+        onClick={openClickHandler}
+      >
+        <Text className={styles.titleText} value={titleValue} />
+        <DropdownArrowIcon
+          className={cn(styles.icon, isOpen ? styles.active : "")}
+        />
+      </Button>
+      <UlItem
+        ref={UlRef}
+        className={cn(styles.content, isOpen ? styles.active : "")}
+      >
+        {children.map((value, index) => {
+          return (
+            <Button
+              className={cn(styles.button, styles.li)}
+              key={index}
+              onClick={() => setClickHandler(value.props.value)}
+            >
+              {value}
+            </Button>
+          )
+        })}
+      </UlItem>
     </div>
   )
 }
+
+export default Dropdown
