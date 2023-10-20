@@ -1,9 +1,9 @@
 import React from "react"
 import type { FC } from "react"
 
-import Symbol from "components/Symbol/Symbol"
-
 import type { WordProps } from "./WordProps"
+
+import Symbol from "components/Symbol/Symbol"
 
 import styles from "./Word.module.scss"
 

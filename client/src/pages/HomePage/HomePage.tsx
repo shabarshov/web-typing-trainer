@@ -4,7 +4,7 @@ import type { FC } from "react"
 import TextField from "components/TextField/TextField"
 import TextResults from "components/TextResults/TextResults"
 import TextPanel from "components/TextPanel/TextPanel"
-import Button from "components/UI/Button/Button"
+import { Button } from "components/UI"
 
 import RightArrowIcon from "assets/svg/Home/RightArrowIcon"
 

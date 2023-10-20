@@ -3,9 +3,7 @@ import type { FC, MouseEvent } from "react"
 
 import type { SettingsNavigationProps } from "./SettingsNavigationProps"
 
-import UlItem from "components/UI/UlItem/UlItem"
-import Button from "components/UI/Button/Button"
-import Text from "components/UI/Text/Text"
+import { UlItem, Button, Text } from "components/UI"
 
 import useRefs from "hooks/useRefs"
 

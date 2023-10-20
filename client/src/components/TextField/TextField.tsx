@@ -6,10 +6,11 @@ import type { TextFieldProps } from "./TextFieldProps"
 import Word from "components/Word/Word"
 import Caret from "components/Caret/Caret"
 
-import styles from "./TextField.module.scss"
 import { CHARACTERS } from "constants/characters"
 import { SYMBOL_HEIGHT, TEXT_WRAPPER_MARGIN } from "constants/sizes"
 import useWindowResize from "hooks/useWindowResize"
+
+import styles from "./TextField.module.scss"
 
 const TextField: FC<TextFieldProps> = ({ text, timer }) => {
   const { windowWidth } = useWindowResize()

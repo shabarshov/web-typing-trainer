@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 
 import Tooltip from "components/Tooltip/Tooltip"
-import Text from "components/UI/Text/Text"
-import Button from "components/UI/Button/Button"
+import { Text, Button } from "components/UI"
 import UploadAvatar from "components/UploadAvatar/UploadAvatar"
 import * as Icons from "assets/svg/Profile"
 

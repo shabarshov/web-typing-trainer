@@ -6,7 +6,7 @@ import type { TextResultsProps } from "./TextResultsProps"
 import TitledCard from "components/TitledCard/TitledCard"
 import Tooltip from "components/Tooltip/Tooltip"
 import Time from "components/Time/Time"
-import Text from "components/UI/Text/Text"
+import { Text } from "components/UI"
 
 import styles from "./TextResults.module.scss"
 

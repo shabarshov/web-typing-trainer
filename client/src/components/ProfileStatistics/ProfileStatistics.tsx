@@ -2,7 +2,7 @@ import type { FC } from "react"
 import React from "react"
 
 import TitledCard from "components/TitledCard/TitledCard"
-import Text from "components/UI/Text/Text"
+import { Text } from "components/UI"
 
 import styles from "./ProfileStatistics.module.scss"
 

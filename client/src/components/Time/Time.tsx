@@ -1,9 +1,9 @@
 import React from "react"
 import type { FC } from "react"
 
-import Text from "components/UI/Text/Text"
-
 import type { TimeProps } from "./TimeProps"
+
+import { Text } from "components/UI"
 
 import msToTime from "utils/msToTime"
 

@@ -1,8 +1,7 @@
 import React from "react"
 import type { FC } from "react"
 
-import Input from "components/UI/Input/Input"
-import Text from "components/UI/Text/Text"
+import { Input, Text } from "components/UI"
 
 import type { AuthInputProps } from "./AuthInputProps"
 

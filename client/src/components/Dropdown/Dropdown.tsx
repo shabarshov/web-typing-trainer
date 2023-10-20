@@ -3,9 +3,7 @@ import type { FC } from "react"
 
 import type { DropdownProps } from "./DropdownProps"
 
-import Text from "components/UI/Text/Text"
-import Button from "components/UI/Button/Button"
-import UlItem from "components/UI/UlItem/UlItem"
+import { Text, Button, UlItem } from "components/UI"
 import DropdownArrowIcon from "assets/svg/Settings/DropdownArrowIcon"
 
 import cn from "classnames"

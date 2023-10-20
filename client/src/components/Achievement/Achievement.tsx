@@ -3,9 +3,8 @@ import type { FC } from "react"
 
 import type { AchievementProps } from "./AchievementProps"
 
-import Card from "components/UI/Card/Card"
+import { Card, Text } from "components/UI"
 import AchievementIcon from "assets/svg/Profile/AchievementIcon"
-import Text from "components/UI/Text/Text"
 
 import cn from "classnames"
 
