@@ -51,7 +51,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ getAvatar, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text value="Закрыть" className={styles.text} />
+            <Text value="Close" className={styles.text} />
           </Button>
           <Button
             className={styles.avatarBtn}
@@ -60,7 +60,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ getAvatar, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text value="Принять" className={styles.text} />
+            <Text value="Confirm" className={styles.text} />
           </Button>
         </div>
       </UploadAvatarContainer>
