@@ -9,8 +9,12 @@ import * as Icons from "assets/svg/Profile"
 import styles from "./PersonalInfo.module.scss"
 
 const PersonalInfo = () => {
-  const [visible, setVisible] = useState<boolean>(false)
+  const [isVisible, setIsVisible] = useState<boolean>(false)
   const [avatar, setAvatar] = useState<string>("")
+
+  const onClickHandler = () => {
+    setIsVisible(true)
+  }
 
   return (
     <div className={styles.container}>
@@ -25,17 +29,17 @@ const PersonalInfo = () => {
 
       <div className={styles.personInfo}>
         <Tooltip value="edit">
-          <Button onClick={() => setVisible(true)} className={styles.editBtn}>
+          <Button onClick={onClickHandler} className={styles.editBtn}>
             <Icons.EditIcon className={styles.editIcon} />
           </Button>
         </Tooltip>
 
-        <Text className={styles.login} value="VadimSex228" />
+        <Text className={styles.login} value="VadimAnigilator" />
         <Text className={styles.email} value="alexey_shabarshov@mail.ru" />
       </div>
 
-      {visible && (
-        <UploadAvatar getAvatar={setAvatar} setVisible={setVisible} />
+      {isVisible && (
+        <UploadAvatar setAvatar={setAvatar} setIsVisible={setIsVisible} />
       )}
     </div>
   )
