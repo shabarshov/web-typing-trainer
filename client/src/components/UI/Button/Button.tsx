@@ -6,7 +6,6 @@ import cn from "classnames"
 
 import styles from "./Button.module.scss"
 
-
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { className, children, ...props }: ButtonProps,
   ref,
