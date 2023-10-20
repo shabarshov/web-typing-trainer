@@ -35,6 +35,15 @@
   margin: 0 0 6px 0;
 }
 
+.avatarIcon {
+  height: 96px;
+  width: 96px;
+
+  border-radius: 50%;
+
+  user-select: none;
+}
+
 .login {
   font-size: 26px;
   color: $white;
@@ -50,6 +59,10 @@
   color: #eeeeeea3;
   font-size: 12px;
   margin-top: 8px;
+}
+
+.editBtn {
+  background-color: inherit;
 }
 
 .email {

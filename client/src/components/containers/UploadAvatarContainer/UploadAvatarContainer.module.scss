@@ -1,0 +1,17 @@
+@import "styles/colors.module.scss";
+
+.container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: $black2;
+
+  border-radius: 30px;
+  padding: 30px 30px;
+
+  border: solid 2px $black;
+}
