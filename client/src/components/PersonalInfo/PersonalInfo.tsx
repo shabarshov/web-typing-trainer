@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import Tooltip from "components/Tooltip/Tooltip"
 import Text from "components/UI/Text/Text"
+import Button from "components/UI/Button/Button"
 import UploadAvatar from "components/UploadAvatar/UploadAvatar"
 import * as Icons from "assets/svg/Profile"
 
@@ -24,11 +25,11 @@ const PersonalInfo = () => {
 
       <div className={styles.personInfo}>
         <Tooltip value="edit">
-          <Icons.EditIcon
-            className={styles.editIcon}
-            onClick={() => setVisible(true)}
-          />
+          <Button onClick={() => setVisible(true)} className={styles.editBtn}>
+            <Icons.EditIcon className={styles.editIcon} />
+          </Button>
         </Tooltip>
+
         <Text className={styles.login} value="VadimSex228" />
         <Text className={styles.email} value="alexey_shabarshov@mail.ru" />
       </div>
