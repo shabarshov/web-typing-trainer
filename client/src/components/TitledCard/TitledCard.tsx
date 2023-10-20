@@ -10,14 +10,14 @@ import cn from "classnames"
 
 import styles from "./TitledCard.module.scss"
 
-const TitledCard: FC<TitledCardProps> = ({ title, value, className }) => {
+const TitledCard: FC<TitledCardProps> = ({ title, children, className }) => {
   return (
     <div className={styles.container}>
       <Card className={cn(styles.card, styles.top, className)}>
-        <Text value={title} />
+        <Text value={title} className={styles.test} />
       </Card>
       <Card className={cn(styles.card, styles.bottom, className)}>
-        <Text value={value} />
+        {children}
       </Card>
     </div>
   )

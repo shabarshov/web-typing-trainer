@@ -1,0 +1,28 @@
+@import "styles/colors.module.scss";
+@import "styles/sizes.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-family: monospace;
+  font-size: $text-wrapper-font-size;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin-top: 2px;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: $white;
+  margin: 4px 5px;
+}

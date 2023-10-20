@@ -1,0 +1,111 @@
+@import "styles/colors.module.scss";
+
+$width: 300px;
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  width: fit-content;
+
+  margin-bottom: 30px;
+}
+
+.title {
+  position: absolute;
+  top: 0px;
+
+  background-color: $black;
+  border: 2px solid $black3;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: $width;
+  height: 40px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.titleText {
+  color: $white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  flex-direction: column;
+
+  position: absolute;
+  top: 50px;
+  width: $width;
+
+  background-color: $black;
+
+  border: 2px solid $black3;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center 0%;
+
+  transition:
+    opacity 0.2s linear,
+    transform 1s linear;
+
+  &.active {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center 0%;
+
+    transition:
+      opacity 0.2s linear,
+      transform 0.3s ease-in-out;
+  }
+}
+
+.icon {
+  color: $whiteGrey;
+
+  transform: rotate(0deg);
+  transition: all 0.2s linear;
+
+  &.active {
+    transform: rotate(180deg);
+  }
+}
+
+.li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100%;
+
+  transition: 0.15s all linear;
+
+  &:hover {
+    background-color: rgba($whiteGrey, 0.5);
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  padding: 6px 12px;
+
+  height: 100%;
+  width: 100%;
+}
+
+.text {
+  color: $white;
+}

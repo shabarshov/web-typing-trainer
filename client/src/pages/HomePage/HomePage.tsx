@@ -1,30 +1,40 @@
 import React, { useState } from "react"
 import type { FC } from "react"
 
-import Caret from "components/Caret/Caret"
-import TextContainer from "components/containers/TextContainer/TextContainer"
 import TextField from "components/TextField/TextField"
+import TextResults from "components/TextResults/TextResults"
+import TextPanel from "components/TextPanel/TextPanel"
+import Button from "components/UI/Button/Button"
 
-import { shortWords as initialText } from "text"
+import RightArrowIcon from "assets/svg/Home/RightArrowIcon"
 
-import { textWrapper } from "utils"
+import useTimer from "hooks/useTimer"
+import useText from "hooks/useText"
 
-const text = textWrapper(initialText, {
-  left: 0,
-  top: 0,
-})
+import { longWords as initialText } from "text"
+
+import styles from "./HomePage.module.scss"
 
 const HomePage: FC = () => {
-  const [caretPosition, setCaretPosition] = useState({
-    left: "0px",
-    top: "0px",
-  })
+  const { text, setText } = useText(initialText)
+
+  const [textLength, setTextLength] = useState<number>(50)
+  const [textType, setTextType] = useState<"text" | "words">("words")
+
+  const timer = useTimer()
 
   return (
-    <TextContainer>
-      <Caret left={caretPosition.left} top={caretPosition.top} />
-      <TextField text={text} setCaretPosition={setCaretPosition} />
-    </TextContainer>
+    <>
+      <TextPanel setTextLength={setTextLength} setTextType={setTextType} />
+
+      <TextField timer={timer} text={text} />
+
+      <Button tabIndex={1} className={styles.nextButton}>
+        <RightArrowIcon />
+      </Button>
+
+      <TextResults timer={timer} text={text} />
+    </>
   )
 }
 

@@ -21,4 +21,6 @@ $headerHeight: 100px;
 
   width: 100%;
   height: calc(100vh - $headerHeight);
+
+  overflow: hidden;
 }

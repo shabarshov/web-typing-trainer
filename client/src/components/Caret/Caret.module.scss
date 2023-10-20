@@ -1,5 +1,4 @@
 @import "styles/colors.module.scss";
-@import "styles/animations/caret.module.scss";
 @import "styles/sizes.module.scss";
 
 .caret {
@@ -12,8 +11,6 @@
 
   margin-top: 8px;
   border-radius: 2px;
-
-  animation: caret infinite 1.5s ease-in-out;
 
   transition:
     left 0.1s linear,

@@ -1,8 +1,7 @@
-import type { ReactElement } from "react"
-
 interface TooltipProps {
-  children: ReactElement
+  children: JSX.Element[] | JSX.Element
   value: string
+  className?: string
 }
 
 export type { TooltipProps }

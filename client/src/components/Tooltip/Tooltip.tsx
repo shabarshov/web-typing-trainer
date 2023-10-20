@@ -3,11 +3,17 @@ import type { FC, MouseEvent } from "react"
 
 import Text from "components/UI/Text/Text"
 
+import cn from "classnames"
+
 import type { TooltipProps } from "./TooltipProps"
 
 import styles from "./Tooltip.module.scss"
 
-const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
+const Tooltip: FC<TooltipProps> = ({
+  children,
+  value,
+  className,
+}): JSX.Element => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [tooltipPosition, setTooltipPosition] = useState<string>("")
 
@@ -38,7 +44,7 @@ const Tooltip: FC<TooltipProps> = ({ children, value }): JSX.Element => {
       {isVisible ? (
         <Text
           value={value}
-          className={styles.tooltip}
+          className={cn(styles.tooltip, className)}
           style={{ left: tooltipPosition }}
         />
       ) : null}

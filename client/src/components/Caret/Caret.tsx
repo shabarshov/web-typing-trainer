@@ -5,8 +5,13 @@ import type { CaretProps } from "./CaretProps"
 
 import styles from "./Caret.module.scss"
 
-const Caret: FC<CaretProps> = ({ left = "-1px", top = "0px" }) => {
-  return <div className={styles.caret} style={{ left: left, top: top }}></div>
+const Caret: FC<CaretProps> = ({ caretPosition }) => {
+  return (
+    <div
+      className={styles.caret}
+      style={{ left: `${caretPosition.left}px`, top: `${caretPosition.top}px` }}
+    ></div>
+  )
 }
 
 export default Caret
