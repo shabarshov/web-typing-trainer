@@ -9,28 +9,16 @@ import DropdownArrowIcon from "assets/svg/Settings/DropdownArrowIcon"
 import cn from "classnames"
 
 import styles from "./Dropdown.module.scss"
+import useOutsideClick from "hooks/useOutsideClick"
 
 const Dropdown: FC<DropdownProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [titleValue, setTitleValue] = useState<string>(children[0].props.value)
 
-  const UlRef = useRef<HTMLUListElement | null>(null)
+  const ulRef = useRef<HTMLUListElement | null>(null)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
 
-  useEffect(() => {
-    const clickOutsideHandler = (event: Event) => {
-      const e = event.target as Node
-      if (UlRef.current && buttonRef.current) {
-        if (!UlRef.current.contains(e) && !buttonRef.current.contains(e)) {
-          setIsOpen(false)
-        }
-      }
-    }
-
-    window.addEventListener("click", clickOutsideHandler)
-
-    return () => window.removeEventListener("click", clickOutsideHandler)
-  }, [])
+  useOutsideClick(() => setIsOpen(false), [ulRef, buttonRef])
 
   const openClickHandler = () => {
     setIsOpen(!isOpen)
@@ -54,7 +42,7 @@ const Dropdown: FC<DropdownProps> = ({ children }) => {
         />
       </Button>
       <UlItem
-        ref={UlRef}
+        ref={ulRef}
         className={cn(styles.content, isOpen ? styles.active : "")}
       >
         {children.map((value, index) => {
