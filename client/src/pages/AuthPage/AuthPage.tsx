@@ -1,15 +1,13 @@
 import React, { useState } from "react"
 import type { FC } from "react"
 
-import Modal from "components/UI/Modal/Modal"
+import { NavLink } from "react-router-dom"
+
+import { Modal, Text, Button } from "components/UI"
 import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
-import Text from "components/UI/Text/Text"
-import Button from "components/UI/Button/Button"
 
 import CloseIcon from "assets/svg/Auth/CloseIcon"
-
-import { NavLink } from "react-router-dom"
 
 import styles from "./AuthPage.module.scss"
 

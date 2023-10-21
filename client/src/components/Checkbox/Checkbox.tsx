@@ -3,8 +3,8 @@ import type { FC } from "react"
 
 import type { CheckboxProps } from "./CheckboxProps"
 
+import { Text } from "components/UI"
 import CheckmarkIcon from "assets/svg/Settings/CheckmarkIcon"
-import Text from "components/UI/Text/Text"
 
 import styles from "./Checkbox.module.scss"
 

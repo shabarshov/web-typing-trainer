@@ -1,11 +1,11 @@
 import { useRef, useState } from "react"
 import type { FC, MouseEvent } from "react"
 
-import Text from "components/UI/Text/Text"
+import type { TooltipProps } from "./TooltipProps"
+
+import { Text } from "components/UI"
 
 import cn from "classnames"
-
-import type { TooltipProps } from "./TooltipProps"
 
 import styles from "./Tooltip.module.scss"
 

@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import type { FC } from "react"
+
 import type { UploadAvatarProps } from "./UploadAvatarProps"
 
-import Modal from "components/UI/Modal/Modal"
-import Button from "components/UI/Button/Button"
-import Text from "components/UI/Text/Text"
-import Input from "components/UI/Input/Input"
 import UploadAvatarContainer from "components/containers/UploadAvatarContainer/UploadAvatarContainer"
+
+import { Modal, Button, Text, Input } from "components/UI"
 
 import styles from "./UploadAvatar.module.scss"
 

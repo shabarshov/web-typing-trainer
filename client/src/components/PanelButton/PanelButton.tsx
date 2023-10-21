@@ -3,8 +3,7 @@ import type { FC } from "react"
 
 import type { PanelButtonProps } from "./PanelButtonProps"
 
-import Button from "components/UI/Button/Button"
-import Text from "components/UI/Text/Text"
+import { Button, Text } from "components/UI"
 
 import cn from "classnames"
 

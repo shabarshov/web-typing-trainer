@@ -1,10 +1,10 @@
 import React from "react"
 import type { FC } from "react"
 
-import Card from "components/UI/Card/Card"
-import Text from "components/UI/Text/Text"
-
 import type { TitledCardProps } from "./TitledCardProps"
+
+import Card from "components/UI/Card/Card"
+import { Text } from "components/UI"
 
 import cn from "classnames"
 

@@ -1,10 +1,10 @@
 import React from "react"
 import type { FC } from "react"
 
+import { NavLink } from "react-router-dom"
+
 import * as Icons from "assets/svg/Wrapper"
 import ToolTip from "components/Tooltip/Tooltip"
-
-import { NavLink } from "react-router-dom"
 
 import cn from "classnames"
 

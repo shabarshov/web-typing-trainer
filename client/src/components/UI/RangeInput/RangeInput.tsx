@@ -3,7 +3,7 @@ import type { FC, ChangeEvent } from "react"
 
 import type { RangeInputProps } from "./RangeInputProps"
 
-import Text from "components/UI/Text/Text"
+import { Text } from "components/UI"
 
 import styles from "./RangeInput.module.scss"
 import colors from "styles/colors.module.scss"

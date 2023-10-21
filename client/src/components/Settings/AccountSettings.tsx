@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react"
 
-import Text from "components/UI/Text/Text"
+import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
 import RangeInput from "components/UI/RangeInput/RangeInput"
 import Checkbox from "components/Checkbox/Checkbox"

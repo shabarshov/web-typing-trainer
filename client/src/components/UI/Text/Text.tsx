@@ -1,7 +1,8 @@
 import React, { forwardRef } from "react"
-import cn from "classnames"
 
 import type { TextProps } from "./TextProps"
+
+import cn from "classnames"
 
 import styles from "./Text.module.scss"
 

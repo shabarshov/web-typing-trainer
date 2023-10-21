@@ -2,8 +2,8 @@ import React from "react"
 import type { FC } from "react"
 
 import type { SymbolProps } from "./SymbolProps"
-import colors from "styles/colors.module.scss"
 
+import colors from "styles/colors.module.scss"
 import styles from "./Symbol.module.scss"
 
 const Symbol: FC<SymbolProps> = ({ value, state }) => {
