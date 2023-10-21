@@ -4,11 +4,8 @@ import React from "react"
 import ProfileContainer from "components/containers/ProfileContainer/ProfileContainer"
 
 import PersonalInfo from "components/PersonalInfo/PersonalInfo"
-import Achievement from "components/Achievement/Achievement"
-import ScrollableContainer from "components/containers/ScrollableContainer/ScrollableContainer"
 import ProfileStatistics from "components/ProfileStatistics/ProfileStatistics"
-
-import cn from "classnames"
+import PersonalAchievements from "components/PersonalAchievements/PersonalAchievements"
 
 import styles from "./ProfilePage.module.scss"
 
@@ -20,15 +17,7 @@ const ProfilePage: FC = () => {
         <ProfileStatistics />
       </div>
 
-      <ScrollableContainer className={cn(styles.achievements, styles.right)}>
-        <Achievement isPassed={true} />
-        <Achievement isPassed={true} />
-        <Achievement isPassed={true} />
-        <Achievement isPassed={false} />
-        <Achievement isPassed={false} />
-        <Achievement isPassed={false} />
-        <Achievement isPassed={false} />
-      </ScrollableContainer>
+      <PersonalAchievements />
     </ProfileContainer>
   )
 }

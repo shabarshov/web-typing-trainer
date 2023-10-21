@@ -1,0 +1,39 @@
+@import "styles/colors.module.scss";
+
+.achievements {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: 500px;
+
+  gap: 15px;
+
+  margin-left: auto;
+  margin-bottom: auto;
+
+  padding-right: 20px;
+}
+
+.achievementTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  background-color: inherit;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $greenUnblocked;
+}

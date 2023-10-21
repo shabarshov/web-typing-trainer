@@ -13,15 +13,30 @@
   height: 350px;
   width: 350px;
 
-  border: 4px dashed $black;
-  border-radius: 50%;
-
   user-select: none;
   cursor: pointer;
 }
 
+.isEmpty {
+  border: 4px dashed $black;
+  border-radius: 50%;
+}
+
 .file {
   display: none;
+}
+
+.closeButton {
+  color: $whiteGrey;
+
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  transition: 0.15s linear color;
+  &:hover {
+    color: $red;
+  }
 }
 
 .avatarImg {
@@ -32,16 +47,6 @@
 
   user-select: none;
   cursor: pointer;
-}
-
-.buttonField {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 0px 10px;
-
-  width: 300px;
 }
 
 .avatarBtn {

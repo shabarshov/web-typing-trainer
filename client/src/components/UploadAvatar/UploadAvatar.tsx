@@ -6,6 +6,9 @@ import type { UploadAvatarProps } from "./UploadAvatarProps"
 import UploadAvatarContainer from "components/containers/UploadAvatarContainer/UploadAvatarContainer"
 
 import { Modal, Button, Text, Input } from "components/UI"
+import CloseIcon from "assets/svg/Auth/CloseIcon"
+
+import cn from "classnames"
 
 import styles from "./UploadAvatar.module.scss"
 
@@ -41,7 +44,11 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
   return (
     <Modal>
       <UploadAvatarContainer>
-        <label className={styles.upload}>
+        <Button className={styles.closeButton} onClick={closeHandler}>
+          <CloseIcon />
+        </Button>
+
+        <label className={cn(styles.upload, preview ? "" : styles.isEmpty)}>
           {preview ? (
             <img src={preview} className={styles.avatarImg} />
           ) : (
@@ -55,14 +62,9 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
           />
         </label>
 
-        <div className={styles.buttonField}>
-          <Button className={styles.avatarBtn} onClick={closeHandler}>
-            <Text value="Close" className={styles.text} />
-          </Button>
-          <Button className={styles.avatarBtn} onClick={confirmHandler}>
-            <Text value="Confirm" className={styles.text} />
-          </Button>
-        </div>
+        <Button className={styles.avatarBtn} onClick={confirmHandler}>
+          <Text value="Confirm" className={styles.text} />
+        </Button>
       </UploadAvatarContainer>
     </Modal>
   )

@@ -6,35 +6,74 @@
   width: 250px;
 
   display: flex;
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 
+  margin: 0;
+  padding-right: 15px;
+
+  transition: all 0.15s;
+}
+
+.passed {
   &:hover {
-    background-color: rgba($purple, 0.7);
+    background-color: rgba($greenUnblocked, 0.7);
     cursor: pointer;
   }
 
-  margin-top: 0px;
-  margin-bottom: 20px;
+  &:hover .passedTitle {
+    font-weight: 600;
+    color: $black;
+  }
+
+  &:hover .passedIcon {
+    color: $black;
+  }
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
+.notPassed {
+  background-color: rgba($whiteGrey, 0.1);
+
+  &:hover {
+    background-color: rgba($red, 0.7);
+    cursor: pointer;
+  }
+
+  &:hover .notPassedTitle {
+    font-weight: 600;
+    color: $black;
+  }
+
+  &:hover .notPassedIcon {
+    color: $black;
+  }
 }
 
 .title {
   margin-bottom: 4px;
   margin-left: 10px;
-  font-size: 20px;
 
+  font-size: 20px;
+  font-weight: 500;
+
+  transition: all 0.15s;
+}
+
+.passedTitle {
   color: $white;
 }
 
+.notPassedTitle {
+  color: $whiteGrey;
+}
+
 .passedIcon {
-  color: $green;
+  color: $white;
+  transition: all 0.15s;
 }
 
 .notPassedIcon {
   color: $whiteGrey;
+  transition: all 0.15s;
 }
