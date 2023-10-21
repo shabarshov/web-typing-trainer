@@ -45,6 +45,21 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
     }
   }
 
+  const style = { bottom: `${caretPosition.top}` }
+
+  if (
+    text.countOfRows() > 3 &&
+    text.currentRow() &&
+    text.currentRow() !== text.countOfRows() - 1
+  ) {
+    style.bottom = `${caretPosition.top - SYMBOL_HEIGHT}px`
+  } else if (
+    text.countOfRows() - text.currentRow() === 3 &&
+    text.currentRow()
+  ) {
+    style.bottom = `${caretPosition.top - 2 * SYMBOL_HEIGHT}px`
+  }
+
   return (
     <div
       className={styles.container}
@@ -54,17 +69,7 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
         className={styles.field}
         onKeyDown={onKeyDownHandler}
         tabIndex={-1}
-        style={{
-          bottom:
-            text.countOfRows() <= 3 &&
-            !text.currentRow() &&
-            text.currentRow() === text.countOfRows() - 1
-              ? text.countOfRows() - text.currentRow() === 3 &&
-                text.currentRow()
-                ? `${caretPosition.top - SYMBOL_HEIGHT}px`
-                : `${caretPosition.top - SYMBOL_HEIGHT * 2}px`
-              : `${caretPosition.top}`,
-        }}
+        style={style}
       >
         {createWords()}
         <Caret caretPosition={caretPosition} />
