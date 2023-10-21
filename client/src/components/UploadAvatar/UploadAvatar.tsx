@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import type { FC } from "react"
 
 import type { UploadAvatarProps } from "./UploadAvatarProps"
@@ -11,9 +11,13 @@ import CloseIcon from "assets/svg/Auth/CloseIcon"
 import cn from "classnames"
 
 import styles from "./UploadAvatar.module.scss"
+import useOutsideClick from "hooks/useOutsideClick"
 
 const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
   const [preview, setPreview] = useState<string>("")
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useOutsideClick(() => setIsVisible(false), [containerRef])
 
   const onMainPhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (
@@ -43,7 +47,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
 
   return (
     <Modal>
-      <UploadAvatarContainer>
+      <UploadAvatarContainer ref={containerRef}>
         <Button className={styles.closeButton} onClick={closeHandler}>
           <CloseIcon />
         </Button>
