@@ -5,11 +5,14 @@ import { Text, Button } from "components/UI"
 import UploadAvatar from "components/UploadAvatar/UploadAvatar"
 import * as Icons from "assets/svg/Profile"
 
+import { useAppSelector } from "hooks/storeHooks"
+
 import styles from "./PersonalInfo.module.scss"
 
 const PersonalInfo = () => {
+  const avatar = useAppSelector((state) => state.avatarSlice)
+
   const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [avatar, setAvatar] = useState<string>("")
 
   const onClickHandler = () => {
     setIsVisible(true)
@@ -17,29 +20,22 @@ const PersonalInfo = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.iconContainer}>
-        {avatar ? (
-          <img src={avatar} className={styles.avatarIcon} />
-        ) : (
-          <Icons.ProfileIcon className={styles.icon} />
-        )}
-        <Text className={styles.date} value="Joined: 25.02.2004" />
-      </div>
+      <Tooltip value="Change avatar">
+        <Button className={styles.button} onClick={onClickHandler}>
+          {avatar.src ? (
+            <img src={avatar.src} className={styles.avatarIcon} />
+          ) : (
+            <Icons.ProfileIcon className={styles.avatarIcon} />
+          )}
+        </Button>
+      </Tooltip>
 
       <div className={styles.personInfo}>
-        <Tooltip value="edit">
-          <Button onClick={onClickHandler} className={styles.editBtn}>
-            <Icons.EditIcon className={styles.editIcon} />
-          </Button>
-        </Tooltip>
-
         <Text className={styles.login} value="VadimAnigilator" />
         <Text className={styles.email} value="alexey_shabarshov@mail.ru" />
       </div>
 
-      {isVisible && (
-        <UploadAvatar setAvatar={setAvatar} setIsVisible={setIsVisible} />
-      )}
+      {isVisible && <UploadAvatar setIsVisible={setIsVisible} />}
     </div>
   )
 }
