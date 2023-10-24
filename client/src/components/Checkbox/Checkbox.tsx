@@ -8,11 +8,12 @@ import CheckmarkIcon from "assets/svg/Settings/CheckmarkIcon"
 
 import styles from "./Checkbox.module.scss"
 
-const Checkbox: FC<CheckboxProps> = ({ textValue, initialValue }) => {
+const Checkbox: FC<CheckboxProps> = ({ textValue, initialValue, dispatch }) => {
   const [isEnabled, setIsEnabled] = useState<boolean>(initialValue)
 
   const onClickHandler = () => {
     setIsEnabled(!isEnabled)
+    if (dispatch) dispatch()
   }
 
   return (
@@ -20,7 +21,7 @@ const Checkbox: FC<CheckboxProps> = ({ textValue, initialValue }) => {
       <div onClick={onClickHandler} className={styles.checkbox}>
         {isEnabled ? <CheckmarkIcon className={styles.icon} /> : null}
       </div>
-      <Text value={textValue} />
+      <Text className={styles.text} value={textValue} />
     </div>
   )
 }

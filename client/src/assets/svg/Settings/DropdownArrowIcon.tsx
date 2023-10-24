@@ -9,12 +9,12 @@ const DropdownArrowIcon: FC<IconProps> = ({ className }) => {
       stroke="currentColor"
       fill="currentColor"
       strokeWidth="0"
+      viewBox="0 0 512 512"
+      height="32px"
+      width="32px"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="7.26 8.84 9.49 6.66"
-      width="26px"
-      height="26px"
     >
-      <path d="M12 15.0006L7.75732 10.758L9.17154 9.34375L12 12.1722L14.8284 9.34375L16.2426 10.758L12 15.0006Z"></path>{" "}
+      <path d="M256 294.1L383 167c9.4-9.4 24.6-9.4 33.9 0s9.3 24.6 0 34L273 345c-9.1 9.1-23.7 9.3-33.1.7L95 201.1c-4.7-4.7-7-10.9-7-17s2.3-12.3 7-17c9.4-9.4 24.6-9.4 33.9 0l127.1 127z"></path>
     </svg>
   )
 }

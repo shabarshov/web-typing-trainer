@@ -8,7 +8,11 @@ import { Text } from "components/UI"
 import styles from "./RangeInput.module.scss"
 import colors from "styles/colors.module.scss"
 
-const RangeInput: FC<RangeInputProps> = ({ initialValue, ...props }) => {
+const RangeInput: FC<RangeInputProps> = ({
+  initialValue,
+  dispatch,
+  ...props
+}) => {
   const [value, setValue] = useState<string>(initialValue)
   const rangeRef = useRef<HTMLInputElement | null>(null)
 
@@ -22,6 +26,7 @@ const RangeInput: FC<RangeInputProps> = ({ initialValue, ...props }) => {
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value)
+    if (dispatch) dispatch(event.currentTarget.value)
   }
 
   return (

@@ -3,9 +3,8 @@ import type { FC } from "react"
 
 import SettingsNavigation from "components/SettingsNavigation/SettingsNavigation"
 import ScrollableContainer from "components/containers/ScrollableContainer/ScrollableContainer"
-import GeneralSettings from "components/Settings/GeneralSettings"
-import AccountSettings from "components/Settings/AccountSettings"
-import ThemeSettings from "components/Settings/ThemeSettings"
+
+import * as Settings from "components/Settings"
 
 import useRefs from "hooks/useRefs"
 
@@ -13,7 +12,7 @@ import styles from "./SettingsPage.module.scss"
 
 const SettingsPage: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { refs } = useRefs<HTMLSpanElement>(3)
+  const { refs } = useRefs<HTMLSpanElement>(6)
 
   const scrollHandler = (index: number) => {
     const ref = refs[index].current
@@ -31,7 +30,7 @@ const SettingsPage: FC = () => {
     <div className={styles.container}>
       <SettingsNavigation
         scrollHandler={scrollHandler}
-        items={["General", "Account", "Theme"]}
+        items={["Workspace", "Theme", "Font", "Caret", "Sounds", "Account"]}
       />
 
       <ScrollableContainer
@@ -39,9 +38,12 @@ const SettingsPage: FC = () => {
         className={styles.scrollableContainer}
       >
         <div className={styles.ltr}>
-          <GeneralSettings ref={refs[0]} />
-          <AccountSettings ref={refs[1]} />
-          <ThemeSettings ref={refs[2]} />
+          <Settings.WorkspaceSettings ref={refs[0]} />
+          <Settings.ThemeSettings ref={refs[1]} />
+          <Settings.FontSettings ref={refs[2]} />
+          <Settings.CaretSettings ref={refs[3]} />
+          <Settings.SoundsSettings ref={refs[4]} />
+          <Settings.AccountSettings ref={refs[5]} />
         </div>
       </ScrollableContainer>
     </div>

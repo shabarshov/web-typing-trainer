@@ -2,25 +2,35 @@ import React, { forwardRef } from "react"
 
 import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
-import RangeInput from "components/UI/RangeInput/RangeInput"
-import Checkbox from "components/Checkbox/Checkbox"
+import ThemeIcon from "assets/svg/Settings/ThemeIcon"
+
+import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
+
+import { getEnumValues } from "utils"
+import { Theme, setTheme } from "store"
 
 import styles from "./styles.module.scss"
 
 const ThemeSettings = forwardRef<HTMLSpanElement>(
   function ThemeSettings(props, ref) {
+    const storeValues = useAppSelector((state) => state.themeSettingsSlice)
+    const dispatch = useAppDispatch()
+
     return (
-      <>
-        <Text ref={ref} className={styles.title} value="Theme" />
-        <Dropdown>
-          <Text value="Item 1" />
-          <Text value="Item 2" />
-          <Text value="Item 3" />
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <ThemeIcon className={styles.icon} />
+          <Text ref={ref} className={styles.title} value="Theme" />
+        </div>
+        <Dropdown
+          dispatch={(value) => dispatch(setTheme(value))}
+          initialTitle={storeValues.theme}
+        >
+          {getEnumValues(Theme).map((value, index) => (
+            <Text className={styles.text} key={index} value={value} />
+          ))}
         </Dropdown>
-        <RangeInput initialValue="50" />
-        <RangeInput initialValue="70" />
-        <Checkbox textValue="Enable function" initialValue={false} />
-      </>
+      </div>
     )
   },
 )

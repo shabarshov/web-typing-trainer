@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useState, useRef } from "react"
 import type { FC } from "react"
 
 import type { DropdownProps } from "./DropdownProps"
@@ -11,9 +11,11 @@ import cn from "classnames"
 import styles from "./Dropdown.module.scss"
 import useOutsideClick from "hooks/useOutsideClick"
 
-const Dropdown: FC<DropdownProps> = ({ children }) => {
+const Dropdown: FC<DropdownProps> = ({ children, initialTitle, dispatch }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [titleValue, setTitleValue] = useState<string>(children[0].props.value)
+  const [titleValue, setTitleValue] = useState<string>(
+    initialTitle || children[0].props.value,
+  )
 
   const ulRef = useRef<HTMLUListElement | null>(null)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
@@ -27,6 +29,7 @@ const Dropdown: FC<DropdownProps> = ({ children }) => {
   const setClickHandler = (value: string) => {
     setTitleValue(value)
     setIsOpen(!isOpen)
+    if (dispatch) dispatch(value)
   }
 
   return (

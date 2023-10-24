@@ -1,6 +1,85 @@
 @import "styles/colors.module.scss";
 
+.container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .title {
   font-size: 40px;
   color: $whiteGrey;
+}
+
+.width {
+  width: 300px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.warningText {
+  color: $whiteGrey;
+  font-size: 20px;
+  width: 700px;
+  transition: all 0.15s;
+}
+
+.dangerText {
+  font-size: 50px;
+  color: $red;
+}
+
+.dangerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+
+  border-radius: 10px;
+  border: solid $red 2px;
+
+  padding: 10px;
+
+  transition: all 0.15s;
+
+  .text {
+    font-weight: 600;
+  }
+
+  &:hover {
+    background-color: $red;
+    .text {
+      font-weight: 600;
+      color: $black;
+    }
+  }
+}
+
+.dangerButton:hover + .warningText {
+  color: $white;
+}
+
+.dangerZoneContainer {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  gap: 20px;
+  flex-flow: column-reverse;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.icon {
+  color: $whiteGrey;
+  margin-right: 10px;
 }

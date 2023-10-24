@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react"
-import type { FC } from "react"
 
 import type { UploadFileContainerProps } from "./UploadAvatarContainerProps"
 

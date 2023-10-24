@@ -8,12 +8,18 @@ import UploadAvatarContainer from "components/containers/UploadAvatarContainer/U
 import { Modal, Button, Text, Input } from "components/UI"
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
+import { setSrc } from "store"
+import { useAppDispatch } from "hooks/storeHooks"
+
+import useOutsideClick from "hooks/useOutsideClick"
+
 import cn from "classnames"
 
 import styles from "./UploadAvatar.module.scss"
-import useOutsideClick from "hooks/useOutsideClick"
 
-const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
+const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
+  const dispatch = useAppDispatch()
+
   const [preview, setPreview] = useState<string>("")
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -41,7 +47,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setAvatar, setIsVisible }) => {
   }
 
   const confirmHandler = () => {
-    setAvatar(preview)
+    dispatch(setSrc(preview))
     setIsVisible(false)
   }
 
