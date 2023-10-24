@@ -5,6 +5,8 @@ import getTextRowLengths from "./getTextRowLengths"
 import initText from "./initText"
 import textWrapper from "./textWrapper"
 import calculateCaretPosition from "./calculateCaretPosition"
+import getEnumValues from "./getEnumValues"
+import localStorageManager from "./localStorageManager"
 
 export {
   createCounter,
@@ -14,4 +16,6 @@ export {
   initText,
   textWrapper,
   calculateCaretPosition,
+  getEnumValues,
+  localStorageManager,
 }
