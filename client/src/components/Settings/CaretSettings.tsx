@@ -15,7 +15,7 @@ import styles from "./styles.module.scss"
 
 const CaretSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.caretSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.caret)
     const dispatch = useAppDispatch()
 
     return (

@@ -10,7 +10,7 @@ import { useAppSelector } from "hooks/storeHooks"
 import styles from "./PersonalInfo.module.scss"
 
 const PersonalInfo = () => {
-  const avatar = useAppSelector((state) => state.avatarSlice)
+  const avatar = useAppSelector((state) => state.avatar)
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
 

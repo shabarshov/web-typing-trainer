@@ -13,7 +13,7 @@ import styles from "./styles.module.scss"
 
 const SoundsSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.soundsSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.sounds)
     const dispatch = useAppDispatch()
 
     return (
