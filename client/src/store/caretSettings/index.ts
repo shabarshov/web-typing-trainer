@@ -5,7 +5,7 @@ import type { ICaret } from "./types"
 
 import { localStorageManager } from "utils"
 
-const { getData, setData } = localStorageManager()
+const { getData } = localStorageManager()
 
 export const caretSettingsSlice = createSlice({
   name: "caretSettingsSlice",
@@ -23,14 +23,9 @@ export const caretSettingsSlice = createSlice({
     setBlinking: (state, action: PayloadAction<boolean>) => {
       state.blinking = action.payload
     },
-
-    close: (state) => {
-      setData("caretType", state.caretType)
-      setData("blinking", state.blinking)
-    },
   },
 })
 
-export const { setCaretType, setBlinking, close } = caretSettingsSlice.actions
+export const { setCaretType, setBlinking } = caretSettingsSlice.actions
 
 export default caretSettingsSlice.reducer

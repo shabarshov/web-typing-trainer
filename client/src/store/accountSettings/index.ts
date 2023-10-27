@@ -5,7 +5,7 @@ import type { IAccount } from "./types"
 
 import { localStorageManager } from "utils"
 
-const { getData, setData } = localStorageManager()
+const { getData } = localStorageManager()
 
 export const accountSettingsSlice = createSlice({
   name: "accountSettingsSlice",
@@ -23,14 +23,9 @@ export const accountSettingsSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload
     },
-
-    close: (state) => {
-      setData("username", state.username)
-      setData("password", state.password)
-    },
   },
 })
 
-export const { setUsername, setPassword, close } = accountSettingsSlice.actions
+export const { setUsername, setPassword } = accountSettingsSlice.actions
 
 export default accountSettingsSlice.reducer

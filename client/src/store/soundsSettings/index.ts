@@ -5,7 +5,7 @@ import type { ISounds } from "./types"
 
 import { localStorageManager } from "utils"
 
-const { getData, setData } = localStorageManager()
+const { getData } = localStorageManager()
 
 export const soundsSettingsSlice = createSlice({
   name: "soundsSettingsSlice",
@@ -23,15 +23,9 @@ export const soundsSettingsSlice = createSlice({
     setSoundVolume: (state, action: PayloadAction<string>) => {
       state.soundVolume = action.payload
     },
-
-    close: (state) => {
-      setData("soundEnable", state.soundEnable)
-      setData("soundVolume", state.soundVolume)
-    },
   },
 })
 
-export const { setSoundEnable, setSoundVolume, close } =
-  soundsSettingsSlice.actions
+export const { setSoundEnable, setSoundVolume } = soundsSettingsSlice.actions
 
 export default soundsSettingsSlice.reducer

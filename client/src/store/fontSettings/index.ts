@@ -5,7 +5,7 @@ import type { IFont } from "./types"
 
 import { localStorageManager } from "utils"
 
-const { getData, setData } = localStorageManager()
+const { getData } = localStorageManager()
 
 export const fontSettingsSlice = createSlice({
   name: "fontSettingsSlice",
@@ -23,14 +23,9 @@ export const fontSettingsSlice = createSlice({
     setFontFamily: (state, action: PayloadAction<string>) => {
       state.fontFamily = action.payload
     },
-
-    close: (state) => {
-      setData("fontSize", state.fontSize)
-      setData("fontFamily", state.fontFamily)
-    },
   },
 })
 
-export const { setFontSize, setFontFamily, close } = fontSettingsSlice.actions
+export const { setFontSize, setFontFamily } = fontSettingsSlice.actions
 
 export default fontSettingsSlice.reducer
