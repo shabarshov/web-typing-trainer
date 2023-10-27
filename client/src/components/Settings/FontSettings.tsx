@@ -15,7 +15,7 @@ import styles from "./styles.module.scss"
 
 const FontSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.fontSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.font)
     const dispatch = useAppDispatch()
 
     return (

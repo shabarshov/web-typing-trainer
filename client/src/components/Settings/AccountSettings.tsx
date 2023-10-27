@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
 const AccountSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.accountSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.account)
     const dispatch = useAppDispatch()
 
     const usernameWarn =

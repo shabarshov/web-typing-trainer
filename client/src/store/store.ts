@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore, combineReducers } from "@reduxjs/toolkit"
 
 import {
   accountSettingsSlice,
@@ -10,20 +10,22 @@ import {
   avatarSlice,
 } from "./index"
 
+const reducer = {
+  settings: combineReducers({
+    account: accountSettingsSlice,
+    caret: caretSettingsSlice,
+    font: fontSettingsSlice,
+    sounds: soundsSettingsSlice,
+    theme: themeSettingsSlice,
+    workspace: workspaceSettingsSlice,
+  }),
+
+  avatar: avatarSlice,
+}
+
 const store = configureStore({
-  reducer: {
-    accountSettingsSlice,
-    caretSettingsSlice,
-    fontSettingsSlice,
-    soundsSettingsSlice,
-    themeSettingsSlice,
-    workspaceSettingsSlice,
-
-    avatarSlice,
-  },
+  reducer: reducer,
 })
-
-// const storeState = Object.values(store.getState())
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

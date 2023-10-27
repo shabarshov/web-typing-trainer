@@ -13,7 +13,7 @@ import styles from "./styles.module.scss"
 
 const ThemeSettings = forwardRef<HTMLSpanElement>(
   function ThemeSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.themeSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.theme)
     const dispatch = useAppDispatch()
 
     return (

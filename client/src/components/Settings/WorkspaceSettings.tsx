@@ -20,7 +20,7 @@ import styles from "./styles.module.scss"
 
 const WorkspaceSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.workspaceSettingsSlice)
+    const storeValues = useAppSelector((state) => state.settings.workspace)
     const dispatch = useAppDispatch()
 
     return (
