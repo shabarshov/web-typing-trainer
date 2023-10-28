@@ -1,5 +1,6 @@
 @import "styles/colors.module.scss";
 @import "styles/sizes.module.scss";
+@import "styles/zindex.module.scss";
 
 .container {
   display: flex;
@@ -11,6 +12,8 @@
 
   font-family: monospace;
   font-size: $text-wrapper-font-size;
+
+  z-index: $zindex-default;
 
   transition: color 0.1s linear;
 }

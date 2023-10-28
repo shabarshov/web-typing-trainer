@@ -3,8 +3,14 @@ $symbol-height: 50px;
 
 $text-wrapper-font-size: 32px;
 
-$caret-width: 3px;
-$caret-height: 38px;
+$default-caret-width: 3px;
+$default-caret-height: 38px;
+
+$underline-caret-width: $symbol-width;
+$underline-caret-height: 3px;
+
+$insert-caret-width: $symbol-width;
+$insert-caret-height: $symbol-height;
 
 :export {
   symbol-width: $symbol-width;
@@ -12,6 +18,10 @@ $caret-height: 38px;
 
   text-wrapper-font-size: $text-wrapper-font-size;
 
-  caret-width: $caret-width;
-  caret-height: $caret-height;
+  default-caret-width: $default-caret-width;
+  default-caret-height: $default-caret-height;
+  underline-caret-width: $underline-caret-width;
+  underline-caret-height: $underline-caret-height;
+  insert-caret-width: $insert-caret-width;
+  insert-caret-height: $insert-caret-height;
 }

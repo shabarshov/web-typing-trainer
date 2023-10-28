@@ -1,11 +1,11 @@
-@keyframes caret {
+@keyframes blinking {
   0% {
-    opacity: 0.7;
+    opacity: 0;
   }
   50% {
     opacity: 1;
   }
   100% {
-    opacity: 0.7;
+    opacity: 0;
   }
 }

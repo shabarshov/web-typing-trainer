@@ -1,18 +1,47 @@
 @import "styles/colors.module.scss";
 @import "styles/sizes.module.scss";
+@import "styles/zindex.module.scss";
+
+@import "styles/animations/caret.module.scss";
+
+.blinking {
+  animation: blinking infinite 1.2s ease;
+}
 
 .caret {
   position: absolute;
 
-  height: $caret-height;
-  width: $caret-width;
-
   background-color: $purple;
 
-  margin-top: 8px;
-  border-radius: 2px;
+  z-index: $zindex-caret;
 
   transition:
     left 0.1s linear,
     top 0.1s linear;
+}
+
+.defaultCaret {
+  height: $default-caret-height;
+  width: $default-caret-width;
+
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.underlineCaret {
+  height: $underline-caret-height;
+  width: $underline-caret-width;
+
+  margin-top: $symbol-height - 6px;
+
+  border-radius: 2px;
+}
+
+.insertCaret {
+  height: $insert-caret-height - 12px;
+  width: $insert-caret-width;
+
+  margin-top: 8px;
+
+  border-radius: 4px;
 }
