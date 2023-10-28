@@ -1,8 +1,10 @@
+$zindex-caret: 0;
 $zindex-default: 1;
 $zindex-popup: 2;
 $zindex-tooltip: 3;
 
 :export {
+  zindex-caret: $zindex-caret;
   zindex-default: $zindex-default;
   zindex-popup: $zindex-popup;
   zindex-tooltip: $zindex-tooltip;
