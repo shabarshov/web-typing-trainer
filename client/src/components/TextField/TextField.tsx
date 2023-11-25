@@ -7,12 +7,24 @@ import Word from "components/Word/Word"
 import Caret from "components/Caret/Caret"
 
 import { CHARACTERS } from "constants/characters"
-import { SYMBOL_HEIGHT, TEXT_WRAPPER_MARGIN } from "constants/sizes"
+import { TEXT_WRAPPER_MARGIN } from "constants/sizes"
 import useWindowResize from "hooks/useWindowResize"
 
 import styles from "./TextField.module.scss"
+import { useAppSelector } from "hooks/storeHooks"
 
 const TextField: FC<TextFieldProps> = ({ text, timer }) => {
+  const storeValues = useAppSelector((state) => state.settings.font)
+
+  const textCaretPosition = () =>
+    text.caretPosition(storeValues.symbolWidth, storeValues.symbolHeight)
+
+  const textCountOfRows = () =>
+    text.countOfRows(storeValues.symbolWidth, storeValues.symbolHeight)
+
+  const textCurrentRow = () =>
+    text.currentRow(storeValues.symbolWidth, storeValues.symbolHeight)
+
   const { windowWidth } = useWindowResize()
   const [caretPosition, setCaretPosition] = useState({
     left: 0,
@@ -20,7 +32,7 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
   })
 
   useEffect(() => {
-    setCaretPosition(text.caretPosition())
+    setCaretPosition(textCaretPosition())
   }, [windowWidth])
 
   const createWords = () => {
@@ -41,29 +53,29 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
         if (text.next(true)) timer.endTimer()
       }
 
-      setCaretPosition(text.caretPosition())
+      setCaretPosition(textCaretPosition())
     }
   }
 
   const style = { bottom: `${caretPosition.top}` }
 
   if (
-    text.countOfRows() > 3 &&
-    text.currentRow() &&
-    text.currentRow() !== text.countOfRows() - 1
+    textCountOfRows() > 3 &&
+    textCurrentRow() &&
+    textCurrentRow() !== textCountOfRows() - 1
   ) {
-    style.bottom = `${caretPosition.top - SYMBOL_HEIGHT}px`
-  } else if (
-    text.countOfRows() - text.currentRow() === 3 &&
-    text.currentRow()
-  ) {
-    style.bottom = `${caretPosition.top - 2 * SYMBOL_HEIGHT}px`
+    style.bottom = `${caretPosition.top - storeValues.symbolHeight}px`
+  } else if (textCountOfRows() - textCurrentRow() === 3 && textCurrentRow()) {
+    style.bottom = `${caretPosition.top - 2 * storeValues.symbolHeight}px`
   }
 
   return (
     <div
       className={styles.container}
-      style={{ width: `${windowWidth - TEXT_WRAPPER_MARGIN * 2}px` }}
+      style={{
+        width: `${windowWidth - TEXT_WRAPPER_MARGIN * 2}px`,
+        maxHeight: storeValues.symbolHeight * 3 + "px",
+      }}
     >
       <div
         className={styles.field}
