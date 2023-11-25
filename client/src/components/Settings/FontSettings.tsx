@@ -27,8 +27,8 @@ const FontSettings = forwardRef<HTMLSpanElement>(
         <RangeInput
           dispatch={(value) => dispatch(setFontSize(value))}
           initialValue={storeValues.fontSize}
-          min={0}
-          max={100}
+          min={24}
+          max={40}
           step={2}
         />
         <Dropdown

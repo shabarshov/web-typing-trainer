@@ -11,6 +11,8 @@ import colors from "styles/colors.module.scss"
 const RangeInput: FC<RangeInputProps> = ({
   initialValue,
   dispatch,
+  min = 0,
+  max = 100,
   ...props
 }) => {
   const [value, setValue] = useState<string>(initialValue)
@@ -20,7 +22,13 @@ const RangeInput: FC<RangeInputProps> = ({
     if (rangeRef.current) {
       const value = rangeRef.current.valueAsNumber
 
-      rangeRef.current.style.background = `linear-gradient(to right, ${colors.white} ${value}%, ${colors.whiteGrey} ${value}%)`
+      const minMaxRatio = 100 / (max - min)
+
+      rangeRef.current.style.background = `linear-gradient(to right, ${
+        colors.white
+      } ${(value - min) * minMaxRatio}%, ${colors.whiteGrey} ${
+        (value - min) * minMaxRatio
+      }%)`
     }
   }, [value])
 
@@ -37,6 +45,8 @@ const RangeInput: FC<RangeInputProps> = ({
         type="range"
         value={value}
         onChange={onChangeHandler}
+        min={min}
+        max={max}
         {...props}
       />
       <Text className={styles.text} value={value} />

@@ -1,11 +1,16 @@
 enum FontFamily {
-  monospace,
-  "serif mono",
+  "Default",
+  "Oxygen Mono",
+  "Source Code Pro",
+  "Ubuntu Mono",
+  "Roboto Mono",
 }
 
 interface IFont {
   fontSize: string
   fontFamily: string
+  symbolHeight: number
+  symbolWidth: number
 }
 
 export { FontFamily }

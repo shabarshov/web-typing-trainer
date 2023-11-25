@@ -1,22 +1,22 @@
 import getTextRowLengths from "./getTextRowLengths"
 import type { ICaretPosition, IText } from "./types"
 
-import { SYMBOL_HEIGHT, SYMBOL_WIDTH } from "constants/sizes"
-
 const calculateCaretPosition = (
   text: IText,
   countOfComplitedSymbols: number,
+  symbolWidth: number,
+  symbolHeight: number,
 ): { caretPosition: ICaretPosition; currentRow: number } => {
-  const rowLengths = getTextRowLengths(text.text)
+  const rowLengths = getTextRowLengths(text.text, symbolWidth)
 
   let xStep = 0
   let yStep = 0
   let rowCounter = 0
 
   for (let i = 0; i < countOfComplitedSymbols; i++) {
-    xStep += SYMBOL_WIDTH
+    xStep += symbolWidth
     if (xStep >= rowLengths[rowCounter]) {
-      yStep += SYMBOL_HEIGHT
+      yStep += symbolHeight
       xStep = 0
       rowCounter += 1
     }

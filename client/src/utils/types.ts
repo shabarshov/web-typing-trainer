@@ -17,12 +17,12 @@ interface ITextWrapper {
   prev: () => void
   value: () => IText
   currentSymbol: () => string
-  caretPosition: () => ICaretPosition
+  caretPosition: (symbolWidth: number, symbolHeight: number) => ICaretPosition
   countOfIncorrect: () => number
   countOfCorrect: () => number
   textLength: () => number
-  currentRow: () => number
-  countOfRows: () => number
+  currentRow: (symbolWidth: number, symbolHeight: number) => number
+  countOfRows: (symbolWidth: number, symbolHeight: number) => number
   countOfComplitedSymbols: () => number
 }
 

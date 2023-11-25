@@ -105,16 +105,29 @@ const textWrapper = (initialText: string): ITextWrapper => {
     return textLength
   }
 
-  const getCaretPosition = (): ICaretPosition => {
-    return calculateCaretPosition(text, countOfComplitedSymbols).caretPosition
+  const getCaretPosition = (
+    symbolWidth: number,
+    symbolHeight: number,
+  ): ICaretPosition => {
+    return calculateCaretPosition(
+      text,
+      countOfComplitedSymbols,
+      symbolWidth,
+      symbolHeight,
+    ).caretPosition
   }
 
-  const getCurrentRow = (): number => {
-    return calculateCaretPosition(text, countOfComplitedSymbols).currentRow
+  const getCurrentRow = (symbolWidth: number, symbolHeight: number): number => {
+    return calculateCaretPosition(
+      text,
+      countOfComplitedSymbols,
+      symbolWidth,
+      symbolHeight,
+    ).currentRow
   }
 
-  const getCountOfRows = (): number => {
-    return getTextRowLengths(text.text).length
+  const getCountOfRows = (symbolWidth: number): number => {
+    return getTextRowLengths(text.text, symbolWidth).length
   }
 
   const getCountOfComplitedSymbols = (): number => {
