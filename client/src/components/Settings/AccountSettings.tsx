@@ -60,7 +60,7 @@ const AccountSettings = forwardRef<HTMLSpanElement>(
         <Text
           ref={ref}
           className={styles.dangerText}
-          value={language === "eng" ? "Аккаунт" : "Аккаунт"}
+          value={language === "eng" ? "Account" : "Аккаунт"}
         />
       </div>
     )
