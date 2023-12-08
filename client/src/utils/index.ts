@@ -7,6 +7,7 @@ import textWrapper from "./textWrapper"
 import calculateCaretPosition from "./calculateCaretPosition"
 import getEnumValues from "./getEnumValues"
 import localStorageManager from "./localStorageManager"
+import getCurrentLanguageValue from "./getCurrentLanguageValue"
 
 export {
   createCounter,
@@ -18,4 +19,5 @@ export {
   calculateCaretPosition,
   getEnumValues,
   localStorageManager,
+  getCurrentLanguageValue,
 }

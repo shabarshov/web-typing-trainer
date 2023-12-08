@@ -10,10 +10,15 @@ import AuthInput from "components/AuthInput/AuthInput"
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
 import styles from "./AuthPage.module.scss"
+import { useAppSelector } from "hooks/storeHooks"
 
 const AuthPage: FC = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(
     window.location.href.split("/").pop() === "signIn",
+  )
+
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
   )
 
   return (
@@ -24,26 +29,51 @@ const AuthPage: FC = () => {
         </NavLink>
         <Text
           className={styles.title}
-          value={isSignIn ? "Authorization" : "Registration"}
+          value={
+            isSignIn
+              ? language === "eng"
+                ? "Authorization"
+                : "Авторизация"
+              : language === "eng"
+              ? "Registration"
+              : "Регистрация"
+          }
         />
 
-        <AuthInput title="username" />
-        <AuthInput title="password" type="password" />
+        <AuthInput title={language === "eng" ? "username" : "логин"} />
+        <AuthInput
+          title={language === "eng" ? "password" : "пароль"}
+          type="password"
+        />
         {!isSignIn ? (
-          <AuthInput title="confirm password" type="password" />
+          <AuthInput
+            title={
+              language === "eng" ? "confirm password" : "подтвердите пароль"
+            }
+            type="password"
+          />
         ) : (
           <></>
         )}
 
         <Button className={styles.submitBtn}>
-          <Text className={styles.text} value="Submit" />
+          <Text
+            className={styles.text}
+            value={language === "eng" ? "Submit" : "Продолжить"}
+          />
         </Button>
 
         <div>
           <Text
             className={styles.text}
             value={
-              isSignIn ? "Don't have an account? " : "Already have an account? "
+              isSignIn
+                ? language === "eng"
+                  ? "Don't have an account? "
+                  : "У вас ещё нет аккаунта? "
+                : language === "eng"
+                ? "Already have an account? "
+                : "У вас уже есть аккаунт? "
             }
           />
           <Button onClick={() => setIsSignIn(!isSignIn)}>
@@ -51,7 +81,13 @@ const AuthPage: FC = () => {
               className={styles.switchLink}
               to={isSignIn ? "../signUp" : "../signIn"}
             >
-              {isSignIn ? "Sign Up" : "Sign In"}
+              {isSignIn
+                ? language === "eng"
+                  ? "Sign Up"
+                  : "Регистрация"
+                : language === "eng"
+                ? "Sign In"
+                : "Войти"}
             </NavLink>
           </Button>
         </div>

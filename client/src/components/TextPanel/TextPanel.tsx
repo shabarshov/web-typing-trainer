@@ -4,20 +4,26 @@ import type { TextPanelProps } from "./TextPanelProps"
 
 import PanelButton from "components/PanelButton/PanelButton"
 
+import { useAppSelector } from "hooks/storeHooks"
+
 import styles from "./TextPanel.module.scss"
 
 const TextPanel: FC<TextPanelProps> = ({ setTextLength, setTextType }) => {
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
   return (
     <div className={styles.container}>
       <PanelButton
         onClick={() => setTextType("text")}
         className={styles.leftPanelButton}
-        value="Text"
+        value={language === "eng" ? "Text" : "Текст"}
       />
       <PanelButton
         onClick={() => setTextType("words")}
         className={styles.leftPanelButton}
-        value="Words"
+        value={language === "eng" ? "Words" : "Слова"}
       />
 
       <div className={styles.separator} />

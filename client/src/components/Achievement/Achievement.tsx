@@ -6,11 +6,17 @@ import type { AchievementProps } from "./AchievementProps"
 import { Card, Text } from "components/UI"
 import { AchievementIcon } from "assets/svg/Profile"
 
+import { useAppSelector } from "hooks/storeHooks"
+
 import cn from "classnames"
 
 import styles from "./Achievement.module.scss"
 
 const Achievement: FC<AchievementProps> = ({ isPassed }) => {
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
   return (
     <Card
       className={cn(
@@ -26,7 +32,7 @@ const Achievement: FC<AchievementProps> = ({ isPassed }) => {
           styles.title,
           isPassed ? styles.passedTitle : styles.notPassedTitle,
         )}
-        value="Achieve title"
+        value={language === "eng" ? "Achieve title" : "Название ачивки"}
       />
     </Card>
   )

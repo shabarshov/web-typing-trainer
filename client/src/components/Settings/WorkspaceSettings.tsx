@@ -2,48 +2,42 @@ import React, { forwardRef } from "react"
 
 import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
-import Checkbox from "components/Checkbox/Checkbox"
 import WorkspaceIcon from "assets/svg/Settings/WorkspaceIcon"
 
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
-import {
-  setShowTimer,
-  setShowCountOfMistakes,
-  setInterfaceLanguage,
-  InterfaceLanguage,
-} from "store"
+import { setInterfaceLanguage, InterfaceLanguage } from "store"
 
-import { getEnumValues } from "utils"
+import { getEnumValues, getCurrentLanguageValue } from "utils"
 
 import styles from "./styles.module.scss"
 
 const WorkspaceSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
     const storeValues = useAppSelector((state) => state.settings.workspace)
+
+    const language = useAppSelector(
+      (state) => state.settings.workspace.interfaceLanguage,
+    )
+
     const dispatch = useAppDispatch()
 
     return (
       <div className={styles.container}>
         <div className={styles.title}>
           <WorkspaceIcon className={styles.icon} />
-          <Text ref={ref} className={styles.title} value="Workspace" />
+          <Text
+            ref={ref}
+            className={styles.title}
+            value={language === "eng" ? "Language" : "Язык"}
+          />
         </div>
-        <Checkbox
-          dispatch={() => dispatch(setShowTimer(!storeValues.showTimer))}
-          textValue="Show timer"
-          initialValue={storeValues.showTimer}
-        />
-        <Checkbox
-          dispatch={() =>
-            dispatch(setShowCountOfMistakes(!storeValues.showCountOfMistakes))
-          }
-          textValue="Show count of mistakes"
-          initialValue={storeValues.showCountOfMistakes}
-        />
         <Dropdown
           dispatch={(value) => dispatch(setInterfaceLanguage(value))}
-          initialTitle={storeValues.interfaceLanguage}
+          initialTitle={getCurrentLanguageValue(
+            storeValues.interfaceLanguage,
+            language,
+          )}
         >
           {getEnumValues(InterfaceLanguage).map((value, index) => (
             <Text className={styles.text} key={index} value={value} />

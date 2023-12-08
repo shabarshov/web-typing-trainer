@@ -14,13 +14,17 @@ const PersonalInfo = () => {
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
   const onClickHandler = () => {
     setIsVisible(true)
   }
 
   return (
     <div className={styles.container}>
-      <Tooltip value="Change avatar">
+      <Tooltip value={language === "eng" ? "Change avatar" : "Изменить аватар"}>
         <Button className={styles.button} onClick={onClickHandler}>
           {avatar.src ? (
             <img src={avatar.src} className={styles.avatarIcon} />

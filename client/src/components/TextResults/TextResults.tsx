@@ -8,19 +8,35 @@ import Tooltip from "components/Tooltip/Tooltip"
 import Time from "components/Time/Time"
 import { Text } from "components/UI"
 
+import { useAppSelector } from "hooks/storeHooks"
+
 import styles from "./TextResults.module.scss"
 
 const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
   return (
     <>
       {timer.timerValue ? (
         <div className={styles.results}>
-          <TitledCard className={styles.card} title="Time">
+          <TitledCard
+            className={styles.card}
+            title={language === "eng" ? "Time" : "Время"}
+          >
             <Time value={timer.timerValue} />
           </TitledCard>
-          <TitledCard className={styles.card} title="Characters">
+          <TitledCard
+            className={styles.card}
+            title={language === "eng" ? "Characters" : "Символы"}
+          >
             <Tooltip
-              value={`${text.countOfCorrect()} Correct / ${text.countOfIncorrect()} Incorrect`}
+              value={`${text.countOfCorrect()} ${
+                language === "eng" ? "Correct" : "Корректно"
+              } / ${text.countOfIncorrect()} ${
+                language === "eng" ? "Incorrect" : "Некорректно"
+              }`}
               className={styles.tooltip}
             >
               <Text
@@ -29,8 +45,18 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
               />
             </Tooltip>
           </TitledCard>
-          <TitledCard className={styles.card} title="Speed">
-            <Tooltip className={styles.tooltip} value="Characters per minute">
+          <TitledCard
+            className={styles.card}
+            title={language === "eng" ? "Speed" : "Скорость"}
+          >
+            <Tooltip
+              className={styles.tooltip}
+              value={
+                language === "eng"
+                  ? "Characters per minute"
+                  : "Символов в минуту"
+              }
+            >
               <Text
                 className={styles.text}
                 value={`${

@@ -9,8 +9,13 @@ import ToolTip from "components/Tooltip/Tooltip"
 import cn from "classnames"
 
 import styles from "./NavBar.module.scss"
+import { useAppSelector } from "hooks/storeHooks"
 
 const NavBar: FC = () => {
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
   const className = ({ isActive }: { isActive: boolean }): string => {
     return cn(isActive ? styles.active : "", styles.icon)
   }
@@ -20,28 +25,28 @@ const NavBar: FC = () => {
       <div className={styles.left}>
         <Icons.LogoIcon className={styles.logo} />
         <NavLink to="/" className={className}>
-          <ToolTip value="Home">
+          <ToolTip value={language === "eng" ? "Home" : "Домой"}>
             <Icons.HomeIcon />
           </ToolTip>
         </NavLink>
         <NavLink to="/statistic" className={className}>
-          <ToolTip value="Rating">
+          <ToolTip value={language === "eng" ? "Rating" : "Рейтинг"}>
             <Icons.RatingIcon />
           </ToolTip>
         </NavLink>
         <NavLink to="/settings" className={className}>
-          <ToolTip value="Settings">
+          <ToolTip value={language === "eng" ? "Settings" : "Настройки"}>
             <Icons.SettingsIcon className={styles.gearIcon} />
           </ToolTip>
         </NavLink>
       </div>
       <div className={styles.right}>
         <NavLink to="/profile" className={className}>
-          <ToolTip value="Profile">
+          <ToolTip value={language === "eng" ? "Profile" : "Профиль"}>
             <Icons.ProfileIcon />
           </ToolTip>
         </NavLink>
-        <ToolTip value="Sign out">
+        <ToolTip value={language === "eng" ? "Sign out" : "Выйти"}>
           <Icons.SignOutIcon className={styles.icon} />
         </ToolTip>
       </div>

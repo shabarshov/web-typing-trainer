@@ -14,16 +14,25 @@ import styles from "./styles.module.scss"
 const SoundsSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
     const storeValues = useAppSelector((state) => state.settings.sounds)
+
+    const language = useAppSelector(
+      (state) => state.settings.workspace.interfaceLanguage,
+    )
+
     const dispatch = useAppDispatch()
 
     return (
       <div className={styles.container}>
         <div className={styles.title}>
           <SoundsIcon className={styles.icon} />
-          <Text ref={ref} className={styles.title} value="Sounds" />
+          <Text
+            ref={ref}
+            className={styles.title}
+            value={language === "eng" ? "Sounds" : "Звук"}
+          />
         </div>
         <Checkbox
-          textValue="Enable sounds"
+          textValue={language === "eng" ? "Enable sounds" : "Включить звук"}
           dispatch={() => dispatch(setSoundEnable(!storeValues.soundEnable))}
           initialValue={storeValues.soundEnable}
         />
