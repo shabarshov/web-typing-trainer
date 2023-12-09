@@ -1,21 +1,33 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import type { FC } from "react"
 
+import { useMutation } from "react-query"
 import { NavLink } from "react-router-dom"
+import { useAppSelector } from "hooks/storeHooks"
 
 import { Modal, Text, Button } from "components/UI"
 import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 
+import { fetchUser } from "utils"
+
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
 import styles from "./AuthPage.module.scss"
-import { useAppSelector } from "hooks/storeHooks"
 
 const AuthPage: FC = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(
     window.location.href.split("/").pop() === "signIn",
   )
+
+  const [login, setLogin] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [confirmPassword, setConfirmPassword] = useState<string>("")
+
+  const { mutate } = useMutation({
+    mutationFn: () =>
+      fetchUser(isSignIn ? "signIn" : "signUp", login, password),
+  })
 
   const language = useAppSelector(
     (store) => store.settings.workspace.interfaceLanguage,
@@ -40,10 +52,16 @@ const AuthPage: FC = () => {
           }
         />
 
-        <AuthInput title={language === "eng" ? "username" : "логин"} />
+        <AuthInput
+          title={language === "eng" ? "username" : "логин"}
+          state={login}
+          setState={setLogin}
+        />
         <AuthInput
           title={language === "eng" ? "password" : "пароль"}
           type="password"
+          state={password}
+          setState={setPassword}
         />
         {!isSignIn ? (
           <AuthInput
@@ -51,12 +69,14 @@ const AuthPage: FC = () => {
               language === "eng" ? "confirm password" : "подтвердите пароль"
             }
             type="password"
+            state={confirmPassword}
+            setState={setConfirmPassword}
           />
         ) : (
           <></>
         )}
 
-        <Button className={styles.submitBtn}>
+        <Button className={styles.submitBtn} onClick={() => mutate()}>
           <Text
             className={styles.text}
             value={language === "eng" ? "Submit" : "Продолжить"}
