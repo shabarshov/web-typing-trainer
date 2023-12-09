@@ -9,6 +9,8 @@ import getEnumValues from "./getEnumValues"
 import localStorageManager from "./localStorageManager"
 import getCurrentLanguageValue from "./getCurrentLanguageValue"
 
+import fetchUser from "./http/auth"
+
 export {
   createCounter,
   stringToWords,
@@ -20,4 +22,6 @@ export {
   getEnumValues,
   localStorageManager,
   getCurrentLanguageValue,
+  //
+  fetchUser,
 }
