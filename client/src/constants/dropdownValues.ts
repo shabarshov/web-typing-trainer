@@ -1,6 +1,6 @@
 const ruValues = new Map<string, string>([
   ["ru", "Русский"],
-  ["eng", "English"],
+  ["en", "English"],
   ["white", "Светлая"],
   ["black", "Тёмная"],
   ["Default", "Default"],
@@ -13,9 +13,9 @@ const ruValues = new Map<string, string>([
   ["insert", "Выделение"],
 ])
 
-const engValues = new Map<string, string>([
+const enValues = new Map<string, string>([
   ["ru", "Русский"],
-  ["eng", "English"],
+  ["en", "English"],
   ["white", "White"],
   ["black", "Black"],
   ["Default", "Default"],
@@ -31,6 +31,6 @@ const engValues = new Map<string, string>([
 const languageValues = new Map<string, Map<string, string>>()
 
 languageValues.set("ru", ruValues)
-languageValues.set("eng", engValues)
+languageValues.set("en", enValues)
 
 export default languageValues

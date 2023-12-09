@@ -4,7 +4,7 @@ const getCurrentLanguageValue = (
   initialValue: string,
   language: string,
 ): string => {
-  if (language !== "ru" && language !== "eng") {
+  if (language !== "ru" && language !== "en") {
     return ""
   }
 

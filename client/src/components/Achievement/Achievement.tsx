@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useTransition } from "react"
 import type { FC } from "react"
 
 import type { AchievementProps } from "./AchievementProps"
@@ -6,16 +6,14 @@ import type { AchievementProps } from "./AchievementProps"
 import { Card, Text } from "components/UI"
 import { AchievementIcon } from "assets/svg/Profile"
 
-import { useAppSelector } from "hooks/storeHooks"
+import { useTranslation } from "react-i18next"
 
 import cn from "classnames"
 
 import styles from "./Achievement.module.scss"
 
 const Achievement: FC<AchievementProps> = ({ isPassed }) => {
-  const language = useAppSelector(
-    (store) => store.settings.workspace.interfaceLanguage,
-  )
+  const { t } = useTranslation()
 
   return (
     <Card
@@ -32,7 +30,7 @@ const Achievement: FC<AchievementProps> = ({ isPassed }) => {
           styles.title,
           isPassed ? styles.passedTitle : styles.notPassedTitle,
         )}
-        value={language === "eng" ? "Achieve title" : "Название ачивки"}
+        value={t("Achieve title")}
       />
     </Card>
   )

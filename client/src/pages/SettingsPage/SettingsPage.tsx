@@ -37,7 +37,7 @@ const SettingsPage: FC = () => {
       <SettingsNavigation
         scrollHandler={scrollHandler}
         items={
-          language === "eng"
+          language === "en"
             ? ["Language", "Theme", "Font", "Caret", "Sounds", "Account"]
             : ["Язык", "Тема", "Шрифт", "Каретка", "Звук", "Аккаунт"]
         }

@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
@@ -15,6 +16,7 @@ import styles from "./styles.module.scss"
 
 const CaretSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
+    const { t } = useTranslation()
     const storeValues = useAppSelector((state) => state.settings.caret)
 
     const language = useAppSelector(
@@ -27,15 +29,11 @@ const CaretSettings = forwardRef<HTMLSpanElement>(
       <div className={styles.container}>
         <div className={styles.title}>
           <CaretIcon className={styles.icon} />
-          <Text
-            ref={ref}
-            className={styles.title}
-            value={language === "eng" ? "Caret" : "Каретка"}
-          />
+          <Text ref={ref} className={styles.title} value={t("Caret")} />
         </div>
         <Checkbox
           dispatch={() => dispatch(setBlinking(!storeValues.blinking))}
-          textValue={language === "eng" ? "Blinking" : "Мерцание"}
+          textValue={t("Blinking")}
           initialValue={storeValues.blinking}
         />
         <Dropdown

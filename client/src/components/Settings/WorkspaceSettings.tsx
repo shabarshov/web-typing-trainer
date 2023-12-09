@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
@@ -20,17 +21,15 @@ const WorkspaceSettings = forwardRef<HTMLSpanElement>(
       (state) => state.settings.workspace.interfaceLanguage,
     )
 
+    const { t } = useTranslation()
+
     const dispatch = useAppDispatch()
 
     return (
       <div className={styles.container}>
         <div className={styles.title}>
           <WorkspaceIcon className={styles.icon} />
-          <Text
-            ref={ref}
-            className={styles.title}
-            value={language === "eng" ? "Language" : "Язык"}
-          />
+          <Text ref={ref} className={styles.title} value={t("Language")} />
         </div>
         <Dropdown
           dispatch={(value) => dispatch(setInterfaceLanguage(value))}

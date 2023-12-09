@@ -1,5 +1,6 @@
 import React from "react"
 import type { FC } from "react"
+import { useTranslation } from "react-i18next"
 
 import type { TextResultsProps } from "./TextResultsProps"
 
@@ -8,35 +9,23 @@ import Tooltip from "components/Tooltip/Tooltip"
 import Time from "components/Time/Time"
 import { Text } from "components/UI"
 
-import { useAppSelector } from "hooks/storeHooks"
-
 import styles from "./TextResults.module.scss"
 
 const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
-  const language = useAppSelector(
-    (store) => store.settings.workspace.interfaceLanguage,
-  )
+  const { t } = useTranslation()
 
   return (
     <>
       {timer.timerValue ? (
         <div className={styles.results}>
-          <TitledCard
-            className={styles.card}
-            title={language === "eng" ? "Time" : "Время"}
-          >
+          <TitledCard className={styles.card} title={t("Time")}>
             <Time value={timer.timerValue} />
           </TitledCard>
-          <TitledCard
-            className={styles.card}
-            title={language === "eng" ? "Characters" : "Символы"}
-          >
+          <TitledCard className={styles.card} title={t("Characters")}>
             <Tooltip
-              value={`${text.countOfCorrect()} ${
-                language === "eng" ? "Correct" : "Корректно"
-              } / ${text.countOfIncorrect()} ${
-                language === "eng" ? "Incorrect" : "Некорректно"
-              }`}
+              value={`${text.countOfCorrect()} ${t(
+                "Correct",
+              )} / ${text.countOfIncorrect()} ${t("Incorrect")}`}
               className={styles.tooltip}
             >
               <Text
@@ -45,17 +34,10 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
               />
             </Tooltip>
           </TitledCard>
-          <TitledCard
-            className={styles.card}
-            title={language === "eng" ? "Speed" : "Скорость"}
-          >
+          <TitledCard className={styles.card} title={t("Speed")}>
             <Tooltip
               className={styles.tooltip}
-              value={
-                language === "eng"
-                  ? "Characters per minute"
-                  : "Символов в минуту"
-              }
+              value={t("Characters per minute")}
             >
               <Text
                 className={styles.text}

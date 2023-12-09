@@ -7,23 +7,22 @@ import PanelButton from "components/PanelButton/PanelButton"
 import { useAppSelector } from "hooks/storeHooks"
 
 import styles from "./TextPanel.module.scss"
+import { useTranslation } from "react-i18next"
 
 const TextPanel: FC<TextPanelProps> = ({ setTextLength, setTextType }) => {
-  const language = useAppSelector(
-    (store) => store.settings.workspace.interfaceLanguage,
-  )
+  const { t } = useTranslation()
 
   return (
     <div className={styles.container}>
       <PanelButton
         onClick={() => setTextType("text")}
         className={styles.leftPanelButton}
-        value={language === "eng" ? "Text" : "Текст"}
+        value={t("Text")}
       />
       <PanelButton
         onClick={() => setTextType("words")}
         className={styles.leftPanelButton}
-        value={language === "eng" ? "Words" : "Слова"}
+        value={t("Words")}
       />
 
       <div className={styles.separator} />

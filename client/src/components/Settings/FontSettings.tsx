@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { Text } from "components/UI"
 import Dropdown from "components/Dropdown/Dropdown"
@@ -15,6 +16,7 @@ import styles from "./styles.module.scss"
 
 const FontSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
+    const { t } = useTranslation()
     const storeValues = useAppSelector((state) => state.settings.font)
 
     const language = useAppSelector(
@@ -27,11 +29,7 @@ const FontSettings = forwardRef<HTMLSpanElement>(
       <div className={styles.container}>
         <div className={styles.title}>
           <FontIcon className={styles.icon} />
-          <Text
-            ref={ref}
-            className={styles.title}
-            value={language === "eng" ? "Font" : "Шрифт"}
-          />
+          <Text ref={ref} className={styles.title} value={t("Font")} />
         </div>
         <RangeInput
           dispatch={(value) => dispatch(setFontSize(value))}

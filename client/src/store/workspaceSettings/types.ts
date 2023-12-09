@@ -1,6 +1,6 @@
 enum InterfaceLanguage {
   ru,
-  eng,
+  en,
 }
 
 interface IWorkspace {

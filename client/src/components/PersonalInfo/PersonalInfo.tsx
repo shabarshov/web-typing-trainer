@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 import Tooltip from "components/Tooltip/Tooltip"
 import { Text, Button } from "components/UI"
@@ -10,13 +11,10 @@ import { useAppSelector } from "hooks/storeHooks"
 import styles from "./PersonalInfo.module.scss"
 
 const PersonalInfo = () => {
+  const { t } = useTranslation()
   const avatar = useAppSelector((state) => state.avatar)
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
-
-  const language = useAppSelector(
-    (store) => store.settings.workspace.interfaceLanguage,
-  )
 
   const onClickHandler = () => {
     setIsVisible(true)
@@ -24,7 +22,7 @@ const PersonalInfo = () => {
 
   return (
     <div className={styles.container}>
-      <Tooltip value={language === "eng" ? "Change avatar" : "Изменить аватар"}>
+      <Tooltip value={t("Change avatar")}>
         <Button className={styles.button} onClick={onClickHandler}>
           {avatar.src ? (
             <img src={avatar.src} className={styles.avatarIcon} />
