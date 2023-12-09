@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { QueryClient, QueryClientProvider } from "react-query"
 
 import { Provider } from "react-redux"
 import store from "store/store"
@@ -11,10 +12,13 @@ import App from "./components/App/App"
 import "index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+const queryClient = new QueryClient()
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </BrowserRouter>
   </Provider>,
 )
