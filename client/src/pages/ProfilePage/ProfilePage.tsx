@@ -9,10 +9,12 @@ import PersonalAchievements from "components/PersonalAchievements/PersonalAchiev
 
 import styles from "./ProfilePage.module.scss"
 import { useQuery } from "react-query"
-import { useAppSelector } from "hooks/storeHooks"
+import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
+import { setUsername } from "store"
 
 const ProfilePage: FC = () => {
   const userId = useAppSelector((store) => store.settings.account.userId)
+  const dispatch = useAppDispatch()
 
   const [login, setLogin] = useState<string>("")
   const [registrationDate, setRegistrationDate] = useState<string>("")
@@ -29,6 +31,7 @@ const ProfilePage: FC = () => {
       setRegistrationDate(res.date_registration)
       setAverageSpeed(res.average_speed)
       setMaxSpeed(res.max_speed)
+      dispatch(setUsername(res.login))
     },
     { refetchOnWindowFocus: false, enabled: !!userId },
   )

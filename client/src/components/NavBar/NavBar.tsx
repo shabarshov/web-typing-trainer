@@ -9,7 +9,7 @@ import ToolTip from "components/Tooltip/Tooltip"
 import { Button } from "components/UI"
 
 import { useAppDispatch } from "hooks/storeHooks"
-import { setUserId } from "store"
+import { setPassword, setUserId, setUsername } from "store"
 
 import cn from "classnames"
 
@@ -53,6 +53,8 @@ const NavBar: FC = () => {
         <Button
           onClick={() => {
             dispatch(setUserId("undefined"))
+            dispatch(setUsername("undefined"))
+            dispatch(setPassword("undefined"))
           }}
         >
           <ToolTip value={t("Sign out")}>

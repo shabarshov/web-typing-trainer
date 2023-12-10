@@ -11,12 +11,12 @@ import CloseIcon from "assets/svg/Auth/CloseIcon"
 import { useMutation } from "react-query"
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
-import { setUserId } from "store"
+import { setUserId, setUsername, setPassword } from "store"
 
 import styles from "./styles.module.scss"
 
 const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
-  const [value, setValue] = useState<string>("")
+  const [currentPassword, setCurrentPassword] = useState<string>("")
   const userId = useAppSelector((store) => store.settings.account.userId)
   const dispatch = useAppDispatch()
 
@@ -26,13 +26,15 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
         method: "DELETE",
         body: JSON.stringify({
           user_id: userId,
-          password: value,
+          password: currentPassword,
         }),
         headers: { "content-type": "application/json" },
       })
 
       if (data.status === 200) {
         dispatch(setUserId("undefined"))
+        dispatch(setUsername("undefined"))
+        dispatch(setPassword("undefined"))
         setIsVisible(false)
       }
     },
@@ -43,6 +45,11 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const deleteClickHandler = () => {
+    if (!currentPassword) {
+      console.log("the password field should not be empty")
+      return
+    }
+
     mutate()
   }
 
@@ -62,8 +69,8 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
 
         <AuthInput
           title={"password"}
-          state={value}
-          setState={setValue}
+          state={currentPassword}
+          setState={setCurrentPassword}
           type="password"
         />
 

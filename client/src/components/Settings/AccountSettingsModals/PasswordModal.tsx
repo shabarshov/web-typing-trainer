@@ -20,6 +20,9 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
   const [newPassword, setNewPassword] = useState<string>("")
   const [confirmNewPassword, setConfirmNewPassword] = useState<string>("")
 
+  const currentPassword = useAppSelector(
+    (store) => store.settings.account.password,
+  )
   const userId = useAppSelector((store) => store.settings.account.userId)
   const dispatch = useAppDispatch()
 
@@ -47,6 +50,33 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const passwordClickHandler = () => {
+    if (!oldPassword) {
+      console.log("the old password field should not be empty")
+      return
+    }
+
+    if (!newPassword) {
+      console.log("the new password field should not be empty")
+      return
+    }
+
+    if (newPassword !== confirmNewPassword) {
+      console.log("new passwords don't match")
+      return
+    }
+
+    if (newPassword.length < 5) {
+      console.log("the new password is too short (need 5+ symbols)")
+      return
+    }
+
+    if (newPassword === currentPassword) {
+      console.log(
+        "the new password must be different from the current password",
+      )
+      return
+    }
+
     mutate()
   }
 
