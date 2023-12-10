@@ -7,6 +7,8 @@ import textWrapper from "./textWrapper"
 import calculateCaretPosition from "./calculateCaretPosition"
 import getEnumValues from "./getEnumValues"
 import localStorageManager from "./localStorageManager"
+// http
+import fetchUser from "./http/fetchUser"
 
 export {
   createCounter,
@@ -18,4 +20,6 @@ export {
   calculateCaretPosition,
   getEnumValues,
   localStorageManager,
+  // http
+  fetchUser,
 }

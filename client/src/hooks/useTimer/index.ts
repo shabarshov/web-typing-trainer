@@ -9,11 +9,16 @@ const useTimer = (): IUseTimer => {
     setStartTime(Date.now())
   }
 
+  const restartTimer = (): void => {
+    setStartTime(null)
+    setTimerValue(null)
+  }
+
   const endTimer = (): void => {
     if (startTime) setTimerValue(Date.now() - startTime)
   }
 
-  return { startTime, startTimer, endTimer, timerValue }
+  return { startTime, startTimer, endTimer, timerValue, restartTimer }
 }
 
 export default useTimer

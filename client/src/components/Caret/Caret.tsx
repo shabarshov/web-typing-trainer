@@ -71,8 +71,6 @@ const Caret: FC<CaretProps> = ({ caretPosition }) => {
     ],
   ]).get(caretState.caretType)
 
-  console.log(currentSymbolHeight)
-
   return (
     <div
       className={cn(styles.caret, caretTypeStyle, blinkingStyle)}

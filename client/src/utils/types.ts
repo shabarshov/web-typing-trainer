@@ -24,6 +24,7 @@ interface ITextWrapper {
   currentRow: (symbolWidth: number, symbolHeight: number) => number
   countOfRows: (symbolWidth: number, symbolHeight: number) => number
   countOfComplitedSymbols: () => number
+  isFinished: () => boolean
 }
 
 interface ISymbolPosition {

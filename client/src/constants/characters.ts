@@ -6,7 +6,7 @@ const ENG_CHARACTERS =
 
 const SPECIAL_CHARACTERS = [
   "Backspace",
-  ..." !@#$%^&*()-_=+~`|/,.<>[]{}№;?".split(""),
+  ..." !@#$%^&*()-_=+~`|/,.<>[]{}№;:?".split(""),
   '"',
   "'",
   "\u005C", // this is "\"
