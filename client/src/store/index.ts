@@ -6,7 +6,7 @@ import themeSettingsSlice from "./themeSettings"
 import workspaceSettingsSlice from "./workspaceSettings"
 import avatarSlice from "./avatar"
 
-import { setUsername, setPassword } from "./accountSettings"
+import { setUsername, setPassword, setUserId } from "./accountSettings"
 import { setCaretType, setBlinking } from "./caretSettings"
 import { setFontSize, setFontFamily } from "./fontSettings"
 import { setSoundEnable, setSoundVolume } from "./soundsSettings"
@@ -36,6 +36,7 @@ export {
 export {
   setUsername,
   setPassword,
+  setUserId,
   setCaretType,
   setBlinking,
   setFontSize,

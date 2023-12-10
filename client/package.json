@@ -16,9 +16,11 @@
     "classnames": "^2.3.2",
     "i18next": "^23.7.8",
     "i18next-http-backend": "^2.4.2",
+    "react-i18next": "^13.5.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^13.5.0",
+    "react-query": "^3.39.3",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
@@ -27,7 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --port 3000",
     "build": "react-scripts build",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx src --fix",
     "test": "react-scripts test",
@@ -45,7 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000",
   "devDependencies": {
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",

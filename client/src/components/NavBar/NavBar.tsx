@@ -6,12 +6,17 @@ import { NavLink } from "react-router-dom"
 
 import * as Icons from "assets/svg/Wrapper"
 import ToolTip from "components/Tooltip/Tooltip"
+import { Button } from "components/UI"
+
+import { useAppDispatch } from "hooks/storeHooks"
+import { setUserId } from "store"
 
 import cn from "classnames"
 
 import styles from "./NavBar.module.scss"
 
 const NavBar: FC = () => {
+  const dispatch = useAppDispatch()
   const { t } = useTranslation()
 
   const className = ({ isActive }: { isActive: boolean }): string => {
@@ -44,9 +49,16 @@ const NavBar: FC = () => {
             <Icons.ProfileIcon />
           </ToolTip>
         </NavLink>
-        <ToolTip value={t("Sign out")}>
-          <Icons.SignOutIcon className={styles.icon} />
-        </ToolTip>
+
+        <Button
+          onClick={() => {
+            dispatch(setUserId("undefined"))
+          }}
+        >
+          <ToolTip value={t("Sign out")}>
+            <Icons.SignOutIcon className={styles.icon} />
+          </ToolTip>
+        </Button>
       </div>
     </header>
   )

@@ -134,6 +134,13 @@ const textWrapper = (initialText: string): ITextWrapper => {
     return countOfComplitedSymbols
   }
 
+  const getIsFinished = (): boolean => {
+    if (value().text === "") {
+      return false
+    }
+    return countOfComplitedSymbols === textLength
+  }
+
   return {
     next: next,
     prev: prev,
@@ -146,6 +153,7 @@ const textWrapper = (initialText: string): ITextWrapper => {
     currentRow: getCurrentRow,
     countOfRows: getCountOfRows,
     countOfComplitedSymbols: getCountOfComplitedSymbols,
+    isFinished: getIsFinished,
   } as ITextWrapper
 }
 

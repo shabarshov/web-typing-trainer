@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import type { FC } from "react"
 import { useTranslation } from "react-i18next"
 
 import type { TextResultsProps } from "./TextResultsProps"
+
+import { useAppSelector } from "hooks/storeHooks"
+import { useMutation } from "react-query"
 
 import TitledCard from "components/TitledCard/TitledCard"
 import Tooltip from "components/Tooltip/Tooltip"
@@ -13,6 +16,32 @@ import styles from "./TextResults.module.scss"
 
 const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
   const { t } = useTranslation()
+  const userId = useAppSelector((store) => store.settings.account.userId)
+  const isFinished = text.isFinished()
+
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      const time = timer.timerValue
+
+      if (time) {
+        await fetch("api/", {
+          method: "POST",
+          body: JSON.stringify({
+            user_id: userId,
+            speed: `${Math.floor(60000 / time) * text.countOfCorrect()}`,
+            count_mistakes: `${text.countOfIncorrect()}`,
+          }),
+          headers: { "content-type": "application/json" },
+        })
+      }
+    },
+  })
+
+  useEffect(() => {
+    if (isFinished) {
+      mutate()
+    }
+  }, [isFinished])
 
   return (
     <>

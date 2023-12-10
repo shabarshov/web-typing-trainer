@@ -1,5 +1,8 @@
+import type { FC } from "react"
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
+
+import type { PersonalInfoProps } from "./PersonalInfoProps"
 
 import Tooltip from "components/Tooltip/Tooltip"
 import { Text, Button } from "components/UI"
@@ -10,7 +13,7 @@ import { useAppSelector } from "hooks/storeHooks"
 
 import styles from "./PersonalInfo.module.scss"
 
-const PersonalInfo = () => {
+const PersonalInfo: FC<PersonalInfoProps> = ({ login, registrationDate }) => {
   const { t } = useTranslation()
   const avatar = useAppSelector((state) => state.avatar)
 
@@ -33,8 +36,8 @@ const PersonalInfo = () => {
       </Tooltip>
 
       <div className={styles.personInfo}>
-        <Text className={styles.login} value="VadimAnigilator" />
-        <Text className={styles.email} value="alexey_shabarshov@mail.ru" />
+        <Text className={styles.login} value={login} />
+        <Text className={styles.email} value={"Joined: " + registrationDate} />
       </div>
 
       {isVisible && <UploadAvatar setIsVisible={setIsVisible} />}
