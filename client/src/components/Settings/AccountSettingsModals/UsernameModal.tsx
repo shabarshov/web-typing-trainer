@@ -16,7 +16,11 @@ import styles from "./styles.module.scss"
 const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+
   const userId = useAppSelector((store) => store.settings.account.userId)
+  const currentUsername = useAppSelector(
+    (store) => store.settings.account.username,
+  )
 
   const { mutate } = useMutation({
     mutationFn: async () => {
@@ -41,8 +45,22 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const deleteClickHandler = () => {
-    if (username && password) mutate()
-    else console.log("the login and password fields should not be empty")
+    if (!username) {
+      console.log("the new username field should not be empty")
+    }
+
+    if (!password) {
+      console.log("the password field should not be empty")
+    }
+
+    if (username === currentUsername) {
+      console.log(
+        "the new username must be different from the current username",
+      )
+      return
+    }
+
+    mutate()
   }
 
   return (

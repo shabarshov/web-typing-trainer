@@ -6,15 +6,13 @@ import { NavLink } from "react-router-dom"
 
 import { useTranslation } from "react-i18next"
 import { useAppDispatch } from "hooks/storeHooks"
-import { setUserId } from "store"
+import * as reducers from "store"
 
 import { Modal, Text, Button } from "components/UI"
 import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 
 import { fetchUser } from "utils"
-
-import CloseIcon from "assets/svg/Auth/CloseIcon"
 
 import styles from "./AuthPage.module.scss"
 
@@ -29,7 +27,7 @@ const AuthPage: FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("")
 
   useEffect(() => {
-    dispatch(setUserId("undefined"))
+    dispatch(reducers.setUserId("undefined"))
   }, [])
 
   const { mutate } = useMutation({
@@ -42,24 +40,45 @@ const AuthPage: FC = () => {
 
       const data = await res.json()
       console.log(data.user_id)
-      dispatch(setUserId(`${data.user_id}`))
+      if (data.user_id) {
+        dispatch(reducers.setUserId(`${data.user_id}`))
+        dispatch(reducers.setUsername(login))
+        dispatch(reducers.setPassword(password))
+      }
     },
   })
 
   const buttonClickHandler = () => {
-    if (isSignIn) {
-      if (login && password) mutate()
-      else console.log("the login and password fields should not be empty")
-    } else {
-      if (password.length >= 5 && password === confirmPassword) {
-        if (login) mutate()
-        else console.log("the login field should not be empty")
-      } else if (password !== confirmPassword) {
+    // for both forms
+    if (!login) {
+      console.log("the username field should not be empty")
+      return
+    }
+
+    if (!password) {
+      console.log("the password field should not be empty")
+      return
+    }
+
+    // only for signUp form
+    if (!isSignIn) {
+      if (!confirmPassword) {
+        console.log("the confirm password field should not be empty")
+        return
+      }
+
+      if (password !== confirmPassword) {
         console.log("passwords don't match")
-      } else {
-        console.log("the password is too short")
+        return
+      }
+
+      if (password.length < 5) {
+        console.log("the password is too short (need 5+ symbols)")
+        return
       }
     }
+
+    mutate()
   }
 
   return (
