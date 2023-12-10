@@ -8,6 +8,7 @@ import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
+import { useTranslation } from "react-i18next"
 import { useMutation } from "react-query"
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
@@ -16,6 +17,8 @@ import { setUserId, setUsername, setPassword } from "store"
 import styles from "./styles.module.scss"
 
 const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
+  const { t } = useTranslation()
+
   const [currentPassword, setCurrentPassword] = useState<string>("")
   const userId = useAppSelector((store) => store.settings.account.userId)
   const dispatch = useAppDispatch()
@@ -56,26 +59,21 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
   return (
     <Modal>
       <AuthContainer className={styles.container}>
-        <Text
-          className={styles.title}
-          value={
-            "If you delete your account, you will not be able to restore it. All your progress will be lost!"
-          }
-        />
+        <Text className={styles.title} value={t("deleteWarning")} />
 
         <Button className={styles.closeButton} onClick={closeClickHandler}>
           <CloseIcon />
         </Button>
 
         <AuthInput
-          title={"password"}
+          title={t("Password")}
           state={currentPassword}
           setState={setCurrentPassword}
           type="password"
         />
 
         <Button className={styles.submitBtn} onClick={deleteClickHandler}>
-          <Text className={styles.text} value={"Delete"} />
+          <Text className={styles.text} value={t("Delete")} />
         </Button>
       </AuthContainer>
     </Modal>

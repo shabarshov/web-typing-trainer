@@ -8,6 +8,7 @@ import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
+import { useTranslation } from "react-i18next"
 import { useMutation } from "react-query"
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
@@ -16,6 +17,8 @@ import { setUserId } from "store"
 import styles from "./styles.module.scss"
 
 const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
+  const { t } = useTranslation()
+
   const [oldPassword, setOldPassword] = useState<string>("")
   const [newPassword, setNewPassword] = useState<string>("")
   const [confirmNewPassword, setConfirmNewPassword] = useState<string>("")
@@ -83,40 +86,35 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
   return (
     <Modal>
       <AuthContainer className={styles.container}>
-        <Text
-          className={styles.title}
-          value={
-            "If you change your password, you will have to re-log in. Don't tell anyone your new password!"
-          }
-        />
+        <Text className={styles.title} value={t("passwordWarning")} />
 
         <Button className={styles.closeButton} onClick={closeClickHandler}>
           <CloseIcon />
         </Button>
 
         <AuthInput
-          title={"current password"}
+          title={t("current password")}
           state={oldPassword}
           setState={setOldPassword}
           type="password"
         />
 
         <AuthInput
-          title={"new password"}
+          title={t("new password")}
           state={newPassword}
           setState={setNewPassword}
           type="password"
         />
 
         <AuthInput
-          title={"confirm new password"}
+          title={t("confirm new password")}
           state={confirmNewPassword}
           setState={setConfirmNewPassword}
           type="password"
         />
 
         <Button className={styles.submitBtn} onClick={passwordClickHandler}>
-          <Text className={styles.text} value={"Update"} />
+          <Text className={styles.text} value={t("Update")} />
         </Button>
       </AuthContainer>
     </Modal>

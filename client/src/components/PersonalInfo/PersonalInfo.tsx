@@ -37,7 +37,10 @@ const PersonalInfo: FC<PersonalInfoProps> = ({ login, registrationDate }) => {
 
       <div className={styles.personInfo}>
         <Text className={styles.login} value={login} />
-        <Text className={styles.email} value={"Joined: " + registrationDate} />
+        <Text
+          className={styles.email}
+          value={t("Joined") + ": " + registrationDate}
+        />
       </div>
 
       {isVisible && <UploadAvatar setIsVisible={setIsVisible} />}

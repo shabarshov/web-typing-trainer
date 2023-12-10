@@ -64,7 +64,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
           {preview ? (
             <img src={preview} className={styles.avatarImg} />
           ) : (
-            t("Choose image")
+            <Text className={styles.labelText} value={t("Choose image")} />
           )}
           <Input
             type="file"

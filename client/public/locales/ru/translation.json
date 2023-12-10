@@ -42,5 +42,14 @@
   "Incorrect": "Некорректно",
   "Speed": "Скорость",
   "Characters per minute": "Символов в минуту",
-  "Choose image": "Выберите картинку"
+  "Choose image": "Выберите картинку",
+  "Joined": "Дата регистрации",
+  "text": "текст",
+  "words": "слова",
+  "new username": "новый логин",
+  "Update": "Обновить",
+  "current password": "текущий пароль",
+  "new password": "новый пароль",
+  "confirm new password": "подтвердите новый пароль",
+  "Delete": "Удалить"
 }

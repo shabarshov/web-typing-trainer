@@ -32,10 +32,10 @@ const HomePage: FC = () => {
   useEffect(() => {
     if (data) {
       if (textType === "text") {
-        setText(data.text)
+        setText(data.text || "")
         timer.restartTimer()
       } else if (textType === "words") {
-        setText(data.words)
+        setText(data.words || "")
         timer.restartTimer()
       }
     } else {
