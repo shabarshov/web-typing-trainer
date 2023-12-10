@@ -5,9 +5,6 @@
   justify-content: center;
   align-items: center;
 
-  color: $black;
-  font-size: 35px;
-
   margin-bottom: 40px;
 
   height: 350px;
@@ -78,4 +75,10 @@
       color: $green;
     }
   }
+}
+
+.labelText {
+  color: $black;
+  font-size: 30px;
+  font-weight: 500;
 }

@@ -5,7 +5,6 @@ import ProfileContainer from "components/containers/ProfileContainer/ProfileCont
 
 import PersonalInfo from "components/PersonalInfo/PersonalInfo"
 import ProfileStatistics from "components/ProfileStatistics/ProfileStatistics"
-import PersonalAchievements from "components/PersonalAchievements/PersonalAchievements"
 
 import styles from "./ProfilePage.module.scss"
 import { useQuery } from "react-query"
@@ -42,8 +41,6 @@ const ProfilePage: FC = () => {
         <PersonalInfo login={login} registrationDate={registrationDate} />
         <ProfileStatistics averageSpeed={averageSpeed} maxSpeed={maxSpeed} />
       </div>
-
-      <PersonalAchievements />
     </ProfileContainer>
   )
 }

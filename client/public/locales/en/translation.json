@@ -32,5 +32,14 @@
   "Incorrect": "Incorrect",
   "Speed": "Speed",
   "Characters per minute": "Characters per minute",
-  "Choose image": "Choose image"
+  "Choose image": "Choose image",
+  "Joined": "Joined",
+  "text": "text",
+  "words": "words",
+  "new username": "new username",
+  "Update": "Update",
+  "current password": "current password",
+  "new password": "new password",
+  "confirm new password": "confirm new password",
+  "Delete": "Delete"
 }

@@ -8,12 +8,15 @@ import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 import CloseIcon from "assets/svg/Auth/CloseIcon"
 
+import { useTranslation } from "react-i18next"
 import { useMutation } from "react-query"
 import { useAppSelector } from "hooks/storeHooks"
 
 import styles from "./styles.module.scss"
 
 const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
+  const { t } = useTranslation()
+
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
@@ -66,33 +69,28 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
   return (
     <Modal>
       <AuthContainer className={styles.container}>
-        <Text
-          className={styles.title}
-          value={
-            "After changing your username, your old username will be released and any other user will be able to use it!"
-          }
-        />
+        <Text className={styles.title} value={t("usernameWarning")} />
 
         <Button className={styles.closeButton} onClick={closeClickHandler}>
           <CloseIcon />
         </Button>
 
         <AuthInput
-          title={"new username"}
+          title={t("new username")}
           state={username}
           setState={setUsername}
           type="text"
         />
 
         <AuthInput
-          title={"password"}
+          title={t("Password")}
           state={password}
           setState={setPassword}
           type="password"
         />
 
         <Button className={styles.submitBtn} onClick={deleteClickHandler}>
-          <Text className={styles.text} value={"Update"} />
+          <Text className={styles.text} value={t("Update")} />
         </Button>
       </AuthContainer>
     </Modal>

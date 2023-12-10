@@ -2,6 +2,8 @@ import React from "react"
 import type { FC } from "react"
 import type { TextPanelProps } from "./TextPanelProps"
 
+import { useTranslation } from "react-i18next"
+
 import { Button, Text } from "components/UI"
 
 import styles from "./TextPanel.module.scss"
@@ -14,6 +16,8 @@ const TextPanel: FC<TextPanelProps> = ({
   setTextType,
   setTextLanguage,
 }) => {
+  const { t } = useTranslation()
+
   return (
     <div className={styles.container}>
       <Button className={styles.button} onClick={() => setTextLanguage("en")}>
@@ -35,14 +39,14 @@ const TextPanel: FC<TextPanelProps> = ({
       <Button className={styles.button} onClick={() => setTextType("text")}>
         <Text
           className={textType === "text" ? styles.activeText : styles.text}
-          value={"text"}
+          value={t("text")}
         />
       </Button>
 
       <Button className={styles.button} onClick={() => setTextType("words")}>
         <Text
           className={textType === "words" ? styles.activeText : styles.text}
-          value={"words"}
+          value={t("words")}
         />
       </Button>
 
