@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react"
 import type { FC } from "react"
+import { useTranslation } from "react-i18next"
 
 import type { UploadAvatarProps } from "./UploadAvatarProps"
 
@@ -19,6 +20,7 @@ import styles from "./UploadAvatar.module.scss"
 
 const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
   const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
   const [preview, setPreview] = useState<string>("")
   const containerRef = useRef<HTMLDivElement>(null)
@@ -62,7 +64,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
           {preview ? (
             <img src={preview} className={styles.avatarImg} />
           ) : (
-            "Choose image"
+            t("Choose image")
           )}
           <Input
             type="file"
@@ -73,7 +75,7 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
         </label>
 
         <Button className={styles.avatarBtn} onClick={confirmHandler}>
-          <Text value="Confirm" className={styles.text} />
+          <Text value={t("Submit")} className={styles.text} />
         </Button>
       </UploadAvatarContainer>
     </Modal>

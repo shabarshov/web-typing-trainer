@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import type { FC } from "react"
 
 import type { DropdownProps } from "./DropdownProps"
@@ -6,16 +6,29 @@ import type { DropdownProps } from "./DropdownProps"
 import { Text, Button, UlItem } from "components/UI"
 import DropdownArrowIcon from "assets/svg/Settings/DropdownArrowIcon"
 
+import { useAppSelector } from "hooks/storeHooks"
+
+import useOutsideClick from "hooks/useOutsideClick"
+
+import { getCurrentLanguageValue } from "utils"
+
 import cn from "classnames"
 
 import styles from "./Dropdown.module.scss"
-import useOutsideClick from "hooks/useOutsideClick"
 
 const Dropdown: FC<DropdownProps> = ({ children, initialTitle, dispatch }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [titleValue, setTitleValue] = useState<string>(
     initialTitle || children[0].props.value,
   )
+
+  const language = useAppSelector(
+    (store) => store.settings.workspace.interfaceLanguage,
+  )
+
+  useEffect(() => {
+    setTitleValue(initialTitle || children[0].props.value)
+  }, [language])
 
   const ulRef = useRef<HTMLUListElement | null>(null)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
@@ -27,7 +40,7 @@ const Dropdown: FC<DropdownProps> = ({ children, initialTitle, dispatch }) => {
   }
 
   const setClickHandler = (value: string) => {
-    setTitleValue(value)
+    setTitleValue(getCurrentLanguageValue(value, language))
     setIsOpen(!isOpen)
     if (dispatch) dispatch(value)
   }
@@ -55,7 +68,10 @@ const Dropdown: FC<DropdownProps> = ({ children, initialTitle, dispatch }) => {
               key={index}
               onClick={() => setClickHandler(value.props.value)}
             >
-              {value}
+              <Text
+                value={getCurrentLanguageValue(value.props.value, language)}
+              />
+              {/* {value} */}
             </Button>
           )
         })}

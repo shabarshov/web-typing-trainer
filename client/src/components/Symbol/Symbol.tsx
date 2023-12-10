@@ -8,7 +8,6 @@ import { useAppSelector } from "hooks/storeHooks"
 import colors from "styles/colors.module.scss"
 
 import styles from "./Symbol.module.scss"
-import { DEFAULT_FONT_SIZE, SYMBOL_HEIGHT, SYMBOL_WIDTH } from "constants/sizes"
 
 const Symbol: FC<SymbolProps> = ({ value, state }) => {
   const storeValues = useAppSelector((state) => state.settings.font)

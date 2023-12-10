@@ -13,7 +13,7 @@ export const workspaceSettingsSlice = createSlice({
   initialState: {
     showTimer: getData("showTimer", false),
     showCountOfMistakes: getData("showCountOfMistakes", false),
-    interfaceLanguage: getData("interfaceLanguage", "english"),
+    interfaceLanguage: getData("interfaceLanguage", "en"),
   } as IWorkspace,
 
   reducers: {

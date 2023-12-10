@@ -4,6 +4,7 @@ import type { FC } from "react"
 import { useMutation } from "react-query"
 import { NavLink } from "react-router-dom"
 
+import { useTranslation } from "react-i18next"
 import { useAppDispatch } from "hooks/storeHooks"
 import { setUserId } from "store"
 
@@ -18,6 +19,7 @@ import CloseIcon from "assets/svg/Auth/CloseIcon"
 import styles from "./AuthPage.module.scss"
 
 const AuthPage: FC = () => {
+  const { t } = useTranslation()
   const [isSignIn, setIsSignIn] = useState<boolean>(true)
 
   const dispatch = useAppDispatch()
@@ -56,19 +58,19 @@ const AuthPage: FC = () => {
         </NavLink>
         <Text
           className={styles.title}
-          value={isSignIn ? "Authorization" : "Registration"}
+          value={isSignIn ? t("Authorization") : t("Registration")}
         />
 
-        <AuthInput title={"username"} state={login} setState={setLogin} />
+        <AuthInput title={t("Username")} state={login} setState={setLogin} />
         <AuthInput
-          title={"password"}
+          title={t("Password")}
           type="password"
           state={password}
           setState={setPassword}
         />
         {!isSignIn ? (
           <AuthInput
-            title={"confirm password"}
+            title={t("Confirm password")}
             type="password"
             state={confirmPassword}
             setState={setConfirmPassword}
@@ -78,14 +80,16 @@ const AuthPage: FC = () => {
         )}
 
         <Button className={styles.submitBtn} onClick={buttonClickHandler}>
-          <Text className={styles.text} value={"Submit"} />
+          <Text className={styles.text} value={t("Submit")} />
         </Button>
 
         <div>
           <Text
             className={styles.text}
             value={
-              isSignIn ? "Don't have an account? " : "Already have an account? "
+              isSignIn
+                ? t("Don't have an account? ")
+                : t("Already have an account? ")
             }
           />
           <Button onClick={() => setIsSignIn(!isSignIn)}>
@@ -93,7 +97,7 @@ const AuthPage: FC = () => {
               className={styles.switchLink}
               to={isSignIn ? "../signUp" : "../signIn"}
             >
-              {isSignIn ? "Sign Up" : "Sign In"}
+              {isSignIn ? t("Sign Up") : t("Sign In")}
             </NavLink>
           </Button>
         </div>

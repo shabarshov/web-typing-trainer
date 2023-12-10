@@ -1,17 +1,19 @@
 import React, { useState, forwardRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { Text, Button } from "components/UI"
 
 import * as Modals from "./AccountSettingsModals"
 
 import styles from "./styles.module.scss"
-import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
 const AccountSettings = forwardRef<HTMLSpanElement>(
   function AccountSettings(props, ref) {
-    const storeValues = useAppSelector((state) => state.settings.account)
-    const dispatch = useAppDispatch()
+    const { t } = useTranslation()
 
+    const usernameWarning = t("usernameWarning")
+    const passwordWarning = t("passwordWarning")
+    const deleteWarning = t("deleteWarning")
     const [isDeleteModalVisible, setIsDeleteModalVisible] =
       useState<boolean>(false)
 
@@ -20,15 +22,6 @@ const AccountSettings = forwardRef<HTMLSpanElement>(
 
     const [isUsernameModalVisible, setIsUsernameModalVisible] =
       useState<boolean>(false)
-
-    const usernameWarn =
-      "After changing your username, your old username will be released and any other user will be able to use it!"
-
-    const passwordWarn =
-      "If you change your password, you will have to re-log in. Don't tell anyone your new password!"
-
-    const deleteWarn =
-      "If you delete your account, you will not be able to restore it. All your progress will be lost!"
 
     const deleteOnClickHandler = () => {
       setIsDeleteModalVisible(true)
@@ -45,27 +38,30 @@ const AccountSettings = forwardRef<HTMLSpanElement>(
     return (
       <div className={styles.dangerZoneContainer}>
         <Button className={styles.dangerButton} onClick={deleteOnClickHandler}>
-          <Text className={styles.text} value="Delete account" />
+          <Text className={styles.text} value={t("Delete account")} />
         </Button>
-        <Text className={styles.warningText} value={deleteWarn} />
+
+        <Text className={styles.warningText} value={deleteWarning} />
 
         <Button
           className={styles.dangerButton}
           onClick={passwordOnClickHandler}
         >
-          <Text className={styles.text} value="Change password" />
+          <Text className={styles.text} value={t("Change password")} />
         </Button>
-        <Text className={styles.warningText} value={passwordWarn} />
+
+        <Text className={styles.warningText} value={passwordWarning} />
 
         <Button
           className={styles.dangerButton}
           onClick={usernameOnClickHandler}
         >
-          <Text className={styles.text} value="Change username" />
+          <Text className={styles.text} value={t("Change username")} />
         </Button>
-        <Text className={styles.warningText} value={usernameWarn} />
 
-        <Text ref={ref} className={styles.dangerText} value="Danger zone" />
+        <Text className={styles.warningText} value={usernameWarning} />
+
+        <Text ref={ref} className={styles.dangerText} value={t("Account")} />
 
         {isDeleteModalVisible ? (
           <Modals.DeleteModal setIsVisible={setIsDeleteModalVisible} />

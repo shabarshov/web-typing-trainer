@@ -8,11 +8,17 @@ import * as Settings from "components/Settings"
 
 import useRefs from "hooks/useRefs"
 
+import { useAppSelector } from "hooks/storeHooks"
+
 import styles from "./SettingsPage.module.scss"
 
 const SettingsPage: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const { refs } = useRefs<HTMLSpanElement>(6)
+
+  const language = useAppSelector(
+    (state) => state.settings.workspace.interfaceLanguage,
+  )
 
   const scrollHandler = (index: number) => {
     const ref = refs[index].current
@@ -30,7 +36,11 @@ const SettingsPage: FC = () => {
     <div className={styles.container}>
       <SettingsNavigation
         scrollHandler={scrollHandler}
-        items={["Workspace", "Theme", "Font", "Caret", "Sounds", "Account"]}
+        items={
+          language === "en"
+            ? ["Language", "Theme", "Font", "Caret", "Sounds", "Account"]
+            : ["Язык", "Тема", "Шрифт", "Каретка", "Звук", "Аккаунт"]
+        }
       />
 
       <ScrollableContainer

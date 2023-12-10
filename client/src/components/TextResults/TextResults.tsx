@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import type { FC } from "react"
+import { useTranslation } from "react-i18next"
 
 import type { TextResultsProps } from "./TextResultsProps"
 
@@ -14,6 +15,7 @@ import { Text } from "components/UI"
 import styles from "./TextResults.module.scss"
 
 const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
+  const { t } = useTranslation()
   const userId = useAppSelector((store) => store.settings.account.userId)
   const isFinished = text.isFinished()
 
@@ -45,12 +47,14 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
     <>
       {timer.timerValue ? (
         <div className={styles.results}>
-          <TitledCard className={styles.card} title="Time">
+          <TitledCard className={styles.card} title={t("Time")}>
             <Time value={timer.timerValue} />
           </TitledCard>
-          <TitledCard className={styles.card} title="Characters">
+          <TitledCard className={styles.card} title={t("Characters")}>
             <Tooltip
-              value={`${text.countOfCorrect()} Correct / ${text.countOfIncorrect()} Incorrect`}
+              value={`${text.countOfCorrect()} ${t(
+                "Correct",
+              )} / ${text.countOfIncorrect()} ${t("Incorrect")}`}
               className={styles.tooltip}
             >
               <Text
@@ -59,8 +63,11 @@ const TextResults: FC<TextResultsProps> = ({ text, timer }) => {
               />
             </Tooltip>
           </TitledCard>
-          <TitledCard className={styles.card} title="Speed">
-            <Tooltip className={styles.tooltip} value="Characters per minute">
+          <TitledCard className={styles.card} title={t("Speed")}>
+            <Tooltip
+              className={styles.tooltip}
+              value={t("Characters per minute")}
+            >
               <Text
                 className={styles.text}
                 value={`${
