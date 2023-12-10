@@ -13,6 +13,7 @@ export const accountSettingsSlice = createSlice({
   initialState: {
     username: getData("username", "undefined"),
     password: getData("password", "undefined"),
+    userId: getData("userId", "undefined"),
   } as IAccount,
 
   reducers: {
@@ -23,9 +24,14 @@ export const accountSettingsSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload
     },
+
+    setUserId: (state, action: PayloadAction<string>) => {
+      state.userId = action.payload
+    },
   },
 })
 
-export const { setUsername, setPassword } = accountSettingsSlice.actions
+export const { setUsername, setPassword, setUserId } =
+  accountSettingsSlice.actions
 
 export default accountSettingsSlice.reducer

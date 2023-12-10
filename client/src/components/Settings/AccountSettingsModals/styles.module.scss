@@ -1,0 +1,64 @@
+@import "styles/colors.module.scss";
+
+.container {
+  padding: 50px 40px;
+}
+
+.closeButton {
+  color: $whiteGrey;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  transition: 0.15s linear color;
+  &:hover {
+    color: $red;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 20px;
+
+  text-align: center;
+
+  color: $red;
+
+  margin-bottom: 40px;
+}
+
+.submitBtn {
+  border: 2px solid $red;
+
+  .text {
+    color: $white;
+    font-size: 32px;
+  }
+
+  border-radius: 10px;
+
+  width: 160px;
+  height: 50px;
+
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    .text {
+      color: $black3;
+    }
+    background-color: $red;
+    cursor: pointer;
+  }
+
+  &:active {
+    .text {
+      color: $white;
+    }
+    background-color: $black2;
+  }
+}
+
+.text {
+  color: $white;
+}

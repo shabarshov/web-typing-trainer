@@ -35,6 +35,10 @@ const TextField: FC<TextFieldProps> = ({ text, timer }) => {
     setCaretPosition(textCaretPosition())
   }, [windowWidth])
 
+  useEffect(() => {
+    setCaretPosition({ left: 0, top: 0 })
+  }, [timer])
+
   const createWords = () => {
     return text.value().map((value, wordIndex) => {
       return <Word key={wordIndex} word={value} />

@@ -2,28 +2,40 @@
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   background-color: $black3;
 
-  width: fit-content;
-  height: 40px;
-
   border-radius: 20px;
-  padding: 10px 16px 10px 16px;
+  padding: 10px 16px;
   margin-top: 20px;
 }
 
-.rightPanelButton,
-.leftPanelButton {
+.separator {
+  width: 0px;
+  height: 100%;
+
+  border: 1px solid $whiteGrey;
+
   margin: 0px 8px;
 }
 
-.separator {
-  background-color: $whiteGrey;
+.button {
+  margin: 0px 8px;
 
-  width: 1px;
-  height: 26px;
-  margin: 0px 8px 0px 8px;
+  .text {
+    transition: all 0.15s ease;
+    font-size: 20px;
+    color: $white;
+  }
+
+  &:hover {
+    .text {
+      color: $purple;
+    }
+  }
+}
+
+.activeText {
+  font-size: 20px;
+  color: $purple;
 }
