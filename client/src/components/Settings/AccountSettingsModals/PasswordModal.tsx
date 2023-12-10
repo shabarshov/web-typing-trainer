@@ -47,7 +47,14 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const passwordClickHandler = () => {
-    mutate()
+    if (newPassword.length >= 5 && newPassword === confirmNewPassword) {
+      if (oldPassword) mutate()
+      else console.log("the old password field should not be empty")
+    } else if (newPassword !== confirmNewPassword) {
+      console.log("new passwords don't match")
+    } else {
+      console.log("the new password is too short")
+    }
   }
 
   return (

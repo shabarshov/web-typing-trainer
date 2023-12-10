@@ -47,15 +47,24 @@ const AuthPage: FC = () => {
   })
 
   const buttonClickHandler = () => {
-    mutate()
+    if (isSignIn) {
+      if (login && password) mutate()
+      else console.log("the login and password fields should not be empty")
+    } else {
+      if (password.length >= 5 && password === confirmPassword) {
+        if (login) mutate()
+        else console.log("the login field should not be empty")
+      } else if (password !== confirmPassword) {
+        console.log("passwords don't match")
+      } else {
+        console.log("the password is too short")
+      }
+    }
   }
 
   return (
     <Modal>
       <AuthContainer>
-        <NavLink className={styles.closeButton} to="../">
-          <CloseIcon />
-        </NavLink>
         <Text
           className={styles.title}
           value={isSignIn ? t("Authorization") : t("Registration")}

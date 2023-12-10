@@ -41,7 +41,8 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const deleteClickHandler = () => {
-    mutate()
+    if (username && password) mutate()
+    else console.log("the login and password fields should not be empty")
   }
 
   return (

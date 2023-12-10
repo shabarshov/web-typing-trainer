@@ -43,7 +43,8 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
   }
 
   const deleteClickHandler = () => {
-    mutate()
+    if (value) mutate()
+    else console.log("the password field should not be empty")
   }
 
   return (
