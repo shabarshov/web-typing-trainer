@@ -41,7 +41,7 @@ const AccountSettings = forwardRef<HTMLSpanElement>(
           <Text className={styles.text} value={t("Delete account")} />
         </Button>
 
-        <Text className={styles.warningText} value={t(deleteWarning)} />
+        <Text className={styles.warningText} value={deleteWarning} />
 
         <Button
           className={styles.dangerButton}
