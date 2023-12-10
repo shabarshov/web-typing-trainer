@@ -60,11 +60,6 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
       return
     }
 
-    if (!confirmNewPassword) {
-      console.log("the confirm new password field should not be empty")
-      return
-    }
-
     if (newPassword !== confirmNewPassword) {
       console.log("new passwords don't match")
       return
