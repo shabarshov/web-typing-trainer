@@ -2,6 +2,18 @@
 @import "./styles/colors.module.scss";
 @import "./styles/globalStyles.module.scss";
 
+:root {
+  --toastify-color-success: rgb(32, 38, 46);
+  --toastify-color-error: rgb(32, 38, 46);
+
+  --toastify-text-color-success: #55ff7f;
+  --toastify-text-color-error: #fe7e7e;
+
+  --toastify-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -9,8 +21,6 @@ body {
 
   height: 100vh;
   width: 100vw;
-
-  background-color: black;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

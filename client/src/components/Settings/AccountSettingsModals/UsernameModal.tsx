@@ -12,6 +12,8 @@ import { useTranslation } from "react-i18next"
 import { useMutation } from "react-query"
 import { useAppSelector } from "hooks/storeHooks"
 
+import { toast } from "react-toastify"
+
 import styles from "./styles.module.scss"
 
 const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
@@ -38,7 +40,12 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
       })
 
       if (data.status === 200) {
+        toast.success("The username has been changed")
         setIsVisible(false)
+      }
+
+      if (data.status === 501) {
+        toast.error("Server error")
       }
     },
   })
@@ -49,16 +56,16 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const deleteClickHandler = () => {
     if (!username) {
-      console.log("the new username field should not be empty")
+      toast.error("The new username field should not be empty")
     }
 
     if (!password) {
-      console.log("the password field should not be empty")
+      toast.error("The password field should not be empty")
     }
 
     if (username === currentUsername) {
-      console.log(
-        "the new username must be different from the current username",
+      toast.error(
+        "The new username must be different from the current username",
       )
       return
     }

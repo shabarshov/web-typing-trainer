@@ -14,6 +14,8 @@ import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
 import { setUserId, setUsername, setPassword } from "store"
 
+import { toast } from "react-toastify"
+
 import styles from "./styles.module.scss"
 
 const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
@@ -35,10 +37,16 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
       })
 
       if (data.status === 200) {
+        toast.success("The account has been deleted")
+
         dispatch(setUserId("undefined"))
         dispatch(setUsername("undefined"))
         dispatch(setPassword("undefined"))
         setIsVisible(false)
+      }
+
+      if (data.status === 501) {
+        toast.error("Server error")
       }
     },
   })
@@ -49,7 +57,7 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const deleteClickHandler = () => {
     if (!currentPassword) {
-      console.log("the password field should not be empty")
+      toast.error("The password field should not be empty")
       return
     }
 

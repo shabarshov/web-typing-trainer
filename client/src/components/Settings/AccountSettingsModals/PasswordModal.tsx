@@ -14,6 +14,8 @@ import { useAppDispatch, useAppSelector } from "hooks/storeHooks"
 
 import { setUserId } from "store"
 
+import { toast } from "react-toastify"
+
 import styles from "./styles.module.scss"
 
 const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
@@ -42,8 +44,13 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
       })
 
       if (data.status === 200) {
+        toast.success("The password has been changed")
         dispatch(setUserId("undefined"))
         setIsVisible(false)
+      }
+
+      if (data.status === 501) {
+        toast.error("Server error")
       }
     },
   })
@@ -54,28 +61,29 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const passwordClickHandler = () => {
     if (!oldPassword) {
-      console.log("the old password field should not be empty")
+      toast.error("The password field should not be empty")
       return
     }
 
     if (!newPassword) {
-      console.log("the new password field should not be empty")
+      toast.error("The new password field should not be empty")
       return
     }
 
     if (newPassword !== confirmNewPassword) {
-      console.log("new passwords don't match")
+      toast.error("New passwords don't match")
       return
     }
 
     if (newPassword.length < 5) {
-      console.log("the new password is too short (need 5+ symbols)")
+      toast.error("The new password is too short (need 5+ symbols)")
+
       return
     }
 
     if (newPassword === currentPassword) {
-      console.log(
-        "the new password must be different from the current password",
+      toast.error(
+        "The new password must be different from the current password",
       )
       return
     }

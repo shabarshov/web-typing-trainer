@@ -10,7 +10,9 @@ import { BrowserRouter } from "react-router-dom"
 import App from "./components/App/App"
 
 import "./utils/i18n"
+import { ToastContainer } from "react-toastify"
 
+import "react-toastify/dist/ReactToastify.css"
 import "index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
@@ -26,6 +28,18 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover={true}
+          theme="colored"
+        />
         <App />
       </QueryClientProvider>
     </BrowserRouter>
