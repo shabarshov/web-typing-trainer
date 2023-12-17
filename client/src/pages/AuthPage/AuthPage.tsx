@@ -12,6 +12,8 @@ import { Modal, Text, Button } from "components/UI"
 import AuthContainer from "components/containers/AuthContainer/AuthContainer"
 import AuthInput from "components/AuthInput/AuthInput"
 
+import { toast } from "react-toastify"
+
 import { fetchUser } from "utils"
 
 import styles from "./AuthPage.module.scss"
@@ -41,6 +43,9 @@ const AuthPage: FC = () => {
       const data = await res.json()
       console.log(data.user_id)
       if (data.user_id) {
+        toast.success(
+          (isSignIn ? "Authorization" : "Registration") + " success",
+        )
         dispatch(reducers.setUserId(`${data.user_id}`))
         dispatch(reducers.setUsername(login))
         dispatch(reducers.setPassword(password))
@@ -51,29 +56,29 @@ const AuthPage: FC = () => {
   const buttonClickHandler = () => {
     // for both forms
     if (!login) {
-      console.log("the username field should not be empty")
+      toast.error("The username field should not be empty")
       return
     }
 
     if (!password) {
-      console.log("the password field should not be empty")
+      toast.error("The password field should not be empty")
       return
     }
 
     // only for signUp form
     if (!isSignIn) {
       if (!confirmPassword) {
-        console.log("the confirm password field should not be empty")
+        toast.error("The confirm password field should not be empty")
         return
       }
 
       if (password !== confirmPassword) {
-        console.log("passwords don't match")
+        toast.error("Passwords don't match")
         return
       }
 
       if (password.length < 5) {
-        console.log("the password is too short (need 5+ symbols)")
+        toast.error("The password is too short (need 5+ symbols)")
         return
       }
     }
