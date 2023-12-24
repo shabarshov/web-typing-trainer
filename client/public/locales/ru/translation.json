@@ -51,5 +51,17 @@
   "current password": "текущий пароль",
   "new password": "новый пароль",
   "confirm new password": "подтвердите новый пароль",
-  "Delete": "Удалить"
+  "Delete": "Удалить",
+  "Success": "успешна",
+  "emptyUsernameWarning": "Поле логин не должно быть пустым",
+  "emptyPasswordWarning": "Поле пароль не должно быть пустым",
+  "emptyConfirmWarning": "Поле потвердите пароль не должно быть пустым",
+  "Passwords don't match": "Пароли не совпадают",
+  "shortWarning": "Пароль слишком короткий (нужно 5+ символов)",
+  "The account has been deleted": "Аккаунт был удален",
+  "Server error": "Ошибка на сервере",
+  "emptyNewPasswordWarning": "Поле новый пароль не должно быть пустым",
+  "The new password must be different from the current password": "Новый пароль должен отличаться от текущего пароля",
+  "The username has been changed": "Логин был изменен",
+  "The new username must be different from the current username": "Новый логин должен отличаться от текущего логин"
 }

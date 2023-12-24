@@ -44,7 +44,9 @@ const AuthPage: FC = () => {
       console.log(data.user_id)
       if (data.user_id) {
         toast.success(
-          (isSignIn ? "Authorization" : "Registration") + " success",
+          (isSignIn ? t("Authorization") : t("Registration")) +
+            " " +
+            t("Success"),
         )
         dispatch(reducers.setUserId(`${data.user_id}`))
         dispatch(reducers.setUsername(login))
@@ -56,29 +58,29 @@ const AuthPage: FC = () => {
   const buttonClickHandler = () => {
     // for both forms
     if (!login) {
-      toast.error("The username field should not be empty")
+      toast.error(t("emptyUsernameWarning"))
       return
     }
 
     if (!password) {
-      toast.error("The password field should not be empty")
+      toast.error(t("emptyPasswordWarning"))
       return
     }
 
     // only for signUp form
     if (!isSignIn) {
       if (!confirmPassword) {
-        toast.error("The confirm password field should not be empty")
+        toast.error(t("emptyConfirmWarning"))
         return
       }
 
       if (password !== confirmPassword) {
-        toast.error("Passwords don't match")
+        toast.error(t("Passwords don't match"))
         return
       }
 
       if (password.length < 5) {
-        toast.error("The password is too short (need 5+ symbols)")
+        toast.error(t("shortWarning"))
         return
       }
     }

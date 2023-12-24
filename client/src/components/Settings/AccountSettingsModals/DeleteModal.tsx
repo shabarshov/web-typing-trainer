@@ -37,7 +37,7 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
       })
 
       if (data.status === 200) {
-        toast.success("The account has been deleted")
+        toast.success(t("The account has been deleted"))
 
         dispatch(setUserId("undefined"))
         dispatch(setUsername("undefined"))
@@ -46,7 +46,7 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
       }
 
       if (data.status === 501) {
-        toast.error("Server error")
+        toast.error(t("Server error"))
       }
     },
   })
@@ -57,7 +57,7 @@ const DeleteModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const deleteClickHandler = () => {
     if (!currentPassword) {
-      toast.error("The password field should not be empty")
+      toast.error(t("emptyPasswordWarning"))
       return
     }
 

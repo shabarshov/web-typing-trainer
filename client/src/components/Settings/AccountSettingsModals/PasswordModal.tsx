@@ -50,7 +50,7 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
       }
 
       if (data.status === 501) {
-        toast.error("Server error")
+        toast.error(t("Server error"))
       }
     },
   })
@@ -61,29 +61,29 @@ const PasswordModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const passwordClickHandler = () => {
     if (!oldPassword) {
-      toast.error("The password field should not be empty")
+      toast.error(t("emptyPasswordWarning"))
       return
     }
 
     if (!newPassword) {
-      toast.error("The new password field should not be empty")
+      toast.error(t("emptyNewPasswordWarning"))
       return
     }
 
     if (newPassword !== confirmNewPassword) {
-      toast.error("New passwords don't match")
+      toast.error(t("Passwords don't match"))
       return
     }
 
     if (newPassword.length < 5) {
-      toast.error("The new password is too short (need 5+ symbols)")
+      toast.error(t("shortWarning"))
 
       return
     }
 
     if (newPassword === currentPassword) {
       toast.error(
-        "The new password must be different from the current password",
+        t("The new password must be different from the current password"),
       )
       return
     }

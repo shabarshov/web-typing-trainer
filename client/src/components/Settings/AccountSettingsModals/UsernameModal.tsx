@@ -40,12 +40,12 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
       })
 
       if (data.status === 200) {
-        toast.success("The username has been changed")
+        toast.success(t("The username has been changed"))
         setIsVisible(false)
       }
 
       if (data.status === 501) {
-        toast.error("Server error")
+        toast.error(t("Server error"))
       }
     },
   })
@@ -56,16 +56,16 @@ const UsernameModal: FC<ModalProps> = ({ setIsVisible }) => {
 
   const deleteClickHandler = () => {
     if (!username) {
-      toast.error("The new username field should not be empty")
+      toast.error(t("emptyUsernameWarning"))
     }
 
     if (!password) {
-      toast.error("The password field should not be empty")
+      toast.error(t("emptyPasswordWarning"))
     }
 
     if (username === currentUsername) {
       toast.error(
-        "The new username must be different from the current username",
+        t("The new username must be different from the current username"),
       )
       return
     }

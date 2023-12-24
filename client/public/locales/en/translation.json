@@ -41,5 +41,17 @@
   "current password": "current password",
   "new password": "new password",
   "confirm new password": "confirm new password",
-  "Delete": "Delete"
+  "Delete": "Delete",
+  "Success": "success",
+  "emptyUsernameWarning": "The username field should not be empty",
+  "emptyPasswordWarning": "The password field should not be empty",
+  "emptyConfirmWarning": "The confirm password field should not be empty",
+  "Passwords don't match": "Passwords don't match",
+  "shortWarning": "The password is too short (need 5+ symbols)",
+  "The account has been deleted": "The account has been deleted",
+  "Server error": "Server error",
+  "emptyNewPasswordWarning": "The new password field should not be empty",
+  "The new password must be different from the current password": "The new password must be different from the current password",
+  "The username has been changed": "The username has been changed",
+  "The new username must be different from the current username": "The new username must be different from the current username"
 }
