@@ -28,10 +28,13 @@ const UploadAvatar: FC<UploadAvatarProps> = ({ setIsVisible }) => {
   useOutsideClick(() => setIsVisible(false), [containerRef])
 
   const onMainPhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const size = 4 * 1024 * 1024
+
     if (
       e.target.files &&
       e.target.files[0] &&
-      e.target.files[0].type.match("image.*")
+      e.target.files[0].type.match("image.*") &&
+      e.target.files[0].size < size
     ) {
       const reader = new FileReader()
       reader.readAsDataURL(e.target.files[0])
