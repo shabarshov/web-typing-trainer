@@ -23,6 +23,8 @@ const PersonalInfo: FC<PersonalInfoProps> = ({ login, registrationDate }) => {
     setIsVisible(true)
   }
 
+  console.log(avatar)
+
   return (
     <div className={styles.container}>
       <Tooltip value={t("Change avatar")}>

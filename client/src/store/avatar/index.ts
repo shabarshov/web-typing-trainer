@@ -3,11 +3,15 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import type { IAvatar } from "./types"
 
+import { localStorageManager } from "utils"
+
+const { getData } = localStorageManager()
+
 export const avatarSlice = createSlice({
   name: "avatarSlice",
 
   initialState: {
-    src: "",
+    src: getData("src", " "),
   } as IAvatar,
 
   reducers: {
