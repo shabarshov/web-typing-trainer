@@ -16,8 +16,6 @@
 - **Qt 5**
 - **Python**
 
----
-
 ## Development mode:
 
 **To install dependencies: `npm install`**
